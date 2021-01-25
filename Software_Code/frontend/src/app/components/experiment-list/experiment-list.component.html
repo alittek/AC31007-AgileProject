@@ -1,0 +1,12 @@
+<!--https://getbootstrap.com/docs/4.0/components/list-group/-->
+<div class="list-group mx-5 my-2" *ngFor="let experiment of experiments">
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{ experiment.title }}</h5>
+      <small class="text-muted">Ethically approved.</small>
+    </div>
+    <p class="mb-1">{{ experiment.description }}</p>
+    <small class="text-muted">Some text</small>
+  </a>
+</div>
+
