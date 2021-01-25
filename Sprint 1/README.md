@@ -4,19 +4,19 @@ All information about your first sprint should be put into this folder. Addition
 
 ---
 
-## Day [X] - Scrum Meeting summary
-The Scrum Master for this meeting was **Mike Crabb**
+## Day 1 [Monday, January 25] - Scrum Meeting summary
+The Scrum Master for this meeting was Emilija Budryte
 
 ### Members Present:
-Mike, Rachel, information
+Rokas, Jokubas, Alina, Calum, Skye, Andres, Emilija
 
 ### Members Not Present:
-Naughty Student 1, Naughty Student 2
+-
 
 ### Apologies:
-Ill Student 1.
+-
 
-### Summary of Conversation:
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+### Summary of Conversation/woke done:
+Since it was a first day of our sprint, our scrum meeting took longer and we worked on a sprint planning. During the session we reviewed the priority sorting activity that we carried out on yesterday (on Sunday), made some changes to it and then created a sprint backlog - first we added the most important user stories, split the user stories into smaller tasks and assigned roles to every task.
+We also agreed on the software that we will be using.
 ---
