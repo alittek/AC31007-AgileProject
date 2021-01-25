@@ -3,4 +3,5 @@ export class Experiment {
   title:string;
   description:string;
   approved:boolean;
+  //guessing these attributes for now
 }
