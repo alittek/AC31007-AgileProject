@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class ExperimentDetails {
     private Long researcherId;
+    private String type;
     private String name;
     private String description;
 }
