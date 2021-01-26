@@ -6,22 +6,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "experiments")
+public class Experiment {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @OneToMany(mappedBy = "researcher")
-    private List<Experiment> experiments;
+    @ManyToOne
+    @JoinColumn(name = "researcherId", nullable = false)
+    public User researcher;
 
-    private String username;
-    private String password;
+    private String name;
+    private String description;
 }
