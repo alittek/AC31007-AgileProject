@@ -12,11 +12,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "experiments")
+public class Experiments {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long experimentId;
     private Long id;
-    private String username;
-    private String password;
+    private String title;
+    private String description;
+    private Long results;
 }
