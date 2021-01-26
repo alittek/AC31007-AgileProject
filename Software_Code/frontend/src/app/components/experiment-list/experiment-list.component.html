@@ -1,12 +1,15 @@
 <!--https://getbootstrap.com/docs/4.0/components/list-group/-->
 <div class="list-group mx-5 my-2" *ngFor="let experiment of experiments">
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">{{ experiment.title }}</h5>
-      <small class="text-muted">Ethically approved.</small>
+  <a routerLink="/experiments/{{experiment.id}}" class="list-group-item list-group-item-action flex-column align-items-start">
+    <h4 class="mb-1 p-2">{{ experiment.title }}</h4>
+    <p class="mb-1 p-2">{{ experiment.description }}</p>
+    <div class="d-flex w-100 justify-content-between p-2">
+      <small class="text-muted mt-2">{{experiment.type}}</small>
+      <!--ng template used for logic -->
+      <!--Hex values from here https://www.dundee.ac.uk/brand/design-guidelines/colour/ -->
+      <ng-template [ngIf]="experiment.approved == true" [ngIfElse]="notApproved"><small class="p-2" style="background-color:#c4ebd0">Ethically Approved</small></ng-template>
+      <ng-template #notApproved> <small class="p-2" style="background-color:#f4cec3">Not Ethically Approved</small> </ng-template>
     </div>
-    <p class="mb-1">{{ experiment.description }}</p>
-    <small class="text-muted">Some text</small>
   </a>
 </div>
 

@@ -4,14 +4,8 @@ import { ExperimentListComponent } from '../components/experiment-list/experimen
 import {LoginFormComponent} from "../components/login-form/login-form.component";
 
 const routes: Routes = [
-  {
-    path: 'experiments',
-    component: ExperimentListComponent,
-  },
-  {
-    path: '',
-    component: LoginFormComponent,
-  },
+  {path: 'experiments', component: ExperimentListComponent},
+  {path: '', component: LoginFormComponent},
 ];
 
 @NgModule({
