@@ -71,7 +71,12 @@ public class MainController {
                 ExperimentDetails experimentDetails = new ExperimentDetails();
                 experimentDetails.setTitle(experiment.getTitle());
                 experimentDetails.setDescription(experiment.getDescription());
-                experimentDetails.setResearcherId(experiment.getResearcher().getId());
+                experimentDetails.setEthicallyApproved(experiment.isEthicallyApproved());
+
+                Optional<UserExperiment> userExperiment = userExperimentRepository.findByResearcherTypeEquals("Principal researcher");
+                if (userExperiment.isPresent()) {
+                    experimentDetails.setResearcherId(userExperiment.get().getUser().getId());
+                }
                 experimentDetailsList.add(experimentDetails);
             }
             return experimentDetailsList;
