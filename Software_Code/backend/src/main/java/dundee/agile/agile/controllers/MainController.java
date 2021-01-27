@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -57,5 +59,23 @@ public class MainController {
             return experiment.getId();
         }
         return -1L;
+    }
+
+    @PostMapping("/all-experiments")
+    public List<ExperimentDetails> getAllExperiments(@RequestBody UserIdDetails userId) {
+        Optional<User> user = usersRepository.findById(userId.getId());
+        if (user.isPresent()) { // TODO: check if user role is "Lab Manager"
+            List<Experiment> experimentsList = experimentsRepository.findAll();
+            List<ExperimentDetails> experimentDetailsList = new ArrayList<ExperimentDetails>();
+            for (Experiment experiment : experimentsList) {
+                ExperimentDetails experimentDetails = new ExperimentDetails();
+                experimentDetails.setName(experiment.getName());
+                experimentDetails.setDescription(experiment.getDescription());
+                experimentDetails.setResearcherId(experiment.getResearcher().getId());
+                experimentDetailsList.add(experimentDetails);
+            }
+            return experimentDetailsList;
+        }
+        return null;
     }
 }

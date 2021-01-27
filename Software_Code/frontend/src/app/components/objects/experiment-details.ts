@@ -3,4 +3,5 @@ export class ExperimentDetails {
   type: string;
   title: string;
   description: string;
+  approved:boolean;
 }
