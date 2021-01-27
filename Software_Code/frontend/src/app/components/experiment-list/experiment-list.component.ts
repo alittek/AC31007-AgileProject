@@ -11,12 +11,11 @@ export class ExperimentListComponent implements OnInit{
   //list of experiments
   experiments:Experiment[];
 
-  constructor(private httpService: HttpService) {
-    //get all experiments viewable by user
-    //this.experiments = this.httpService.getExperiments() or similar
-  }
+  constructor(private httpService: HttpService) {}
 
   ngOnInit(){
+    //this.httpService.getExperiments().subscribe()
+
     //placeholder data
     this.experiments = [
       {

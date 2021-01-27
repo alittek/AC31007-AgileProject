@@ -10,6 +10,7 @@ export class HttpService {
   BASE_URL = 'http://localhost:8080';
   LOGIN_PATH = '/login';
   CREATE_EXPERIMENT_PATH = '/create-experiment';
+  EXPERIMENTS_PATH ='/experiments';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -18,6 +19,11 @@ export class HttpService {
     this.httpClient.post<string>(this.BASE_URL + this.LOGIN_PATH, loginDetails).subscribe(value => {
         localStorage.setItem('userId', value);
     });
+  }
+
+  getExperiments(){
+    //guessing this for now
+    return this.httpClient.get(this.BASE_URL + this.EXPERIMENTS_PATH);
   }
 
   createExperiment(experimentDetails: ExperimentDetails): void {

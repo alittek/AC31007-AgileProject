@@ -7,6 +7,19 @@
 body{
   background: #fffaf4;
   font-family: Helvetica, Arial, sans-serif;
+  color: #464646;
+}
+
+/*button with university colour blue outline*/
+.blue-button{
+  color: #4365e2;
+  background-color: white;
+  border: solid #4365e2;
+}
+
+.blue-button:hover {
+  background-color: #4365e2;
+  color: white;
 }
 
 

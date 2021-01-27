@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {HttpService} from '../services/http.service';
-import {ExperimentDetails} from '../objects/experiment-details';
+import {Experiment} from '../objects/experiment';
+import {ExperimentDetails} from "../objects/experiment-details";
 
 @Component({
   selector: 'app-create-experiment-form',
@@ -8,14 +9,10 @@ import {ExperimentDetails} from '../objects/experiment-details';
   styleUrls: ['./create-experiment-form.component.css']
 })
 export class CreateExperimentFormComponent {
-  // data for testing backend
-  data: ExperimentDetails = {
-    researcherId: 2,
-    name: 'Experiment 1',
-    description: 'Interesting experiment'
-  };
+  data: ExperimentDetails;
 
   constructor(private httpService: HttpService) {
+    this.data = new ExperimentDetails();
   }
 
   createExperiment(): void {
