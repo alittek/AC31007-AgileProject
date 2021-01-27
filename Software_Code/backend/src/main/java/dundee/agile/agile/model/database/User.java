@@ -1,15 +1,14 @@
-package dundee.agile.agile.objects;
+package dundee.agile.agile.model.database;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import dundee.agile.agile.model.enums.Privileges;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -24,4 +23,5 @@ public class User {
 
     private String username;
     private String password;
+    private Privileges levelOfPrivileges;
 }

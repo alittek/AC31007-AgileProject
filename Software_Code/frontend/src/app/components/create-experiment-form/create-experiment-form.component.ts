@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {HttpService} from '../services/http.service';
-import {ExperimentDetails} from '../objects/experiment-details';
+import {HttpService} from '../../services/http.service';
+import {ExperimentDetails} from '../../model/request/experiment-details';
 
 @Component({
   selector: 'app-create-experiment-form',
