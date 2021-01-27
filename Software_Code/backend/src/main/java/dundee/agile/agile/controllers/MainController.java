@@ -10,7 +10,7 @@ import dundee.agile.agile.model.json.request.LoginUserRequest;
 import dundee.agile.agile.model.json.request.RegisterUserRequest;
 import dundee.agile.agile.model.json.response.ExperimentDetailsView;
 import dundee.agile.agile.model.json.response.UserView;
-import dundee.agile.agile.objects.UserIdDetails;
+import dundee.agile.agile.model.database.UserIdDetails;
 import dundee.agile.agile.repositories.ExperimentsRepository;
 import dundee.agile.agile.repositories.UsersRepository;
 import lombok.RequiredArgsConstructor;

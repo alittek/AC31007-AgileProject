@@ -1,4 +1,4 @@
-package dundee.agile.agile.objects;
+package dundee.agile.agile.model.database;
 
 import dundee.agile.agile.model.database.User;
 import lombok.AllArgsConstructor;
