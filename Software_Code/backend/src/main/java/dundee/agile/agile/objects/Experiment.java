@@ -23,7 +23,7 @@ public class Experiment {
     public User researcher;
 
     private String type;
-    private String name;
+    private String title;
     private String description;
     @Column(columnDefinition = "boolean default false")
     private boolean hasEthicalApproval;

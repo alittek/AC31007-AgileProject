@@ -47,7 +47,7 @@ public class MainController {
         if (researcher.isPresent()) {
             experiment.setResearcher(researcher.get());
             experiment.setType(experimentDetails.getType());
-            experiment.setName(experimentDetails.getName());
+            experiment.setTitle(experimentDetails.getTitle());
             experiment.setDescription(experimentDetails.getDescription());
             experiment = experimentsRepository.save(experiment);
             return experiment.getId();

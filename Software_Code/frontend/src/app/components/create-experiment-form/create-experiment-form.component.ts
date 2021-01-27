@@ -12,7 +12,7 @@ export class CreateExperimentFormComponent {
   data: ExperimentDetails = {
     researcherId: 1,
     type: 'Questionnaire',
-    name: 'Experiment 1',
+    title: 'Experiment 1',
     description: 'Interesting experiment'
   };
 
