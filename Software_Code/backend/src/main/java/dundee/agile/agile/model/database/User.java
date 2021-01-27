@@ -1,7 +1,7 @@
 package dundee.agile.agile.model.database;
 
 import dundee.agile.agile.model.enums.Privileges;
-import dundee.agile.agile.objects.UserExperiment;
+import dundee.agile.agile.model.database.UserExperiment;
 import lombok.*;
 
 import javax.persistence.*;
