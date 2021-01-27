@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {StorageKeyConstants} from '../../utils/storage-key-constants';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  logout(): void {
+    localStorage.removeItem(StorageKeyConstants.USER_ID);
+    localStorage.removeItem(StorageKeyConstants.USERNAME);
+    localStorage.removeItem(StorageKeyConstants.LEVEL_OF_PRIVILEGES);
   }
 
 }

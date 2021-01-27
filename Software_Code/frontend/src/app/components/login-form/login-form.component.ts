@@ -35,10 +35,4 @@ export class LoginFormComponent {
     });
   }
 
-  logout(): void {
-    localStorage.removeItem(StorageKeyConstants.USER_ID);
-    localStorage.removeItem(StorageKeyConstants.USERNAME);
-    localStorage.removeItem(StorageKeyConstants.LEVEL_OF_PRIVILEGES);
-  }
-
 }
