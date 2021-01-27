@@ -4,19 +4,19 @@ All information about your first sprint should be put into this folder. Addition
 
 ---
 
-## Day 1 [Monday, January 25] - Scrum Meeting summary
+## Day 3 [Wednesday, January 27] - Scrum Meeting summary
 The Scrum Master for this meeting was Emilija Budryte
 
 ### Members Present:
 Rokas, Jokubas, Alina, Calum, Skye, Andres, Emilija
 
 ### Members Not Present:
--
 
 ### Apologies:
--
 
-### Summary of Conversation/woke done:
-Since it was a first day of our sprint, our scrum meeting took longer and we worked on a sprint planning. During the session we reviewed the priority sorting activity that we carried out on yesterday (on Sunday), made some changes to it and then created a sprint backlog - first we added the most important user stories, split the user stories into smaller tasks and assigned roles to every task.
-We also agreed on the software that we will be using.
+
+### Summary of Conversation
+Essential updates on the design of a database. Plan for today is to keep working on a login functionality, database development and website design.
+Team updated the sprint backlog and finalised Day 2.
+No one faced any critical issues regarding the software development.
 ---
