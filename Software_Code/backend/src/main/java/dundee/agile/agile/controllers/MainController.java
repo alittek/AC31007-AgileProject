@@ -3,13 +3,14 @@ package dundee.agile.agile.controllers;
 import dundee.agile.agile.exceptions.LoginFailedException;
 import dundee.agile.agile.model.database.Experiment;
 import dundee.agile.agile.model.database.User;
+import dundee.agile.agile.model.database.UserExperiment;
+import dundee.agile.agile.model.database.UserIdDetails;
 import dundee.agile.agile.model.enums.Privileges;
 import dundee.agile.agile.model.json.request.CreateExperimentRequest;
 import dundee.agile.agile.model.json.request.LoginUserRequest;
 import dundee.agile.agile.model.json.request.RegisterUserRequest;
 import dundee.agile.agile.model.json.response.ExperimentDetailsView;
 import dundee.agile.agile.model.json.response.UserView;
-import dundee.agile.agile.model.database.UserIdDetails;
 import dundee.agile.agile.repositories.ExperimentsRepository;
 import dundee.agile.agile.repositories.UserExperimentRepository;
 import dundee.agile.agile.repositories.UsersRepository;
@@ -64,9 +65,8 @@ public class MainController {
         Optional<User> researcher = usersRepository.findById(createExperimentRequest.getResearcherId());
         if (researcher.isPresent()) {
             Experiment experiment = Experiment.builder()
-                    .researcher(researcher.get())
                     .type(createExperimentRequest.getType())
-                    .name(createExperimentRequest.getName())
+                    .title(createExperimentRequest.getTitle())
                     .description(createExperimentRequest.getDescription())
                     .build();
             experiment = experimentsRepository.save(experiment);
@@ -89,7 +89,7 @@ public class MainController {
             List<ExperimentDetailsView> experimentDetailsList = new ArrayList<>();
             for (Experiment experiment : experimentsList) {
                 ExperimentDetailsView experimentDetails = new ExperimentDetailsView();
-                experimentDetails.setName(experiment.getName());
+                experimentDetails.setTitle(experiment.getTitle());
                 experimentDetails.setDescription(experiment.getDescription());
                 Optional<UserExperiment> userExperiment = userExperimentRepository
                         .findByExperimentAndResearcherType(experiment, "Principal researcher");
