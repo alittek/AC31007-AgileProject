@@ -39,12 +39,13 @@ public class MainController {
         return user.getId();
     }
 
-    @PostMapping("/create-experiment") // what notation should we use for multiple words urls?
+    @PostMapping("/create-experiment")
     public Long createExperiment(@RequestBody ExperimentDetails experimentDetails) {
         Experiment experiment = new Experiment();
         Optional<User> researcher = usersRepository.findById(experimentDetails.getResearcherId());
         if (researcher.isPresent()) {
             experiment.setResearcher(researcher.get());
+            experiment.setType(experimentDetails.getType());
             experiment.setName(experimentDetails.getName());
             experiment.setDescription(experimentDetails.getDescription());
             experiment = experimentsRepository.save(experiment);

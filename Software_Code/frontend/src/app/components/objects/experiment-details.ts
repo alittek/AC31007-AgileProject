@@ -1,5 +1,6 @@
 export class ExperimentDetails {
-  researcherId: number; // should we use number for id?
+  researcherId: number;
+  type: string;
   name: string;
   description: string;
 }

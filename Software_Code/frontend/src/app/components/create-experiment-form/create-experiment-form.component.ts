@@ -10,7 +10,8 @@ import {ExperimentDetails} from '../objects/experiment-details';
 export class CreateExperimentFormComponent {
   // data for testing backend
   data: ExperimentDetails = {
-    researcherId: 2,
+    researcherId: 1,
+    type: 'Questionnaire',
     name: 'Experiment 1',
     description: 'Interesting experiment'
   };

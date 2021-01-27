@@ -22,6 +22,9 @@ public class Experiment {
     @JoinColumn(name = "researcherId", nullable = false)
     public User researcher;
 
+    private String type;
     private String name;
     private String description;
+    @Column(columnDefinition = "boolean default false")
+    private boolean hasEthicalApproval;
 }
