@@ -22,11 +22,7 @@ body{
   color: white;
 }
 
-/*have ethical approval or not using university colours */
-.not-ethical {
-  background-color:#f4cec3;
-}
-
+/*have ethical approval - using university colours */
 .ethical{
   background-color:#c4ebd0;
 }
