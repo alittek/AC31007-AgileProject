@@ -1,11 +1,15 @@
 package dundee.agile.agile.controllers;
 
+import dundee.agile.agile.exceptions.LoginFailedException;
 import dundee.agile.agile.model.database.Experiment;
 import dundee.agile.agile.model.database.User;
-import dundee.agile.agile.model.database.UserExperiment;
+import dundee.agile.agile.model.enums.Privileges;
+import dundee.agile.agile.model.json.request.CreateExperimentRequest;
 import dundee.agile.agile.model.json.request.LoginUserRequest;
-import dundee.agile.agile.objects.ExperimentDetails;
-import dundee.agile.agile.objects.UserIdDetails;
+import dundee.agile.agile.model.json.request.RegisterUserRequest;
+import dundee.agile.agile.model.json.response.ExperimentDetailsView;
+import dundee.agile.agile.model.json.response.UserView;
+import dundee.agile.agile.model.database.UserIdDetails;
 import dundee.agile.agile.repositories.ExperimentsRepository;
 import dundee.agile.agile.repositories.UserExperimentRepository;
 import dundee.agile.agile.repositories.UsersRepository;
@@ -29,31 +33,42 @@ public class MainController {
     private final UserExperimentRepository userExperimentRepository;
 
     @PostMapping("/login")
-    public Long login(@RequestBody LoginUserRequest loginDetails) {
-        Optional<User> user = usersRepository.findByUsernameEquals(loginDetails.getUsername());
-        if (user.isPresent() && user.get().getPassword().equals(loginDetails.getPassword())) {
-            return user.get().getId();
+    public UserView login(@RequestBody LoginUserRequest loginUserRequest) {
+        if (loginUserRequest == null || loginUserRequest.getUsername() == null || loginUserRequest.getPassword() == null || loginUserRequest.getUsername().length() == 0 || loginUserRequest.getPassword().length() == 0) {
+            throw new LoginFailedException();
         }
-        return -1L;
+        Optional<User> userOptional = usersRepository.findByUsernameEquals(loginUserRequest.getUsername());
+        if (userOptional.isPresent() && userOptional.get().getPassword().equals(loginUserRequest.getPassword())) {
+            User user = userOptional.get();
+            return UserView.builder()
+                    .id(user.getId())
+                    .username(user.getUsername())
+                    .levelOfPrivileges(user.getLevelOfPrivileges())
+                    .build();
+        }
+        throw new LoginFailedException();
     }
 
     @PostMapping("/register")
-    public Long registerUser(@RequestBody LoginUserRequest loginDetails) {
-        User user = new User();
-        user.setUsername(loginDetails.getUsername());
-        user.setPassword(loginDetails.getPassword());
-        user = usersRepository.save(user);
-        return user.getId();
+    public void registerUser(@RequestBody RegisterUserRequest registerUserRequest) {
+        User user = User.builder()
+                .username(registerUserRequest.getUsername())
+                .password(registerUserRequest.getPassword())
+                .levelOfPrivileges(registerUserRequest.getLevelOfPrivileges() != null ? registerUserRequest.getLevelOfPrivileges() : Privileges.PARTICIPANT)
+                .build();
+        usersRepository.save(user);
     }
 
     @PostMapping("/create-experiment")
-    public Long createExperiment(@RequestBody ExperimentDetails experimentDetails) {
-        Experiment experiment = new Experiment();
-        Optional<User> researcher = usersRepository.findById(experimentDetails.getResearcherId());
+    public Long createExperiment(@RequestBody CreateExperimentRequest createExperimentRequest) {
+        Optional<User> researcher = usersRepository.findById(createExperimentRequest.getResearcherId());
         if (researcher.isPresent()) {
-            experiment.setType(experimentDetails.getType());
-            experiment.setTitle(experimentDetails.getTitle());
-            experiment.setDescription(experimentDetails.getDescription());
+            Experiment experiment = Experiment.builder()
+                    .researcher(researcher.get())
+                    .type(createExperimentRequest.getType())
+                    .name(createExperimentRequest.getName())
+                    .description(createExperimentRequest.getDescription())
+                    .build();
             experiment = experimentsRepository.save(experiment);
 
             UserExperiment userExperiment = new UserExperiment();
@@ -67,14 +82,14 @@ public class MainController {
     }
 
     @PostMapping("/all-experiments")
-    public List<ExperimentDetails> getAllExperiments(@RequestBody UserIdDetails userId) {
+    public List<ExperimentDetailsView> getAllExperiments(@RequestBody UserIdDetails userId) {
         Optional<User> user = usersRepository.findById(userId.getId());
         if (user.isPresent()) { // TODO: check if user role is "Lab Manager"
             List<Experiment> experimentsList = experimentsRepository.findAll();
-            List<ExperimentDetails> experimentDetailsList = new ArrayList<ExperimentDetails>();
+            List<ExperimentDetailsView> experimentDetailsList = new ArrayList<>();
             for (Experiment experiment : experimentsList) {
-                ExperimentDetails experimentDetails = new ExperimentDetails();
-                experimentDetails.setTitle(experiment.getTitle());
+                ExperimentDetailsView experimentDetails = new ExperimentDetailsView();
+                experimentDetails.setName(experiment.getName());
                 experimentDetails.setDescription(experiment.getDescription());
                 Optional<UserExperiment> userExperiment = userExperimentRepository
                         .findByExperimentAndResearcherType(experiment, "Principal researcher");
