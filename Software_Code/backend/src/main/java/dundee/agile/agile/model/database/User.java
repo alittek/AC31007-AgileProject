@@ -5,6 +5,7 @@ import dundee.agile.agile.objects.UserExperiment;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -18,6 +19,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
+    @OneToMany(mappedBy = "researcher")
+    private List<Experiment> experiments;
 
     @OneToMany(mappedBy = "user")
     Set<UserExperiment> link;
