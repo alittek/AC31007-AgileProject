@@ -1,5 +1,6 @@
 package dundee.agile.agile.objects;
 
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,8 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    @OneToMany(mappedBy = "user")
+    Set<UserExperiment> link;
     private String username;
     private String password;
 }

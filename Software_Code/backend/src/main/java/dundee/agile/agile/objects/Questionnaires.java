@@ -17,5 +17,5 @@ public class Questionnaires {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long questionnaireId;
-    private Long id;
+    private Long id;//foreign key to implement when experiment table is created
 }

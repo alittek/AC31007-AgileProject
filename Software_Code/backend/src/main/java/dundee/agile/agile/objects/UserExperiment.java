@@ -12,11 +12,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "questions")
-public class Questions {
+@Table(name = "userexperiment")
+public class UserExperiment {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long questionId;
-    private Long questionnaireId;
-    private String question;
+    private Long userExperimentId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    public User user;
 }
