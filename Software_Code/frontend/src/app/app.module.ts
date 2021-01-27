@@ -7,12 +7,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { CreateExperimentFormComponent } from './components/create-experiment-form/create-experiment-form.component';
+import { ExperimentsListComponent } from './components/experiments-list/experiments-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginFormComponent,
-    CreateExperimentFormComponent
+    CreateExperimentFormComponent,
+    ExperimentsListComponent
   ],
   imports: [
     BrowserModule,
