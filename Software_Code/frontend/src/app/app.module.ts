@@ -19,7 +19,8 @@ import { CreateExperimentFormComponent } from './components/create-experiment-fo
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
