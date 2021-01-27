@@ -1,5 +1,6 @@
 package dundee.agile.agile.controllers;
 
+
 import dundee.agile.agile.exceptions.LoginFailedException;
 import dundee.agile.agile.model.database.Experiment;
 import dundee.agile.agile.model.database.User;
@@ -7,7 +8,9 @@ import dundee.agile.agile.model.enums.Privileges;
 import dundee.agile.agile.model.json.request.CreateExperimentRequest;
 import dundee.agile.agile.model.json.request.LoginUserRequest;
 import dundee.agile.agile.model.json.request.RegisterUserRequest;
+import dundee.agile.agile.model.json.response.ExperimentDetailsView;
 import dundee.agile.agile.model.json.response.UserView;
+import dundee.agile.agile.objects.UserIdDetails;
 import dundee.agile.agile.repositories.ExperimentsRepository;
 import dundee.agile.agile.repositories.UsersRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +19,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -67,5 +72,23 @@ public class MainController {
             return experiment.getId();
         }
         return -1L;
+    }
+
+    @PostMapping("/all-experiments")
+    public List<ExperimentDetailsView> getAllExperiments(@RequestBody UserIdDetails userId) {
+        Optional<User> user = usersRepository.findById(userId.getId());
+        if (user.isPresent()) { // TODO: check if user role is "Lab Manager"
+            List<Experiment> experimentsList = experimentsRepository.findAll();
+            List<ExperimentDetailsView> experimentDetailsList = new ArrayList<>();
+            for (Experiment experiment : experimentsList) {
+                ExperimentDetailsView experimentDetails = new ExperimentDetailsView();
+                experimentDetails.setName(experiment.getName());
+                experimentDetails.setDescription(experiment.getDescription());
+                experimentDetails.setResearcherId(experiment.getResearcher().getId());
+                experimentDetailsList.add(experimentDetails);
+            }
+            return experimentDetailsList;
+        }
+        return null;
     }
 }

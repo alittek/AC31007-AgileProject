@@ -8,15 +8,11 @@ import {ExperimentDetails} from '../../model/request/experiment-details';
   styleUrls: ['./create-experiment-form.component.css']
 })
 export class CreateExperimentFormComponent {
-  // data for testing backend
-  data: ExperimentDetails = {
-    researcherId: 1,
-    type: 'Questionnaire',
-    name: 'Experiment 1',
-    description: 'Interesting experiment'
-  };
+
+  data: ExperimentDetails;
 
   constructor(private httpService: HttpService) {
+    this.data = new ExperimentDetails();
   }
 
   createExperiment(): void {

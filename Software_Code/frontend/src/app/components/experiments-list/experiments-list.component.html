@@ -1,0 +1,28 @@
+
+<!-- Button to navigate to adding an experiment -->
+<div class="d-flex justify-content-end m-5">
+  <button type="button" class="btn btn-lg blue-button" routerLink="/experiments/create-experiment">Add Experiment</button>
+</div>
+
+<!--https://getbootstrap.com/docs/4.0/components/list-group/-->
+<ng-template [ngIf]="experiments" [ngIfElse]="noExperiments">
+  <div class="list-group mx-5 my-2" *ngFor="let experiment of experiments">
+    <a routerLink="/experiments/{{experiment.researcherId}}" class="list-group-item list-group-item-action flex-column align-items-start">
+      <h4 class="mb-1 p-2">{{ experiment.name }}</h4>
+      <p class="mb-1 p-2">{{ experiment.description }}</p>
+      <div class="d-flex w-100 justify-content-between p-2">
+        <small class="text-muted mt-2">{{experiment.type}}</small>
+        <!--Hex values from https://www.dundee.ac.uk/brand/design-guidelines/colour/ -->
+        <ng-template [ngIf]="experiment.approved == true" [ngIfElse]="notApproved"><small class="p-2 ethical">Ethically Approved</small></ng-template>
+        <ng-template #notApproved> <small class="p-2 not-ethical">Not Ethically Approved</small> </ng-template>
+      </div>
+    </a>
+  </div>
+</ng-template>
+<ng-template #noExperiments>
+  <div class="list-group-item">
+    <h4 class="mb-1 p-2">No Experiments</h4>
+    <p class="mb-1 p-2">There are no experiments to show.</p>
+  </div>
+</ng-template>
+
