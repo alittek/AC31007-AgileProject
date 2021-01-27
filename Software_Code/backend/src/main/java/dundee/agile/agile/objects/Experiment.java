@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -18,9 +19,8 @@ public class Experiment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "researcherId", nullable = false)
-    public User researcher;
+    @OneToMany(mappedBy = "experiment")
+    Set<UserExperiment> link;
 
     private String type;
     private String title;
