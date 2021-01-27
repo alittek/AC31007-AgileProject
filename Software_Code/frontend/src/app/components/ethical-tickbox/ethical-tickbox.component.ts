@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import {ExperimentDetails} from "../objects/experiment-details";
+import {HttpService} from "../services/http.service";
 
 @Component({
   selector: 'app-ethical-tickbox',
   templateUrl: './ethical-tickbox.component.html',
   styleUrls: ['./ethical-tickbox.component.css']
 })
-export class EthicalTickboxComponent implements OnInit {
+export class EthicalTickboxComponent {
 
-  constructor() { }
+  data: ExperimentDetails;
 
-  ngOnInit(): void {
+  constructor(private httpService: HttpService) {
+    this.data = new ExperimentDetails();
   }
 
+  //update the ethics field
+  updateApproval(): void {
+      //not made in backend yet
+      //this.httpService.updateEthicApproval(this.data)
+  }
 }
