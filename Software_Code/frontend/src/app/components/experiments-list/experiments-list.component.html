@@ -13,8 +13,8 @@
       <div class="d-flex w-100 justify-content-between p-2">
         <small class="text-muted mt-2">{{experiment.type}}</small>
         <!--Hex values from https://www.dundee.ac.uk/brand/design-guidelines/colour/ -->
-        <ng-template [ngIf]="experiment.approved == true" [ngIfElse]="notApproved"><small class="p-2" style="background-color:#c4ebd0">Ethically Approved</small></ng-template>
-        <ng-template #notApproved> <small class="p-2" style="background-color:#f4cec3">Not Ethically Approved</small> </ng-template>
+        <ng-template [ngIf]="experiment.approved == true" [ngIfElse]="notApproved"><small id="ethical" class="p-2">Ethically Approved</small></ng-template>
+        <ng-template #notApproved> <small id="not-ethical" class="p-2">Not Ethically Approved</small> </ng-template>
       </div>
     </a>
   </div>
