@@ -62,7 +62,7 @@ public class MainController {
             List<ExperimentDetails> experimentDetailsList = new ArrayList<ExperimentDetails>();
             for (Experiment experiment : experimentsList) {
                 ExperimentDetails experimentDetails = new ExperimentDetails();
-                experimentDetails.setName(experiment.getName());
+                experimentDetails.setTitle(experiment.getTitle());
                 experimentDetails.setDescription(experiment.getDescription());
                 experimentDetails.setResearcherId(experiment.getResearcher().getId());
                 experimentDetailsList.add(experimentDetails);

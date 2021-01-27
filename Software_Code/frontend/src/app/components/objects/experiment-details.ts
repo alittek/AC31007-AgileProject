@@ -1,7 +1,7 @@
 export class ExperimentDetails {
   researcherId: number;
   type: string;
-  name: string;
+  title: string;
   description: string;
-  approved:boolean;
+  approved: boolean;
 }
