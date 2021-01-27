@@ -4,22 +4,19 @@ All information about your first sprint should be put into this folder. Addition
 
 ---
 
-## Day 2 [Tuesday, January 26] - Scrum Meeting summary
+## Day 3 [Wednesday, January 27] - Scrum Meeting summary
 The Scrum Master for this meeting was Emilija Budryte
 
 ### Members Present:
-Rokas, Jokubas, Alina, Calum, Skye, Emilija
+Rokas, Jokubas, Alina, Calum, Skye, Andres, Emilija
 
 ### Members Not Present:
-Andres 
-P.S. He joined in the very end of the meeting, Emilija presented a quick summary to him.
 
 ### Apologies:
 
 
 ### Summary of Conversation
-Raised question - codding style. Solution - usage of ctrl+alt+L.
-Alina presented a summary of the changes made to the product backlog (could be seen on GitHub). Team updated the sprint backlog and finalised Day 1.
-Rokas' demo on Angular and Spring framework yesterday was very beneficial to everyone. All team members successfully managed to set up the environment and started working on their tasks afterwards. 
-No one faced any other major issues regarding the development. Plan for today - keep working on the same tasks.
+Essential updates on the design of a database. Plan for today is to keep working on a login functionality, database development and website design.
+Team updated the sprint backlog and finalised Day 2.
+No one faced any critical issues regarding the software development.
 ---
