@@ -11,8 +11,6 @@ export class CreateExperimentFormComponent {
 
   data: ExperimentDetails;
 
-  //test data
-
   constructor(private httpService: HttpService) {
     this.data = new ExperimentDetails();
   }
