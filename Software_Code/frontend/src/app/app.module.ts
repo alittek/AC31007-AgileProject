@@ -10,12 +10,13 @@ import {LoginFormComponent} from './components/login-form/login-form.component';
 import {ExperimentListComponent} from './components/experiment-list/experiment-list.component';
 import {CreateExperimentFormComponent} from './components/create-experiment-form/create-experiment-form.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginFormComponent,
     ExperimentListComponent,
-    CreateExperimentFormComponent
+    CreateExperimentFormComponent,
   ],
   imports: [
     BrowserModule,

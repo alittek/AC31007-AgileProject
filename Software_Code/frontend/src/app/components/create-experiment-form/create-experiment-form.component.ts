@@ -9,8 +9,11 @@ import {ExperimentDetails} from "../objects/experiment-details";
   styleUrls: ['./create-experiment-form.component.css']
 })
 export class CreateExperimentFormComponent {
+
   data: ExperimentDetails;
 
+  //test data 
+  
   constructor(private httpService: HttpService) {
     this.data = new ExperimentDetails();
   }

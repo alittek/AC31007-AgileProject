@@ -1,9 +1,6 @@
 package dundee.agile.agile.controllers;
 
-import dundee.agile.agile.objects.Experiment;
-import dundee.agile.agile.objects.ExperimentDetails;
-import dundee.agile.agile.objects.LoginDetails;
-import dundee.agile.agile.objects.User;
+import dundee.agile.agile.objects.*;
 import dundee.agile.agile.repositories.ExperimentsRepository;
 import dundee.agile.agile.repositories.UsersRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -40,17 +39,36 @@ public class MainController {
         return user.getId();
     }
 
-    @PostMapping("/create-experiment") // what notation should we use for multiple words urls?
+    @PostMapping("/create-experiment")
     public Long createExperiment(@RequestBody ExperimentDetails experimentDetails) {
         Experiment experiment = new Experiment();
         Optional<User> researcher = usersRepository.findById(experimentDetails.getResearcherId());
         if (researcher.isPresent()) {
             experiment.setResearcher(researcher.get());
+            experiment.setType(experimentDetails.getType());
             experiment.setName(experimentDetails.getName());
             experiment.setDescription(experimentDetails.getDescription());
             experiment = experimentsRepository.save(experiment);
             return experiment.getId();
         }
         return -1L;
+    }
+
+    @PostMapping("/all-experiments")
+    public List<ExperimentDetails> getAllExperiments(@RequestBody UserIdDetails userId) {
+        Optional<User> user = usersRepository.findById(userId.getId());
+        if (user.isPresent()) { // TODO: check if user role is "Lab Manager"
+            List<Experiment> experimentsList = experimentsRepository.findAll();
+            List<ExperimentDetails> experimentDetailsList = new ArrayList<ExperimentDetails>();
+            for (Experiment experiment : experimentsList) {
+                ExperimentDetails experimentDetails = new ExperimentDetails();
+                experimentDetails.setName(experiment.getName());
+                experimentDetails.setDescription(experiment.getDescription());
+                experimentDetails.setResearcherId(experiment.getResearcher().getId());
+                experimentDetailsList.add(experimentDetails);
+            }
+            return experimentDetailsList;
+        }
+        return null;
     }
 }
