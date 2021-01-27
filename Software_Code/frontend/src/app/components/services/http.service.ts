@@ -24,9 +24,7 @@ export class HttpService {
   }
 
   createExperiment(experimentDetails: ExperimentDetails): void {
-    this.httpClient.post<string>(this.BASE_URL + this.CREATE_EXPERIMENT_PATH, experimentDetails).subscribe(value => {
-      console.log(value); // log inserted experiment id
-    });
+    this.httpClient.post<string>(this.BASE_URL + this.CREATE_EXPERIMENT_PATH, experimentDetails).subscribe();
   }
 
   getAllExperiments(): Observable<ExperimentDetails[]> {

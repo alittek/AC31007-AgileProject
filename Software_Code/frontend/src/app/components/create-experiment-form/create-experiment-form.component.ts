@@ -12,6 +12,7 @@ export class CreateExperimentFormComponent {
 
   constructor(private httpService: HttpService) {
     this.data = new ExperimentDetails();
+    this.data.researcherId = parseInt(localStorage.getItem('userId'), 10);
   }
 
   createExperiment(): void {
