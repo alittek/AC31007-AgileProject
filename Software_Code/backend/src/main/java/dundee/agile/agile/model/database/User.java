@@ -1,13 +1,14 @@
-package dundee.agile.agile.objects;
+package dundee.agile.agile.model.database;
 
 import java.util.Set;
+
+import dundee.agile.agile.model.database.UserExperiment;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter

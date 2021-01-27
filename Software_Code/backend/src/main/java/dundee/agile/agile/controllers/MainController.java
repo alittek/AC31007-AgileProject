@@ -1,6 +1,11 @@
 package dundee.agile.agile.controllers;
 
-import dundee.agile.agile.objects.*;
+import dundee.agile.agile.model.database.Experiment;
+import dundee.agile.agile.model.database.User;
+import dundee.agile.agile.model.database.UserExperiment;
+import dundee.agile.agile.model.json.request.LoginUserRequest;
+import dundee.agile.agile.objects.ExperimentDetails;
+import dundee.agile.agile.objects.UserIdDetails;
 import dundee.agile.agile.repositories.ExperimentsRepository;
 import dundee.agile.agile.repositories.UserExperimentRepository;
 import dundee.agile.agile.repositories.UsersRepository;
@@ -24,7 +29,7 @@ public class MainController {
     private final UserExperimentRepository userExperimentRepository;
 
     @PostMapping("/login")
-    public Long login(@RequestBody LoginDetails loginDetails) {
+    public Long login(@RequestBody LoginUserRequest loginDetails) {
         Optional<User> user = usersRepository.findByUsernameEquals(loginDetails.getUsername());
         if (user.isPresent() && user.get().getPassword().equals(loginDetails.getPassword())) {
             return user.get().getId();
@@ -33,7 +38,7 @@ public class MainController {
     }
 
     @PostMapping("/register")
-    public Long registerUser(@RequestBody LoginDetails loginDetails) {
+    public Long registerUser(@RequestBody LoginUserRequest loginDetails) {
         User user = new User();
         user.setUsername(loginDetails.getUsername());
         user.setPassword(loginDetails.getPassword());
@@ -69,9 +74,13 @@ public class MainController {
             List<ExperimentDetails> experimentDetailsList = new ArrayList<ExperimentDetails>();
             for (Experiment experiment : experimentsList) {
                 ExperimentDetails experimentDetails = new ExperimentDetails();
-                experimentDetails.setName(experiment.getName());
+                experimentDetails.setTitle(experiment.getTitle());
                 experimentDetails.setDescription(experiment.getDescription());
-                experimentDetails.setResearcherId(experiment.getResearcher().getId());
+                Optional<UserExperiment> userExperiment = userExperimentRepository
+                        .findByExperimentAndResearcherType(experiment, "Principal researcher");
+                if (userExperiment.isPresent()) {
+                    experimentDetails.setResearcherId(userExperiment.get().getUser().getId());
+                }
                 experimentDetailsList.add(experimentDetails);
             }
             return experimentDetailsList;
