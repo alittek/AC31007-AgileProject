@@ -1,2 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+
+/*background colour from https://www.dundee.ac.uk/brand/design-guidelines/colour/
+  font https://www.dundee.ac.uk/brand/design-guidelines/typography/ added similar ones
+  */
+body{
+  background: #fffaf4;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #464646;
+}
+
+/*button with university colour blue outline*/
+.blue-button{
+  color: #4365e2;
+  background-color: white;
+  border: solid #4365e2;
+}
+
+.blue-button:hover {
+  background-color: #4365e2;
+  color: white;
+}
+
+
+
