@@ -15,8 +15,14 @@ import javax.persistence.*;
 @Table(name = "userexperiment")
 public class UserExperiment {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long userExperimentId;
     @ManyToOne
     @JoinColumn(name = "user_id")
     public User user;
+    @ManyToOne
+    @JoinColumn(name = "experiment_id")
+    public Experiment experiment;
+
+    private String researcherType;
 }
