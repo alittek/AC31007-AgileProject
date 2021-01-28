@@ -3,6 +3,7 @@ import {LoginRequest} from '../../model/request/login-request';
 import {HttpService} from '../../services/http.service';
 import {StorageKeyConstants} from '../../utils/storage-key-constants';
 import {BehaviorSubject} from 'rxjs';
+import {faKey, faUser} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login-form',
@@ -10,6 +11,8 @@ import {BehaviorSubject} from 'rxjs';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent {
+  faUsers = faUser;
+  faKeys = faKey;
   data: LoginRequest;
   errorText: BehaviorSubject<string> = new BehaviorSubject(null);
 
