@@ -5,10 +5,11 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {AppRoutingModule} from "./app-routing/app-routing.module";
+import {AppRoutingModule} from './app-routing/app-routing.module';
 import {LoginFormComponent} from './components/login-form/login-form.component';
 import {ExperimentsListComponent} from './components/experiments-list/experiments-list.component';
 import {CreateExperimentFormComponent} from './components/create-experiment-form/create-experiment-form.component';
+import {EthicalTickboxComponent} from './components/ethical-tickbox/ethical-tickbox.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import {CreateExperimentFormComponent} from './components/create-experiment-form
     LoginFormComponent,
     ExperimentsListComponent,
     CreateExperimentFormComponent,
+    EthicalTickboxComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,7 @@ import {CreateExperimentFormComponent} from './components/create-experiment-form
     FormsModule,
     BrowserAnimationsModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
