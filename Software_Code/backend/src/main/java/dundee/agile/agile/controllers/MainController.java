@@ -75,6 +75,10 @@ public class MainController {
             // TODO: description is required
             throw new CreateExperimentFailedException();
         }
+        if (createExperimentRequest.getResearcherId() == null) {
+            // TODO: researcher id is required
+            throw new CreateExperimentFailedException();
+        }
         Optional<User> researcher = usersRepository.findById(createExperimentRequest.getResearcherId());
         if (researcher.isPresent()) {
             Experiment experiment = Experiment.builder()
