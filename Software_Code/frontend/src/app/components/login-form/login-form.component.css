@@ -7,19 +7,15 @@ html,body{
   margin: auto;
   background-color: #4365e2;
   padding: 2%;
-  height:400px;
+  height:470px;
   width:500px;
-  border-radius:25px;
+  border-radius:10px;
 }
 
-.logo {
-  max-height: 80px;
-  max-width: 60px;
-  background-color: #4365e2;
-}
-
-.card-header h4 {
-  color: #fffaf4;
+#logo {
+  margin-top: 20px;
+  width: 240px;
+  height:80px;
 }
 
 .container {
@@ -45,4 +41,10 @@ html,body{
   height: 38px;
   background-color:#fffaf4;
   border:0;
+}
+
+#title {
+  color:white;
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
