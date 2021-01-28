@@ -1,0 +1,48 @@
+html,body{
+  height:100%;
+}
+
+.login-card {
+  align-content: center;
+  margin: auto;
+  background-color: #4365e2;
+  padding: 2%;
+  height:400px;
+  width:500px;
+  border-radius:25px;
+}
+
+.logo {
+  max-height: 80px;
+  max-width: 60px;
+  background-color: #4365e2;
+}
+
+.card-header h4 {
+  color: #fffaf4;
+}
+
+.container {
+  height: 100%;
+  align-content: center;
+  margin-top: 10%;
+}
+
+.login-button {
+  border-radius:10px;
+  color: #4365e2;
+  background-color: white;
+  border: solid #4365e2;
+}
+
+.login-button:hover {
+  background-color: #01D17C;
+  color: white;
+}
+
+.input-img span{
+  width: 40px;
+  height: 38px;
+  background-color:#fffaf4;
+  border:0;
+}
