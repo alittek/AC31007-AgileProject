@@ -74,7 +74,7 @@ public class MainController {
             UserExperiment userExperiment = new UserExperiment();
             userExperiment.setUser(researcher.get());
             userExperiment.setExperiment(experiment);
-            userExperiment.setResearcherType("Principal researcher");
+            userExperiment.setLevelOfPrivileges(Privileges.RESEARCHER);
             userExperimentRepository.save(userExperiment);
             return experiment.getId();
         }
@@ -92,7 +92,7 @@ public class MainController {
                 experimentDetails.setTitle(experiment.getTitle());
                 experimentDetails.setDescription(experiment.getDescription());
                 Optional<UserExperiment> userExperiment = userExperimentRepository
-                        .findByExperimentAndResearcherType(experiment, "Principal researcher");
+                        .findByExperimentAndLevelOfPrivileges(experiment, Privileges.RESEARCHER);
                 if (userExperiment.isPresent()) {
                     experimentDetails.setResearcherId(userExperiment.get().getUser().getId());
                 }

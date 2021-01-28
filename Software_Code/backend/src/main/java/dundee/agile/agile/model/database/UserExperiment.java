@@ -1,6 +1,7 @@
 package dundee.agile.agile.model.database;
 
 import dundee.agile.agile.model.database.User;
+import dundee.agile.agile.model.enums.Privileges;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,5 +26,5 @@ public class UserExperiment {
     @JoinColumn(name = "experiment_id")
     public Experiment experiment;
 
-    private String researcherType;
+    private Privileges levelOfPrivileges;
 }
