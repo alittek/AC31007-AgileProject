@@ -7,7 +7,7 @@ import {ExperimentComponent} from "../components/experiment/experiment.component
 
 const routes: Routes = [
   {path: 'experiments/:title', component: ExperimentComponent},
-  {path: 'experiments/create-experiment', component: CreateExperimentFormComponent},
+  {path: 'create-experiment', component: CreateExperimentFormComponent},
   {path: 'experiments', component: ExperimentsListComponent},
   {path: '', component: LoginFormComponent},
 ];
