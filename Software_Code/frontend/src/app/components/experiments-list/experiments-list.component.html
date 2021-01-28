@@ -1,3 +1,5 @@
+<!--Test out seeing tick box -->
+<!--<app-ethical-tickbox></app-ethical-tickbox>-->
 
 <!-- Button to navigate to adding an experiment -->
 <div class="d-flex justify-content-end m-5">
@@ -8,7 +10,7 @@
 <ng-template [ngIf]="experiments" [ngIfElse]="noExperiments">
   <div class="list-group mx-5 my-2" *ngFor="let experiment of experiments">
     <a routerLink="/experiments/{{experiment.researcherId}}" class="list-group-item list-group-item-action flex-column align-items-start">
-      <h4 class="mb-1 p-2">{{ experiment.name }}</h4>
+      <h4 class="mb-1 p-2">{{ experiment.title }}</h4>
       <p class="mb-1 p-2">{{ experiment.description }}</p>
       <div class="d-flex w-100 justify-content-between p-2">
         <small class="text-muted mt-2">{{experiment.type}}</small>

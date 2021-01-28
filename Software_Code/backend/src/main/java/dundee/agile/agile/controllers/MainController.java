@@ -1,17 +1,19 @@
 package dundee.agile.agile.controllers;
 
-
+import dundee.agile.agile.exceptions.CreateExperimentFailedException;
 import dundee.agile.agile.exceptions.LoginFailedException;
 import dundee.agile.agile.model.database.Experiment;
 import dundee.agile.agile.model.database.User;
+import dundee.agile.agile.model.database.UserExperiment;
+import dundee.agile.agile.model.database.UserIdDetails;
 import dundee.agile.agile.model.enums.Privileges;
 import dundee.agile.agile.model.json.request.CreateExperimentRequest;
 import dundee.agile.agile.model.json.request.LoginUserRequest;
 import dundee.agile.agile.model.json.request.RegisterUserRequest;
 import dundee.agile.agile.model.json.response.ExperimentDetailsView;
 import dundee.agile.agile.model.json.response.UserView;
-import dundee.agile.agile.model.database.UserIdDetails;
 import dundee.agile.agile.repositories.ExperimentsRepository;
+import dundee.agile.agile.repositories.UserExperimentRepository;
 import dundee.agile.agile.repositories.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,6 +32,7 @@ public class MainController {
 
     private final UsersRepository usersRepository;
     private final ExperimentsRepository experimentsRepository;
+    private final UserExperimentRepository userExperimentRepository;
 
     @PostMapping("/login")
     public UserView login(@RequestBody LoginUserRequest loginUserRequest) {
@@ -60,15 +63,32 @@ public class MainController {
 
     @PostMapping("/create-experiment")
     public Long createExperiment(@RequestBody CreateExperimentRequest createExperimentRequest) {
+        if (createExperimentRequest == null) {
+            // TODO: bad request
+            throw new CreateExperimentFailedException();
+        }
+        if (createExperimentRequest.getTitle() == null || createExperimentRequest.getTitle().length() == 0) {
+            // TODO: title is required
+            throw new CreateExperimentFailedException();
+        }
+        if (createExperimentRequest.getDescription() == null || createExperimentRequest.getDescription().length() == 0) {
+            // TODO: description is required
+            throw new CreateExperimentFailedException();
+        }
         Optional<User> researcher = usersRepository.findById(createExperimentRequest.getResearcherId());
         if (researcher.isPresent()) {
             Experiment experiment = Experiment.builder()
-                    .researcher(researcher.get())
                     .type(createExperimentRequest.getType())
-                    .name(createExperimentRequest.getName())
+                    .title(createExperimentRequest.getTitle())
                     .description(createExperimentRequest.getDescription())
                     .build();
             experiment = experimentsRepository.save(experiment);
+
+            UserExperiment userExperiment = new UserExperiment();
+            userExperiment.setUser(researcher.get());
+            userExperiment.setExperiment(experiment);
+            userExperiment.setLevelOfPrivileges(Privileges.RESEARCHER);
+            userExperimentRepository.save(userExperiment);
             return experiment.getId();
         }
         return -1L;
@@ -82,9 +102,13 @@ public class MainController {
             List<ExperimentDetailsView> experimentDetailsList = new ArrayList<>();
             for (Experiment experiment : experimentsList) {
                 ExperimentDetailsView experimentDetails = new ExperimentDetailsView();
-                experimentDetails.setName(experiment.getName());
+                experimentDetails.setTitle(experiment.getTitle());
                 experimentDetails.setDescription(experiment.getDescription());
-                experimentDetails.setResearcherId(experiment.getResearcher().getId());
+                Optional<UserExperiment> userExperiment = userExperimentRepository
+                        .findByExperimentAndLevelOfPrivileges(experiment, Privileges.RESEARCHER);
+                if (userExperiment.isPresent()) {
+                    experimentDetails.setResearcherId(userExperiment.get().getUser().getId());
+                }
                 experimentDetailsList.add(experimentDetails);
             }
             return experimentDetailsList;
