@@ -3,6 +3,7 @@ package dundee.agile.agile.model.database;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -16,12 +17,11 @@ public class Experiment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "researcherId", nullable = false)
-    public User researcher;
+    @OneToMany(mappedBy = "experiment")
+    Set<UserExperiment> link;
 
     private String type;
-    private String name;
+    private String title;
     private String description;
     @Column(columnDefinition = "boolean default false")
     private boolean hasEthicalApproval;

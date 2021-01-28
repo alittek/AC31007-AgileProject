@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {LoginRequest} from '../model/request/login-request';
 import {ExperimentDetails} from '../model/request/experiment-details';
+import {UserId} from '../model/request/user-id';
 import {Observable} from 'rxjs';
 import {UserView} from '../model/response/user-view';
 import {ApiConstants} from '../utils/api-constants';
@@ -23,9 +24,13 @@ export class HttpService {
   }
 
 
-  createExperiment(experimentDetails: ExperimentDetails): void {
-    this.httpClient.post<string>(ApiConstants.CREATE_EXPERIMENT, experimentDetails).subscribe(value => {
-      console.log(value); // log inserted experiment id
-    });
+  createExperiment(experimentDetails: ExperimentDetails): Observable<any> {
+    return this.httpClient.post<string>(ApiConstants.CREATE_EXPERIMENT, experimentDetails);
+  }
+
+  getAllExperiments(): Observable<ExperimentDetails[]> {
+    const userId = new UserId();
+    userId.id = parseInt(localStorage.getItem('userId'), 10);
+    return this.httpClient.post<ExperimentDetails[]>(ApiConstants.ALL_EXPERIMENTS, userId);
   }
 }
