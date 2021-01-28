@@ -112,6 +112,7 @@ public class MainController {
                 ExperimentDetailsView experimentDetails = new ExperimentDetailsView();
                 experimentDetails.setTitle(experiment.getTitle());
                 experimentDetails.setDescription(experiment.getDescription());
+                experimentDetails.setEthicallyApproved(experiment.isEthicallyApproved());
                 Optional<UserExperiment> userExperiment = userExperimentRepository
                         .findByExperimentAndLevelOfPrivileges(experiment, Privileges.RESEARCHER);
                 if (userExperiment.isPresent()) {

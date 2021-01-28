@@ -10,4 +10,5 @@ public class ExperimentDetailsView {
     private String type;
     private String title;
     private String description;
+    private boolean ethicallyApproved;
 }

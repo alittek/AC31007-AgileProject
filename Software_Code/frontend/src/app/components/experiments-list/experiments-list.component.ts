@@ -18,7 +18,7 @@ export class ExperimentsListComponent implements OnInit {
   }
 
   // for testing backend
-  getAllExperiments() {
+  getAllExperiments(): void {
     this.httpService.getAllExperiments()
       .subscribe(experiments => this.experiments = experiments);
   }
