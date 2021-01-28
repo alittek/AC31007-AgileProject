@@ -10,6 +10,7 @@ import {LoginFormComponent} from './components/login-form/login-form.component';
 import {ExperimentsListComponent} from './components/experiments-list/experiments-list.component';
 import {CreateExperimentFormComponent} from './components/create-experiment-form/create-experiment-form.component';
 import {HeaderComponent} from './components/header/header.component';
+import {EthicalTickboxComponent} from './components/ethical-tickbox/ethical-tickbox.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {HeaderComponent} from './components/header/header.component';
     LoginFormComponent,
     ExperimentsListComponent,
     CreateExperimentFormComponent,
-    HeaderComponent
+    HeaderComponent,
+    EthicalTickboxComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,7 @@ import {HeaderComponent} from './components/header/header.component';
     FormsModule,
     BrowserAnimationsModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
