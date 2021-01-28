@@ -1,6 +1,6 @@
 <!--Custom checkbox https://getbootstrap.com/docs/4.0/components/forms/ -->
 <!--Only show if not approved (test seeing this by putting true == true) -->
-<ng-template [ngIf]="data.approved == false" [ngIfElse]="approved">
+<ng-template [ngIf]="!data.approved" [ngIfElse]="approved">
   <form class="p-2 bg-white border">
     <div class="custom-control pl-5 custom-checkbox">
         <input type="checkbox" class="custom-control-input" id="customCheck1" (click)="updateApproval()">
