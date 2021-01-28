@@ -16,8 +16,17 @@
 
 #navbar-row {
   width: 80%;
+  margin: auto auto;
 }
 
 #signout {
   cursor: pointer;
+}
+
+#menu {
+  color: white;
+  font-size: 20px;
+}
+
+#box {
 }
