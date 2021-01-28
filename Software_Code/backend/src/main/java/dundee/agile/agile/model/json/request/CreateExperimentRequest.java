@@ -8,6 +8,6 @@ import lombok.Setter;
 public class CreateExperimentRequest {
     private Long researcherId;
     private String type;
-    private String name;
+    private String title;
     private String description;
 }
