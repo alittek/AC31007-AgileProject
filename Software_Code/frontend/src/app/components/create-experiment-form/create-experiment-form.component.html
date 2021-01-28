@@ -23,7 +23,7 @@
         </select>
       </div>
     </div>
-    <p [ngClass]="isCreated ? 'text-success':'text-danger'" *ngIf="creationStatusText | async">{{creationStatusText | async}}</p>
+    <p class="text-danger" *ngIf="errorText | async">{{errorText | async}}</p>
     <div class="d-flex justify-content-between mt-5">
       <small class="form-text text-muted">You will need ethical approval.</small>
       <button class="btn blue-button mt-2" (click)="createExperiment()">Create experiment</button>
