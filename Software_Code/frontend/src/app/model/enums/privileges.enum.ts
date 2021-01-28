@@ -1,0 +1,6 @@
+export enum Privileges {
+  PARTICIPANT,
+  CO_RESEARCHER,
+  RESEARCHER,
+  LAB_MANAGER
+}

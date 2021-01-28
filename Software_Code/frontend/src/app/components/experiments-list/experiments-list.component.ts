@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ExperimentDetails} from '../objects/experiment-details';
-import {HttpService} from '../services/http.service';
+import {ExperimentDetails} from '../../model/request/experiment-details';
+import {HttpService} from '../../services/http.service';
 
 @Component({
   selector: 'app-experiments-list',

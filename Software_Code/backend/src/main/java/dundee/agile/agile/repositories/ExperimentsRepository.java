@@ -1,6 +1,6 @@
 package dundee.agile.agile.repositories;
 
-import dundee.agile.agile.objects.Experiment;
+import dundee.agile.agile.model.database.Experiment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
