@@ -28,5 +28,6 @@
   font-size: 20px;
 }
 
-#box {
+.navbar-nav {
+  margin-left: auto;
 }
