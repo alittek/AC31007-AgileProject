@@ -22,7 +22,7 @@
       </div>
       <p class="text-danger" *ngIf="errorText | async">{{errorText | async}}</p>
       <div class="d-flex justify-content-center">
-        <button type="submit" class="btn-lg login-button mt-3" (click)="login()">Login</button>
+        <button type="submit" class="btn-lg login-button mt-3" (click)="login()" routerLink="/experiments">Login</button>
       </div>
     </div>
   </div>
