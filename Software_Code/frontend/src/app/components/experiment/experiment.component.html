@@ -1,10 +1,14 @@
 <div id="top-gray-box"class="text-center">
-  <h2> Experiment Title </h2>
+  <h2>{{experiment.title}}</h2>
 </div>
 <div id="overlap-box" class="container border p-5">
   <h3> Description</h3>
   <p>{{ experiment.description }}</p>
   <p class="text-muted">{{ experiment.type }}</p>
+  <br>
+  <h3>Researchers</h3>
+  <p> List of who is working on this. </p>
+  <br>
   <br>
   <app-ethical-tickbox></app-ethical-tickbox>
   <br>
