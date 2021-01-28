@@ -11,7 +11,9 @@ import {ExperimentsListComponent} from './components/experiments-list/experiment
 import {CreateExperimentFormComponent} from './components/create-experiment-form/create-experiment-form.component';
 import {HeaderComponent} from './components/header/header.component';
 import {EthicalTickboxComponent} from './components/ethical-tickbox/ethical-tickbox.component';
+import {CreateQuestionnaireComponent} from './components/create-questionnaire/create-questionnaire.component';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     CreateExperimentFormComponent,
     HeaderComponent,
     EthicalTickboxComponent,
+    CreateQuestionnaireComponent,
   ],
   imports: [
     BrowserModule,
