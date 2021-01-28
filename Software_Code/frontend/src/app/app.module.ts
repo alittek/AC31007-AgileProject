@@ -9,6 +9,7 @@ import {AppRoutingModule} from "./app-routing/app-routing.module";
 import {LoginFormComponent} from './components/login-form/login-form.component';
 import {ExperimentsListComponent} from './components/experiments-list/experiments-list.component';
 import {CreateExperimentFormComponent} from './components/create-experiment-form/create-experiment-form.component';
+import { ExperimentComponent } from './components/experiment/experiment.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import {CreateExperimentFormComponent} from './components/create-experiment-form
     LoginFormComponent,
     ExperimentsListComponent,
     CreateExperimentFormComponent,
+    ExperimentComponent,
   ],
   imports: [
     BrowserModule,
