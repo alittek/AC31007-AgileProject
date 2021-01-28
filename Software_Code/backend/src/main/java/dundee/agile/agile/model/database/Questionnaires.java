@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -16,6 +17,9 @@ import javax.persistence.*;
 public class Questionnaires {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long questionnaireId;
-    private Long id;//foreign key to implement when experiment table is created
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "experiment_id")
+    public Experiment experiment;
 }

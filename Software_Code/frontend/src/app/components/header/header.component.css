@@ -1,0 +1,33 @@
+#nav {
+  background-color: #4365e2;
+}
+
+.nav-link {
+  color: white;
+  font-size: 14pt;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#logo {
+  width: 165px;
+  height: 55px;
+}
+
+#navbar-row {
+  width: 80%;
+  margin: auto auto;
+}
+
+#signout {
+  cursor: pointer;
+}
+
+#menu {
+  color: white;
+  font-size: 20px;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}

@@ -75,6 +75,10 @@ public class MainController {
             // TODO: description is required
             throw new CreateExperimentFailedException();
         }
+        if (createExperimentRequest.getResearcherId() == null) {
+            // TODO: researcher id is required
+            throw new CreateExperimentFailedException();
+        }
         Optional<User> researcher = usersRepository.findById(createExperimentRequest.getResearcherId());
         if (researcher.isPresent()) {
             Experiment experiment = Experiment.builder()
@@ -104,6 +108,7 @@ public class MainController {
                 ExperimentDetailsView experimentDetails = new ExperimentDetailsView();
                 experimentDetails.setTitle(experiment.getTitle());
                 experimentDetails.setDescription(experiment.getDescription());
+                experimentDetails.setEthicallyApproved(experiment.isEthicallyApproved());
                 Optional<UserExperiment> userExperiment = userExperimentRepository
                         .findByExperimentAndLevelOfPrivileges(experiment, Privileges.RESEARCHER);
                 if (userExperiment.isPresent()) {

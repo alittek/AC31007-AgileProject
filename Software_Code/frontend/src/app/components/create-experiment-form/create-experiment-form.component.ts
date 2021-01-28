@@ -10,21 +10,28 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class CreateExperimentFormComponent {
   data: ExperimentDetails;
-  errorText: BehaviorSubject<string> = new BehaviorSubject(null);
+  isCreated: boolean;
+  creationStatusText: BehaviorSubject<string>;
 
   constructor(private httpService: HttpService) {
     this.data = new ExperimentDetails();
     this.data.researcherId = parseInt(localStorage.getItem('userId'), 10);
+    this.isCreated = false;
+    this.creationStatusText = new BehaviorSubject(null);
   }
 
   createExperiment(): void {
-    this.httpService.createExperiment(this.data).subscribe(value => {}, error => {
+    this.httpService.createExperiment(this.data).subscribe(value => {
+      this.isCreated = true;
+      this.creationStatusText.next('Experiment created successfully');
+    }, error => {
+      this.isCreated = false;
       if (error.status === 0) {
-        this.errorText.next('Error connecting to the backend.');
+        this.creationStatusText.next('Error connecting to the backend.');
       } else if (error.status === 400) {
-        this.errorText.next('Create experiment details are missing');
+        this.creationStatusText.next('Create experiment details are missing');
       } else {
-        this.errorText.next('Unexpected error.');
+        this.creationStatusText.next('Unexpected error.');
       }
     });
   }
