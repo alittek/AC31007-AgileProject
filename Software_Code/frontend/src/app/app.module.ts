@@ -10,6 +10,7 @@ import {LoginFormComponent} from './components/login-form/login-form.component';
 import {ExperimentsListComponent} from './components/experiments-list/experiments-list.component';
 import {CreateExperimentFormComponent} from './components/create-experiment-form/create-experiment-form.component';
 import {EthicalTickboxComponent} from './components/ethical-tickbox/ethical-tickbox.component';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {EthicalTickboxComponent} from './components/ethical-tickbox/ethical-tick
     BrowserAnimationsModule,
     NgbModule,
     AppRoutingModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
