@@ -24,10 +24,8 @@ export class HttpService {
   }
 
 
-  createExperiment(experimentDetails: ExperimentDetails): void {
-    this.httpClient.post<string>(ApiConstants.CREATE_EXPERIMENT, experimentDetails).subscribe(value => {
-      console.log(value); // log inserted experiment id
-    });
+  createExperiment(experimentDetails: ExperimentDetails): Observable<any> {
+    return this.httpClient.post<string>(ApiConstants.CREATE_EXPERIMENT, experimentDetails);
   }
 
   getAllExperiments(): Observable<ExperimentDetails[]> {

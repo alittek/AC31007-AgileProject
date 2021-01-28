@@ -1,5 +1,6 @@
 package dundee.agile.agile.controllers;
 
+import dundee.agile.agile.exceptions.CreateExperimentFailedException;
 import dundee.agile.agile.exceptions.LoginFailedException;
 import dundee.agile.agile.model.database.Experiment;
 import dundee.agile.agile.model.database.User;
@@ -62,6 +63,18 @@ public class MainController {
 
     @PostMapping("/create-experiment")
     public Long createExperiment(@RequestBody CreateExperimentRequest createExperimentRequest) {
+        if (createExperimentRequest == null) {
+            // TODO: bad request
+            throw new CreateExperimentFailedException();
+        }
+        if (createExperimentRequest.getTitle() == null || createExperimentRequest.getTitle().length() == 0) {
+            // TODO: title is required
+            throw new CreateExperimentFailedException();
+        }
+        if (createExperimentRequest.getDescription() == null || createExperimentRequest.getDescription().length() == 0) {
+            // TODO: description is required
+            throw new CreateExperimentFailedException();
+        }
         Optional<User> researcher = usersRepository.findById(createExperimentRequest.getResearcherId());
         if (researcher.isPresent()) {
             Experiment experiment = Experiment.builder()
