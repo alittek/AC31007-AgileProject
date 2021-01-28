@@ -10,6 +10,7 @@ import {HttpService} from '../../services/http.service';
 export class ExperimentsListComponent implements OnInit {
   experiments: ExperimentDetails[];
 
+
   constructor(private httpService: HttpService) {
   }
 

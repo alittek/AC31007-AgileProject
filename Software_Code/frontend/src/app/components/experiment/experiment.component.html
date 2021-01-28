@@ -7,7 +7,7 @@
   <p class="text-muted">{{ experiment.type }}</p>
   <br>
   <h3>Researchers</h3>
-  <p> List of who is working on this. </p>
+  <li *ngFor="let researcher of researchers"> {{researcher}} </li>
   <br>
   <br>
   <app-ethical-tickbox></app-ethical-tickbox>

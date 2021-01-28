@@ -6,8 +6,7 @@ import {CreateExperimentFormComponent} from "../components/create-experiment-for
 import {ExperimentComponent} from "../components/experiment/experiment.component";
 
 const routes: Routes = [
-  //using 1 for now
-  {path: 'experiments/1', component: ExperimentComponent},
+  {path: 'experiments/:title', component: ExperimentComponent},
   {path: 'experiments/create-experiment', component: CreateExperimentFormComponent},
   {path: 'experiments', component: ExperimentsListComponent},
   {path: '', component: LoginFormComponent},

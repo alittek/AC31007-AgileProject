@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {ExperimentDetails} from "../../model/request/experiment-details";
 import {HttpService} from "../../services/http.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-experiment',
@@ -9,22 +10,24 @@ import {HttpService} from "../../services/http.service";
 })
 export class ExperimentComponent implements OnInit{
   experiment: ExperimentDetails;
+  //testing
+  researchers = ["Dr. Example", "Dr. Example2"];
 
 
-  constructor(private httpService: HttpService) {
+  constructor(private route: ActivatedRoute, private httpService: HttpService) {
+    this.route.params.subscribe( params => console.log(params) );
     //placeholder data
     this.experiment = new ExperimentDetails();
-    this.experiment.title = "Experiment Title";
+    this.experiment.title = "ExperimentTitle";
     this.experiment.description = "For digital applications always use the specified RGB breakdowns for each colours. The colour breakdowns in this guide have been formulated for optimum results on coated matt sheets. If printing in CMYK, always use the exact colour breakdowns specified.";
     this.experiment.type = "Questionnaire";
     this.experiment.approved = true;
   }
 
-  ngOnInit(): void {
-    //this.getExperiment();
+  ngOnInit(){
+    //get experiment
     //get researchers?
   }
-
 
   getExperiment() {
     //not implemented backend yet
