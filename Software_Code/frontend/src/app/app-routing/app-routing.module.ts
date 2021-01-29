@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { ExperimentsListComponent } from '../components/experiments-list/experiments-list.component'
-import {LoginFormComponent} from "../components/login-form/login-form.component";
-import {CreateExperimentFormComponent} from "../components/create-experiment-form/create-experiment-form.component";
-import {ExperimentComponent} from "../components/experiment/experiment.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {ExperimentsListComponent} from '../components/experiments-list/experiments-list.component';
+import {LoginFormComponent} from '../components/login-form/login-form.component';
+import {CreateExperimentFormComponent} from '../components/create-experiment-form/create-experiment-form.component';
+import {ExperimentComponent} from '../components/experiment/experiment.component';
 
 const routes: Routes = [
-  {path: 'experiments/:title', component: ExperimentComponent},
+  {path: 'experiments/:id', component: ExperimentComponent},
   {path: 'create-experiment', component: CreateExperimentFormComponent},
   {path: 'experiments', component: ExperimentsListComponent},
   {path: '', component: LoginFormComponent},
@@ -21,4 +21,5 @@ const routes: Routes = [
   ],
   declarations: []
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

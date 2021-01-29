@@ -5,5 +5,6 @@ export class ApiConstants {
   public static REGISTER = ApiConstants.BASE_URL + '/register';
 
   public static CREATE_EXPERIMENT = ApiConstants.BASE_URL + '/create-experiment';
-  public static  ALL_EXPERIMENTS = ApiConstants.BASE_URL + '/all-experiments';
+  public static GET_EXPERIMENT = ApiConstants.BASE_URL + '/get-experiment';
+  public static ALL_EXPERIMENTS = ApiConstants.BASE_URL + '/all-experiments';
 }
