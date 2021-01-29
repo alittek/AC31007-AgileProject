@@ -1,15 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HttpService} from '../../services/http.service';
+import {QuestionnaireDetails} from '../../model/request/questionnaire-details';
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-create-questionnaire',
   templateUrl: './create-questionnaire.component.html',
   styleUrls: ['./create-questionnaire.component.css']
 })
-export class CreateQuestionnaireComponent implements OnInit {
+export class CreateQuestionnaireComponent {
+  data: QuestionnaireDetails;
+  isCreated: boolean;
+  creationStatusText: BehaviorSubject<string>;
 
-  constructor() { }
+  constructor(private httpService: HttpService) {
+      this.data = new QuestionnaireDetails();
+      this.data.userID = parseInt(localStorage.getItem('userId'), 10);
+      this.isCreated = false;
+      this.creationStatusText = new BehaviorSubject(null);
+    }
 
-  ngOnInit(): void {
+  createQuestionnaire(): void {
+    this.httpService.createQuestionnaire(this.data).subscribe(value => {
+      this.isCreated = true;
+      this.creationStatusText.next('Questionnaire created successfully');
+    }, error => {
+      this.isCreated = false;
+      if (error.status === 0) {
+        this.creationStatusText.next('Error connecting to the backend.');
+      } else if (error.status === 400) {
+        this.creationStatusText.next('Create Questionnaire details are missing');
+      } else {
+        this.creationStatusText.next('Unexpected error.');
+      }
+    });
   }
-
 }
