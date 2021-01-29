@@ -15,5 +15,5 @@
   <hr>
   <h3>{{experiment.type}}s</h3>
   <p> List of previous creations or links to results here.</p>
-  <button type="button" routerLink="/create-questionnaire" class="btn blue-button mt-5">Add {{experiment.type}}</button>
+  <button type="button" routerLink="/create-questionnaire" class="btn blue-button mt-5" [disabled]="!experiment.ethicallyApproved">Add {{experiment.type}}</button>
 </div>
