@@ -23,6 +23,7 @@ export class CreateQuestionnaireComponent {
     }
 
   createQuestionnaire(): void {
+    this.questionData.questionnaireID = this.questionnaireData.userID;
     this.httpService.createQuestionnaire(this.questionnaireData).subscribe(value => {
       this.isCreated = true;
       this.creationStatusText.next('Questionnaire created successfully');
