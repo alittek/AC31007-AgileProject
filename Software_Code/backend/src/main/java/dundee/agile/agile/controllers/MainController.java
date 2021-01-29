@@ -122,9 +122,19 @@ public class MainController {
 
     @PostMapping("/all-experiments")
     public List<ExperimentDetailsView> getAllExperiments(@RequestBody UserIdDetails userId) {
-        Optional<User> user = usersRepository.findById(userId.getId());
-        if (user.isPresent()) { // TODO: check if user role is "Lab Manager"
-            List<Experiment> experimentsList = experimentsRepository.findAll();
+        Optional<User> userOptional = usersRepository.findById(userId.getId());
+        if (userOptional.isPresent()) {
+            List<Experiment> experimentsList = new ArrayList<>();
+            User user = userOptional.get();
+            if (user.getLevelOfPrivileges() == Privileges.LAB_MANAGER) {
+                experimentsList = experimentsRepository.findAll();
+            }
+            else {
+                List<UserExperiment> userExperimentList = userExperimentRepository.findAllByUser(user);
+                for (UserExperiment userExperiment : userExperimentList) {
+                    experimentsList.add(userExperiment.getExperiment());
+                }
+            }
             List<ExperimentDetailsView> experimentDetailsList = new ArrayList<>();
             for (Experiment experiment : experimentsList) {
                 ExperimentDetailsView experimentDetails = new ExperimentDetailsView();
