@@ -9,3 +9,5 @@
 27/01/2021 - Added new user stories & updated order
 
 28/01/2021 - Revised order & new user stories in preparation for sprint review
+
+29/01/2021 - Update after sprint 1 finished & stakeholder wishes considered
