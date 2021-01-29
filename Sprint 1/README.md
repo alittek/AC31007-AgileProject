@@ -4,7 +4,7 @@ All information about your first sprint should be put into this folder. Addition
 
 ---
 
-## Day 4 [Thursday, January 28] - Scrum Meeting summary
+## Day 5 [Friday, January 29] - Scrum Meeting summary
 The Scrum Master for this meeting was Emilija Budryte
 
 ### Members Present:
@@ -15,7 +15,8 @@ Rokas, Jokubas, Alina, Calum, Skye, Andres, Emilija
 ### Apologies:
 
 ### Summary of Conversation
-Today team is going to continue working on a login functionality, further database development, backend integration with frontend and error handling, website design and start testing.
-Team updated the sprint backlog and finalised Day 3.
+Login functionality and create an experiment feature are now working, database is finished, there are only couple of things to be fixed regarding backend integration with frontend.
+Today team is going to finish up with the last tasks, merge all branches into a master and do final testing before the sprint review.
+Team updated the sprint backlog and finalised Day 4.
 No one faced any blockers and there were no critical issues regarding the software development.
 ---
