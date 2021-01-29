@@ -1,0 +1,2 @@
+Even though the sprint backlog was updated on github every day after a scrum meeting, this is the link to a google sheet file which was accessible and updated constantly by all the team members throughout Sprint 1.
+Link - https://docs.google.com/spreadsheets/d/1UBvD_YY-oZvegD4BIPelVFAEh5cD8pXm/edit#gid=1902749610
