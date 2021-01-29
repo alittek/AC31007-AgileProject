@@ -7,10 +7,7 @@ import dundee.agile.agile.model.database.User;
 import dundee.agile.agile.model.database.UserExperiment;
 import dundee.agile.agile.model.database.UserIdDetails;
 import dundee.agile.agile.model.enums.Privileges;
-import dundee.agile.agile.model.json.request.CreateExperimentRequest;
-import dundee.agile.agile.model.json.request.GetExperimentRequest;
-import dundee.agile.agile.model.json.request.LoginUserRequest;
-import dundee.agile.agile.model.json.request.RegisterUserRequest;
+import dundee.agile.agile.model.json.request.*;
 import dundee.agile.agile.model.json.response.ExperimentDetailsView;
 import dundee.agile.agile.model.json.response.UserView;
 import dundee.agile.agile.repositories.ExperimentsRepository;
@@ -149,5 +146,16 @@ public class MainController {
             return experimentDetailsList;
         }
         return null;
+    }
+
+    @PostMapping("/approve-ethically")
+    public boolean approveEthically(@RequestBody EthicalApprovalRequest ethicalApprovalRequest) {
+        Optional<Experiment> experimentOptional = experimentsRepository.findById(ethicalApprovalRequest.getExperimentId());
+        if (experimentOptional.isPresent()) {
+            Experiment experiment = experimentOptional.get();
+            experiment.setEthicallyApproved(ethicalApprovalRequest.isEthicallyApproved());
+            experimentsRepository.save(experiment);
+        }
+        return ethicalApprovalRequest.isEthicallyApproved();
     }
 }
