@@ -7,4 +7,6 @@ export class ApiConstants {
   public static CREATE_EXPERIMENT = ApiConstants.BASE_URL + '/create-experiment';
   public static GET_EXPERIMENT = ApiConstants.BASE_URL + '/get-experiment';
   public static ALL_EXPERIMENTS = ApiConstants.BASE_URL + '/all-experiments';
+  public static CREATE_QUESTIONNAIRE = ApiConstants.BASE_URL + '/create-questionnaire';
+  public static CREATE_QUESTION = ApiConstants.BASE_URL + 'create-question';
 }

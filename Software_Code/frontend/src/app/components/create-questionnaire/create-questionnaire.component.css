@@ -1,0 +1,16 @@
+html, body {
+  height: 100%;
+}
+
+.create-button {
+  border-radius:10px;
+  color: #4365e2;
+  background-color: white;
+  border: solid #4365e2;
+}
+
+.create-button:hover {
+  background-color: #01D17C;
+  color: white;
+  border: solid white;
+}

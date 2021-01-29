@@ -80,6 +80,10 @@ public class MainController {
             // TODO: researcher id is required
             throw new CreateExperimentFailedException();
         }
+        if (createExperimentRequest.getType() == null || createExperimentRequest.getType().length() == 0) {
+            // TODO: type is required
+            throw new CreateExperimentFailedException();
+        }
         Optional<User> researcher = usersRepository.findById(createExperimentRequest.getResearcherId());
         if (researcher.isPresent()) {
             Experiment experiment = Experiment.builder()
