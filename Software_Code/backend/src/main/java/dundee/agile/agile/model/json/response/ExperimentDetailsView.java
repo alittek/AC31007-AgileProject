@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ExperimentDetailsView {
+    private Long id;
     private Long researcherId;
     private String type;
     private String title;
@@ -14,6 +15,7 @@ public class ExperimentDetailsView {
     private boolean ethicallyApproved;
 
     public void setDetails(Experiment experiment) {
+        this.setId(experiment.getId());
         this.setType(experiment.getType());
         this.setTitle(experiment.getTitle());
         this.setDescription(experiment.getDescription());
