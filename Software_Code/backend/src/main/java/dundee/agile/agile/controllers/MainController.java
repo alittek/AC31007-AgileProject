@@ -158,4 +158,9 @@ public class MainController {
         }
         return ethicalApprovalRequest.isEthicallyApproved();
     }
+
+    @PostMapping("/create-questionnaire")
+    public Long createQuestions(@RequestBody CreateQuestionnaireRequest createQuestionnaireRequest) {
+        return -1L;
+    }
 }
