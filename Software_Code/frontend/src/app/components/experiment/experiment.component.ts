@@ -21,7 +21,6 @@ export class ExperimentComponent implements OnInit {
 
   ngOnInit(): void {
     this.getExperiment();
-    // get researchers?
   }
 
   getExperiment(): void {
