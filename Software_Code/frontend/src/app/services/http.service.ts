@@ -9,6 +9,7 @@ import {Observable} from 'rxjs';
 import {UserView} from '../model/response/user-view';
 import {ApiConstants} from '../utils/api-constants';
 import {GetExperimentRequest} from '../model/request/get-experiment-request';
+import {EthicalApproval} from '../model/request/ethical-approval';
 
 @Injectable({
   providedIn: 'root'
@@ -46,5 +47,9 @@ export class HttpService {
 
   createQuestion(questionDetails: QuestionDetails): Observable<any> {
     return this.httpClient.post<string>(ApiConstants.CREATE_QUESTION, questionDetails);
+  }
+
+  updateEthicApproval(ethicalApproval: EthicalApproval): Observable<boolean> {
+    return this.httpClient.post<boolean>(ApiConstants.APPROVE_ETHICALLY, ethicalApproval);
   }
 }
