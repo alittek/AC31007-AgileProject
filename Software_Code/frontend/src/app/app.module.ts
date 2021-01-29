@@ -10,9 +10,9 @@ import {LoginFormComponent} from './components/login-form/login-form.component';
 import {ExperimentsListComponent} from './components/experiments-list/experiments-list.component';
 import {CreateExperimentFormComponent} from './components/create-experiment-form/create-experiment-form.component';
 import {HeaderComponent} from './components/header/header.component';
+import {ExperimentComponent} from './components/experiment/experiment.component';
 import {EthicalTickboxComponent} from './components/ethical-tickbox/ethical-tickbox.component';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-
 
 @NgModule({
   declarations: [
@@ -21,6 +21,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     ExperimentsListComponent,
     CreateExperimentFormComponent,
     HeaderComponent,
+    ExperimentComponent,
     EthicalTickboxComponent,
   ],
   imports: [

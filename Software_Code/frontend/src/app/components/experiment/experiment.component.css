@@ -1,0 +1,14 @@
+/*Experiment title with overlapping box below */
+h2{
+  padding: 2em 2em 3em;
+  font-size: 50px;
+}
+
+#top-gray-box{
+  background-color: #ddd9d6;
+}
+
+#overlap-box{
+  margin-top: -6em;
+  background-color: white;
+}
