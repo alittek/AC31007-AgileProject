@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {LoginRequest} from '../model/request/login-request';
 import {ExperimentDetails} from '../model/request/experiment-details';
 import {QuestionnaireDetails} from '../model/request/questionnaire-details';
+import {QuestionDetails} from '../model/request/question-details';
 import {UserId} from '../model/request/user-id';
 import {Observable} from 'rxjs';
 import {UserView} from '../model/response/user-view';
@@ -37,5 +38,9 @@ export class HttpService {
 
   createQuestionnaire(questionnaireDetails: QuestionnaireDetails): Observable<any> {
     return this.httpClient.post<string>(ApiConstants.CREATE_QUESTIONNAIRE, questionnaireDetails);
+  }
+
+  createQuestion(questionDetails: QuestionDetails): Observable<any> {
+    return this.httpClient.post<string>(ApiConstants.CREATE_QUESTION, questionDetails);
   }
 }

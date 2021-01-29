@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpService} from '../../services/http.service';
 import {QuestionnaireDetails} from '../../model/request/questionnaire-details';
+import {QuestionDetails} from '../../model/request/question-details';
 import {BehaviorSubject} from "rxjs";
 
 @Component({
@@ -9,19 +10,20 @@ import {BehaviorSubject} from "rxjs";
   styleUrls: ['./create-questionnaire.component.css']
 })
 export class CreateQuestionnaireComponent {
-  data: QuestionnaireDetails;
+  questionnaireData: QuestionnaireDetails;
+  questionData: QuestionDetails;
   isCreated: boolean;
   creationStatusText: BehaviorSubject<string>;
 
   constructor(private httpService: HttpService) {
-      this.data = new QuestionnaireDetails();
-      this.data.userID = parseInt(localStorage.getItem('userId'), 10);
+      this.questionnaireData = new QuestionnaireDetails();
+      this.questionnaireData.userID = parseInt(localStorage.getItem('userId'), 10);
       this.isCreated = false;
       this.creationStatusText = new BehaviorSubject(null);
     }
 
   createQuestionnaire(): void {
-    this.httpService.createQuestionnaire(this.data).subscribe(value => {
+    this.httpService.createQuestionnaire(this.questionnaireData).subscribe(value => {
       this.isCreated = true;
       this.creationStatusText.next('Questionnaire created successfully');
     }, error => {
@@ -30,6 +32,22 @@ export class CreateQuestionnaireComponent {
         this.creationStatusText.next('Error connecting to the backend.');
       } else if (error.status === 400) {
         this.creationStatusText.next('Create Questionnaire details are missing');
+      } else {
+        this.creationStatusText.next('Unexpected error.');
+      }
+    });
+  }
+
+  createQuestion(): void {
+    this.httpService.createQuestion(this.questionData).subscribe(value => {
+      this.isCreated = true;
+      this.creationStatusText.next('Question created successfully');
+    }, error => {
+      this.isCreated = false;
+      if (error.status === 0) {
+        this.creationStatusText.next('Error connecting to the backend.');
+      } else if (error.status === 400) {
+        this.creationStatusText.next('Create Question details are missing');
       } else {
         this.creationStatusText.next('Unexpected error.');
       }

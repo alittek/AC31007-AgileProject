@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: 'experiments/create-experiment', component: CreateExperimentFormComponent},
   {path: 'experiments', component: ExperimentsListComponent},
   {path: '', component: LoginFormComponent},
-  {path: 'questionnaires', component: CreateQuestionnaireComponent},
+  {path: 'create-questionnaire', component: CreateQuestionnaireComponent},
 ];
 
 @NgModule({
