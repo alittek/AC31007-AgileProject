@@ -8,6 +8,7 @@ import {UserId} from '../model/request/user-id';
 import {Observable} from 'rxjs';
 import {UserView} from '../model/response/user-view';
 import {ApiConstants} from '../utils/api-constants';
+import {GetExperimentRequest} from '../model/request/get-experiment-request';
 
 @Injectable({
   providedIn: 'root'
@@ -25,9 +26,12 @@ export class HttpService {
     return this.httpClient.post(ApiConstants.REGISTER, loginDetails);
   }
 
-
   createExperiment(experimentDetails: ExperimentDetails): Observable<any> {
     return this.httpClient.post<string>(ApiConstants.CREATE_EXPERIMENT, experimentDetails);
+  }
+
+  getExperiment(getExperimentRequest: GetExperimentRequest): Observable<ExperimentDetails> {
+    return this.httpClient.post<ExperimentDetails>(ApiConstants.GET_EXPERIMENT, getExperimentRequest);
   }
 
   getAllExperiments(): Observable<ExperimentDetails[]> {

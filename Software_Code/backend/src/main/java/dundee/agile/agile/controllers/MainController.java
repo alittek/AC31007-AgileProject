@@ -8,6 +8,7 @@ import dundee.agile.agile.model.database.UserExperiment;
 import dundee.agile.agile.model.database.UserIdDetails;
 import dundee.agile.agile.model.enums.Privileges;
 import dundee.agile.agile.model.json.request.CreateExperimentRequest;
+import dundee.agile.agile.model.json.request.GetExperimentRequest;
 import dundee.agile.agile.model.json.request.LoginUserRequest;
 import dundee.agile.agile.model.json.request.RegisterUserRequest;
 import dundee.agile.agile.model.json.response.ExperimentDetailsView;
@@ -102,6 +103,23 @@ public class MainController {
         return -1L;
     }
 
+    @PostMapping("/get-experiment")
+    public ExperimentDetailsView getExperiment(@RequestBody GetExperimentRequest getExperimentRequest) {
+        Optional<Experiment> experimentOptional = experimentsRepository.findById(getExperimentRequest.getExperimentId());
+        if (experimentOptional.isPresent()) {
+            Experiment experiment = experimentOptional.get();
+            ExperimentDetailsView experimentDetails = new ExperimentDetailsView();
+            experimentDetails.setDetails(experiment);
+            Optional<UserExperiment> userExperimentOptional = userExperimentRepository
+                    .findByExperimentAndLevelOfPrivileges(experiment, Privileges.RESEARCHER);
+            if (userExperimentOptional.isPresent()) {
+                experimentDetails.setResearcherId(userExperimentOptional.get().getUser().getId());
+            }
+            return experimentDetails;
+        }
+        return null;
+    }
+
     @PostMapping("/all-experiments")
     public List<ExperimentDetailsView> getAllExperiments(@RequestBody UserIdDetails userId) {
         Optional<User> user = usersRepository.findById(userId.getId());
@@ -110,13 +128,11 @@ public class MainController {
             List<ExperimentDetailsView> experimentDetailsList = new ArrayList<>();
             for (Experiment experiment : experimentsList) {
                 ExperimentDetailsView experimentDetails = new ExperimentDetailsView();
-                experimentDetails.setTitle(experiment.getTitle());
-                experimentDetails.setDescription(experiment.getDescription());
-                experimentDetails.setEthicallyApproved(experiment.isEthicallyApproved());
-                Optional<UserExperiment> userExperiment = userExperimentRepository
+                experimentDetails.setDetails(experiment);
+                Optional<UserExperiment> userExperimentOptional = userExperimentRepository
                         .findByExperimentAndLevelOfPrivileges(experiment, Privileges.RESEARCHER);
-                if (userExperiment.isPresent()) {
-                    experimentDetails.setResearcherId(userExperiment.get().getUser().getId());
+                if (userExperimentOptional.isPresent()) {
+                    experimentDetails.setResearcherId(userExperimentOptional.get().getUser().getId());
                 }
                 experimentDetailsList.add(experimentDetails);
             }
