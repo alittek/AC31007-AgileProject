@@ -11,3 +11,5 @@
 28/01/2021 - Revised order & new user stories in preparation for sprint review
 
 29/01/2021 - Update after sprint 1 finished & stakeholder wishes considered
+
+01/02/2021 - Sprint 2 started and backlog sorted accordingly, stories moved to 'In Progress', following order updated
