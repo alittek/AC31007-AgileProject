@@ -4,19 +4,15 @@ All information about your first sprint should be put into this folder. Addition
 
 ---
 
-## Day [X] - Scrum Meeting summary
-The Scrum Master for this meeting was **Mike Crabb**
+## Day 1 [Monday, February 1] - Scrum Meeting summary
+The Scrum Master for this meeting was Emilija Budryte
 
 ### Members Present:
-Mike, Rachel, information
+Rokas, Jokubas, Andres, Alina, Calum, Skye, Emilija
 
 ### Members Not Present:
-Naughty Student 1, Naughty Student 2
-
 ### Apologies:
-Ill Student 1.
 
 ### Summary of Conversation:
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+Since it was a first day of Sprint 2 we did not have a standard stand up. Instead, at the beginning of a meeting we spent some time looking at the sprint retrospective notes (filled in by all team members after the sprint review on Friday) to reflect on our performance in Sprint 1. We created actionable items that will be accomplished in Sprint 2. After that we held our Sprint planning - we agreed on the selected user stories, split them into detailed tasks and assigned ourselves. Plan for today is to start developing the questionnaire.
 ---
