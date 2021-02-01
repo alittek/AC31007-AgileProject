@@ -15,6 +15,8 @@ import {EthicalTickboxComponent} from './components/ethical-tickbox/ethical-tick
 import {CreateQuestionnaireComponent} from './components/create-questionnaire/create-questionnaire.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {QuestionnaireComponent} from './components/questionnaire/questionnaire.component';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import { DisplayQuestionComponent } from './components/display-question/display-question.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import {QuestionnaireComponent} from './components/questionnaire/questionnaire.c
     EthicalTickboxComponent,
     CreateQuestionnaireComponent,
     QuestionnaireComponent,
+    DisplayQuestionComponent,
   ],
   imports: [
     BrowserModule,
