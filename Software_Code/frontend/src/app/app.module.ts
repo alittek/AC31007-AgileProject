@@ -14,6 +14,7 @@ import {ExperimentComponent} from './components/experiment/experiment.component'
 import {EthicalTickboxComponent} from './components/ethical-tickbox/ethical-tickbox.component';
 import {CreateQuestionnaireComponent} from './components/create-questionnaire/create-questionnaire.component';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import { QuestionnaireComponent } from './components/questionnaire/questionnaire.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     ExperimentComponent,
     EthicalTickboxComponent,
     CreateQuestionnaireComponent,
+    QuestionnaireComponent,
   ],
   imports: [
     BrowserModule,
