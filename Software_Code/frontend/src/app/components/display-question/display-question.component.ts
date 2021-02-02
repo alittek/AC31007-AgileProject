@@ -9,17 +9,22 @@ import {HttpService} from "../../services/http.service";
 })
 export class DisplayQuestionComponent implements OnInit {
   //placeholder data
-  //question: QuestionDetails;
-  question = ['This is an example of a question title?', 'checkbox', 'Description of question if we are including this.', 'option1', 'option2'];
+  question: QuestionDetails = {
+    questionnaireID: 1,
+    title: 'This is an example of a question title?',
+    question: '',
+    type: 'open',
+    optional: true,
+    description: 'Description of question if we are including this.',
+    answer: 'answer1',
+    systemUsabilityScale: '',
+  };
+
+  //question = ['This is an example of a question title?', 'open', 'Description of question if we are including this.', 'option1'];
 
   constructor() {}
 
   ngOnInit(): void {
-    // this.question.title = 'This is an example of a question title?';
-    // this.question.type = 'open';
-    // this.question.description = 'Description of question if we are including this.';
-    // this.question.optional = true;
-    // this.question.answer = 'Possible answer';
   }
 
 }
