@@ -1,1 +1,51 @@
-<p>add question</p>
+<div class="container border p-5">
+  <h3>Create a new question</h3>
+  <br>
+  <form>
+    <div class="form-group row">
+      <label class="col-md-2 col-form-label">Question: </label>
+      <div class="col-md-10">
+        <textarea class="form-control" rows="3" placeholder="Enter question" name="title"></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-2 col-form-label">Description: </label>
+      <div class="col-md-10">
+          <textarea class="form-control" rows="3" placeholder="Enter description" name="description"></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-2 col-form-label">Question Type: </label>
+      <div class="col-md-10">
+        <select class="form-control" name="type">
+          <option>Select type...</option>
+          <option>Open answer</option>
+          <option>Multiple choice (radio buttons)</option>
+          <option>Multiple choice (checkboxes)</option>
+          <option>System Usability Scale</option>
+        </select>
+      </div>
+    </div>
+    <fieldset>
+      <div class="row form-group">
+        <legend class="col-form-label col-md-2">Answer required:</legend>
+        <div class="col-md-10">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+            <label class="form-check-label" for="gridRadios1">Yes</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+            <label class="form-check-label" for="gridRadios2">No</label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+<!--    insert required component for question options here-->
+    <div class="row">
+      <div class="col-md-3 mt-2">
+        <button class="btn blue-button mt-2">Add question</button>
+      </div>
+    </div>
+  </form>
+</div>
