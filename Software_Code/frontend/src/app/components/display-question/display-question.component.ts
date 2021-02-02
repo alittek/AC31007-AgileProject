@@ -13,14 +13,12 @@ export class DisplayQuestionComponent implements OnInit {
     questionnaireID: 1,
     title: 'This is an example of a question title?',
     question: '',
-    type: 'open',
+    type: 'radio',
     optional: false,
     description: 'Description of question if we are including this.',
-    answer: 'answer1',
-    systemUsabilityScale: '',
+    answer: ['answer1', 'answer2', 'answer3'],
+    systemUsabilityScale: 5,
   };
-
-  //question = ['This is an example of a question title?', 'open', 'Description of question if we are including this.', 'option1'];
 
   constructor() {}
 
