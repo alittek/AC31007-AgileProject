@@ -1,9 +1,9 @@
 <!--Will change accessing data when question model created-->
 <form class="m-5 p-5">
   <!--Open ended question-->
-  <div *ngIf="question[1] == 'open'" class="form-group">
-    <h5 class="m-0">{{question[0]}}</h5>
-    <small class="text-muted ml-1">{{question[2]}}</small>
+  <div *ngIf="question.type == 'open'" class="form-group">
+    <h5 class="m-0">{{question.title}}</h5>
+    <small class="text-muted ml-1">{{question.description}}</small>
     <div class="pt-2">
       <textarea class="form-control" rows="3" placeholder="Enter answer"></textarea>
     </div>
@@ -11,11 +11,11 @@
 
   <!--Multi choice question-->
   <!--Radio or checkbox-->
-    <div *ngIf="question[1] == 'multi'" class="form-group">
-      <h5 class="m-0">{{question[0]}}</h5>
-      <small class="text-muted ml-1">{{question[2]}}</small>
+    <div *ngIf="question.type == 'multi'" class="form-group">
+      <h5 class="m-0">{{question.title}}</h5>
+      <small class="text-muted ml-1">{{question.description}}</small>
       <div class="pt-2 pl-2">
-        <ng-template [ngIf]="question[3] == 'checkbox'" [ngIfElse]="radio">
+        <ng-template [ngIf]="question.type == 'checkbox'" [ngIfElse]="radio">
           <!--Loop for amount of set options-->
           <div class="form-check">
             <input class="form-check-input" type="checkbox">
