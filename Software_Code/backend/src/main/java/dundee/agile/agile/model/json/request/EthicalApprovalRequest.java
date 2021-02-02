@@ -8,4 +8,5 @@ import lombok.Setter;
 public class EthicalApprovalRequest {
     private boolean ethicallyApproved;
     private Long experimentId;
+    private String code;
 }
