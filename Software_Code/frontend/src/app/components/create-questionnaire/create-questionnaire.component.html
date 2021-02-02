@@ -1,25 +1,33 @@
-<div class="container">
-  <div class="mt-5 pt-5">
-    <h2> Create a Questionnaire </h2>
-  </div>
-  <form class="p-5 mt-5 bg-white border">
-    <div class="form-group row">
-      <label class="col-md-2 col-form-label">Question: </label>
+<div id="top-gray-box" class="text-center">
+  <h2> Create a new Questionnaire </h2>
+</div>
+<div id="overlap-box" class="container border p-5">
+  <form class="pl-5 pr-5 pt-3">
+      <small class="form-text text-muted"> This information will be displayed at the start of the questionnaire. </small>
+    <div class="form-group row mt-5">
+      <label class="col-md-2 col-form-label">Title: </label>
       <div class="col-md-10">
-        <textarea class="form-control" rows="3" placeholder="Enter question" [(ngModel)]="questionData.question" name="question"></textarea>
+        <input type="text" class="form-control" placeholder="Enter title" [(ngModel)]="questionData.title" name="title">
       </div>
     </div>
     <div class="form-group row mt-5">
-      <label class="col-md-2 col-form-label">Answer: </label>
+      <label class="col-md-2 col-form-label">Researchers: </label>
       <div class="col-md-10">
-        <input type="text" class="form-control" placeholder="Enter answer" [(ngModel)]="questionData.answers[0]" name="answer">
+        <input type="text" class="form-control" placeholder="Enter names of researchers"  name="researcher">
       </div>
     </div>
-    <div class="form-group row ml-1 mt-5">
-      <button class="btn blue-button" (click)="createQuestion()">Add a new question</button>
+    <div class="form-group row mt-5">
+      <label class="col-md-2 col-form-label">E-mail: </label>
+      <div class="col-md-10">
+        <input type="text" class="form-control" placeholder="Enter contact for researchers"  name="contact">
+      </div>
     </div>
-    <div class="row justify-content-center align-content-center mt-5">
-      <button class="btn-lg create-button ml-3" (click)="createQuestionnaire()">Create questionnaire</button>
+    <div class="form-group row mt-5">
+      <label class="col-md-2 col-form-label">Description: </label>
+      <div class="col-md-10">
+        <textarea class="form-control" rows="3" placeholder="Enter description"  name="description"></textarea>
+      </div>
     </div>
+    <button type="button" class="btn blue-button mt-5"> Create Questionnaire </button>
   </form>
 </div>
