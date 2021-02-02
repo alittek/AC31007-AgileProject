@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisplayQuestionComponent implements OnInit {
   //placeholder data
-  question = ['This is an example of a question title?', 'open', 'Description of question if we are including this.'];
+  question = ['This is an example of a question title?', 'multi', 'Description of question if we are including this.', 'radio', 'option1', 'option2'];
 
   constructor() {}
 
