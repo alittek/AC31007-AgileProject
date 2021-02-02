@@ -13,6 +13,7 @@ public class ExperimentDetailsView {
     private String title;
     private String description;
     private boolean ethicallyApproved;
+    private String ethicalApprovalCode;
 
     public void setDetails(Experiment experiment) {
         this.setId(experiment.getId());
@@ -20,5 +21,6 @@ public class ExperimentDetailsView {
         this.setTitle(experiment.getTitle());
         this.setDescription(experiment.getDescription());
         this.setEthicallyApproved(experiment.isEthicallyApproved());
+        this.setEthicalApprovalCode(experiment.getEthicalApprovalCode());
     }
 }

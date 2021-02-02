@@ -1,6 +1,7 @@
 package dundee.agile.agile.controllers;
 
 import dundee.agile.agile.exceptions.CreateExperimentFailedException;
+import dundee.agile.agile.exceptions.EthicalApprovalCodeException;
 import dundee.agile.agile.exceptions.LoginFailedException;
 import dundee.agile.agile.model.database.Experiment;
 import dundee.agile.agile.model.database.User;
@@ -150,12 +151,17 @@ public class MainController {
 
     @PostMapping("/approve-ethically")
     public boolean approveEthically(@RequestBody EthicalApprovalRequest ethicalApprovalRequest) {
-        Optional<Experiment> experimentOptional = experimentsRepository.findById(ethicalApprovalRequest.getExperimentId());
-        if (experimentOptional.isPresent()) {
-            Experiment experiment = experimentOptional.get();
-            experiment.setEthicallyApproved(ethicalApprovalRequest.isEthicallyApproved());
-            experimentsRepository.save(experiment);
+        if (ethicalApprovalRequest == null || ethicalApprovalRequest.getExperimentId() == null || (ethicalApprovalRequest.isEthicallyApproved() && (ethicalApprovalRequest.getCode() == null || ethicalApprovalRequest.getCode().length() == 0))) {
+            throw new EthicalApprovalCodeException();
         }
+        Optional<Experiment> experimentOptional = experimentsRepository.findById(ethicalApprovalRequest.getExperimentId());
+        if (!experimentOptional.isPresent()) {
+            throw new EthicalApprovalCodeException();
+        }
+        Experiment experiment = experimentOptional.get();
+        experiment.setEthicallyApproved(ethicalApprovalRequest.isEthicallyApproved());
+        experiment.setEthicalApprovalCode(ethicalApprovalRequest.getCode());
+        experimentsRepository.save(experiment);
         return ethicalApprovalRequest.isEthicallyApproved();
     }
 
