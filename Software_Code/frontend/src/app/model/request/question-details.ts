@@ -8,4 +8,5 @@ export class QuestionDetails {
   answer: string[]; // should it be an array of answers?
   systemUsabilityScale: number;
 
+
 }

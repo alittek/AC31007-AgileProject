@@ -13,16 +13,26 @@ export class DisplayQuestionComponent implements OnInit {
     questionnaireID: 1,
     title: 'This is an example of a question title?',
     question: '',
-    type: 'radio',
+    type: 'sus',
     optional: false,
     description: 'Description of question if we are including this.',
     answer: ['answer1', 'answer2', 'answer3'],
-    systemUsabilityScale: 5,
+    systemUsabilityScale: 5
   };
 
   constructor() {}
 
   ngOnInit(): void {
   }
+
+  //returning array of [0..] for making the scale front-end
+  getScale() {
+    let scale: number[] = [];
+    for (let i = 0; i <= this.question.systemUsabilityScale; i++) {
+      scale.push(i);
+    }
+    return scale;
+  }
+
 
 }
