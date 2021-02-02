@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {QuestionDetails} from "../../model/request/question-details";
+import {HttpService} from "../../services/http.service";
 
 @Component({
   selector: 'app-display-question',
@@ -8,20 +9,17 @@ import {QuestionDetails} from "../../model/request/question-details";
 })
 export class DisplayQuestionComponent implements OnInit {
   //placeholder data
-  question: QuestionDetails;
-  question2 = ['This is an example of a question title?', 'multi', 'Description of question if we are including this.', 'radio', 'option1', 'option2'];
+  //question: QuestionDetails;
+  question = ['This is an example of a question title?', 'checkbox', 'Description of question if we are including this.', 'option1', 'option2'];
 
-  constructor() {
-
-
-  }
+  constructor() {}
 
   ngOnInit(): void {
-    this.question.title = 'This is an example of a question title?';
-    this.question.type = 'multi';
-    this.question.description = 'Description of question if we are including this.';
-    this.question.optional = true;
-    this.question.answer = 'Possible answer';
+    // this.question.title = 'This is an example of a question title?';
+    // this.question.type = 'open';
+    // this.question.description = 'Description of question if we are including this.';
+    // this.question.optional = true;
+    // this.question.answer = 'Possible answer';
   }
 
 }

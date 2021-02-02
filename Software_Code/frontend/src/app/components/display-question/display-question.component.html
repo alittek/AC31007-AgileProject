@@ -1,39 +1,34 @@
 <!--Will change accessing data when question model created-->
-<form class="m-5 p-5">
-  <!--Open ended question-->
-  <div *ngIf="question.type == 'open'" class="form-group">
-    <h5 class="m-0">{{question.title}}</h5>
-    <small class="text-muted ml-1">{{question.description}}</small>
-    <div class="pt-2">
-      <textarea class="form-control" rows="3" placeholder="Enter answer"></textarea>
-    </div>
-  </div>
-
-  <!--Multi choice question-->
-  <!--Radio or checkbox-->
-    <div *ngIf="question.type == 'multi'" class="form-group">
-      <h5 class="m-0">{{question.title}}</h5>
-      <small class="text-muted ml-1">{{question.description}}</small>
-      <div class="pt-2 pl-2">
-        <ng-template [ngIf]="question.type == 'checkbox'" [ngIfElse]="radio">
-          <!--Loop for amount of set options-->
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox">
-            <label class="form-check-label">
-              {{question[4]}}
-            </label>
-          </div>
-        </ng-template>
-        <ng-template #radio>
-          <div class="form-check">
-            <!--Loop for amount of set options-->
-            <input class="form-check-input" type="radio" name="exampleRadios">
-            <label class="form-check-label">
-              {{question[4]}}
-            </label>
-          </div>
-        </ng-template>
+<form class="m-5 p-5 bg-white">
+  <div class="form-group">
+    <h5 class="m-0">{{question[0]}}</h5>
+    <small class="text-muted">{{question[2]}}</small>
+    <!--Open question-->
+    <ng-template  [ngIf]="question[1] == 'open'">
+      <div class="pt-2">
+        <textarea class="form-control" rows="3" placeholder="Enter answer"></textarea>
       </div>
-    </div>
+    </ng-template>
+    <!--Radio question-->
+    <ng-template  [ngIf]="question[1] == 'radio'">
+      <div class="form-check mt-2">
+        <!--Loop for amount of set options-->
+        <input class="form-check-input" type="radio" name="exampleRadios">
+        <label class="form-check-label">
+          {{question[3]}}
+        </label>
+      </div>
+    </ng-template>
+    <!--Checkbox question-->
+    <ng-template  [ngIf]="question[1] == 'checkbox'">
+      <div class="form-check mt-2">
+        <input class="form-check-input" type="checkbox">
+        <label class="form-check-label">
+          {{question[4]}}
+        </label>
+      </div>
+    </ng-template>
+    <!--Todo SUS question-->
 
+  </div>
 </form>
