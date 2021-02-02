@@ -38,20 +38,4 @@ export class CreateQuestionnaireComponent {
       }
     });
   }
-
-  createQuestion(): void {
-    this.httpService.createQuestion(this.questionData).subscribe(value => {
-      this.isCreated = true;
-      this.creationStatusText.next('Question created successfully');
-    }, error => {
-      this.isCreated = false;
-      if (error.status === 0) {
-        this.creationStatusText.next('Error connecting to the backend.');
-      } else if (error.status === 400) {
-        this.creationStatusText.next('Create Question details are missing');
-      } else {
-        this.creationStatusText.next('Unexpected error.');
-      }
-    });
-  }
 }
