@@ -1,3 +1,3 @@
 # Test Driven Development
 
-You should include in this folder any information relating to your usage of test driven development.
+01/02/2021 - First test propositions written to be used in development, tests and expected results listed
