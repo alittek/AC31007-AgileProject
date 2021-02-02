@@ -7,8 +7,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum QuestionType {
     OPEN(0),
-    MULTIPLE_CHOICE(1),
-    SYSTEM_USABILITY_SCALE(2);
+    CHECKBOX(1),
+    RADIO(2),
+    SYSTEM_USABILITY_SCALE(3);
 
     private final int numericValue;
 }
