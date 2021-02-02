@@ -13,12 +13,15 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "questionnaires")
-public class Questionnaires {
+public class Questionnaire {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "experiment_id")
     public Experiment experiment;
+
+    private String title;
+    private String description;
 }

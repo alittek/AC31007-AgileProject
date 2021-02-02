@@ -19,6 +19,8 @@ public class Experiment {
 
     @OneToMany(mappedBy = "experiment")
     Set<UserExperiment> link;
+    @OneToOne(mappedBy = "experiment")
+    private Questionnaire questionnaire;
 
     private String type;
     private String title;
