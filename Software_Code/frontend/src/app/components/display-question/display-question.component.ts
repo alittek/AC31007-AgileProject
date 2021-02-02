@@ -14,7 +14,7 @@ export class DisplayQuestionComponent implements OnInit {
     title: 'This is an example of a question title?',
     question: '',
     type: 'open',
-    optional: true,
+    optional: false,
     description: 'Description of question if we are including this.',
     answer: 'answer1',
     systemUsabilityScale: '',
