@@ -19,10 +19,13 @@ public class Experiment {
 
     @OneToMany(mappedBy = "experiment")
     Set<UserExperiment> link;
+    @OneToOne(mappedBy = "experiment")
+    private Questionnaire questionnaire;
 
     private String type;
     private String title;
     private String description;
     @Column(columnDefinition = "boolean default false")
     private boolean ethicallyApproved;
+    private String ethicalApprovalCode;
 }

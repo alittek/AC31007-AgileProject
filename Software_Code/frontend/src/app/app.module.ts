@@ -13,8 +13,10 @@ import {HeaderComponent} from './components/header/header.component';
 import {ExperimentComponent} from './components/experiment/experiment.component';
 import {EthicalTickboxComponent} from './components/ethical-tickbox/ethical-tickbox.component';
 import {CreateQuestionnaireComponent} from './components/create-questionnaire/create-questionnaire.component';
-import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import { MultiModalComponent } from './components/multi-modal/multi-modal.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {QuestionnaireComponent} from './components/questionnaire/questionnaire.component';
+import { DisplayQuestionComponent } from './components/display-question/display-question.component';
+import { AddQuestionComponent } from './components/add-question/add-question.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { MultiModalComponent } from './components/multi-modal/multi-modal.compon
     ExperimentComponent,
     EthicalTickboxComponent,
     CreateQuestionnaireComponent,
-    MultiModalComponent,
+    QuestionnaireComponent,
+    DisplayQuestionComponent,
+    AddQuestionComponent,
   ],
   imports: [
     BrowserModule,

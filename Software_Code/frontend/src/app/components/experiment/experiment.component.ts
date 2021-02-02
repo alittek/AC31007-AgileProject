@@ -12,9 +12,6 @@ import {GetExperimentRequest} from '../../model/request/get-experiment-request';
 export class ExperimentComponent implements OnInit {
   experimentRouteId: number;
   experiment: ExperimentDetails;
-  // testing
-  // researchers = ['Dr. Example', 'Dr. Example2'];
-
 
   constructor(private route: ActivatedRoute, private httpService: HttpService) {
   }

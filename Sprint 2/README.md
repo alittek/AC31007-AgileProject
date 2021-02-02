@@ -1,6 +1,6 @@
-# Sprint 1
+# Sprint 2
 
-All information about your first sprint should be put into this folder. Additionally, the information below should be updated to give a short summary of your daily scrum meetings.
+All information about your second sprint should be put into this folder. Additionally, the information below should be updated to give a short summary of your daily scrum meetings.
 
 ---
 
@@ -14,5 +14,5 @@ Rokas, Jokubas, Andres, Alina, Calum, Skye, Emilija
 ### Apologies:
 
 ### Summary of Conversation:
-Since it was a first day of Sprint 2 we did not have a standard stand up. Instead, at the beginning of a meeting we spent some time looking at the sprint retrospective notes (filled in by all team members after the sprint review on Friday) to reflect on our performance in Sprint 1. We created actionable items that will be accomplished in Sprint 2. After that we held our Sprint planning - we agreed on the selected user stories, split them into detailed tasks and assigned ourselves. Plan for today is to start developing the questionnaire.
+Database design was created yesterday and today it will be further developed. Also yesterday a frontend design for questionnaire was made, we agreed on the components that will be used for related pages and today we will continue working on display question/ pop ups/ add question/ questionnaire components. Another plan for today is to start adding methods to save data to the database and write other important backend functions. In addition, one of the team member will continue resolving the fix for ethical appoval.
 ---
