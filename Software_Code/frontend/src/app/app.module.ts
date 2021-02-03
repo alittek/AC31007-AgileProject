@@ -18,6 +18,7 @@ import {QuestionnaireComponent} from './components/questionnaire/questionnaire.c
 import { DisplayQuestionComponent } from './components/display-question/display-question.component';
 import { AddQuestionComponent } from './components/add-question/add-question.component';
 import { QuestionMultiComponent } from './question-multi/question-multi.component';
+import { QuestionScaleComponent } from './components/question-scale/question-scale.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { QuestionMultiComponent } from './question-multi/question-multi.componen
     DisplayQuestionComponent,
     AddQuestionComponent,
     QuestionMultiComponent,
+    QuestionScaleComponent,
   ],
   imports: [
     BrowserModule,
