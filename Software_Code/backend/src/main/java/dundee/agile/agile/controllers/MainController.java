@@ -169,4 +169,9 @@ public class MainController {
     public Long createQuestions(@RequestBody CreateQuestionnaireRequest createQuestionnaireRequest) {
         return -1L;
     }
+
+    @PostMapping("/create-question")
+    public Long createQuestion(@RequestBody CreateQuestionRequest createQuestionRequest) {
+        return 1L;
+    }
 }
