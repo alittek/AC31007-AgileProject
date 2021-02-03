@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,6 +23,9 @@ public class Question {
     @ManyToOne
     @JoinColumn(name = "questionnaire_id")
     private Questionnaire questionnaire;
+
+    @OneToMany(mappedBy = "question")
+    private Set<PossibleAnswer> possibleAnswer;
 
     private String title;
     private String description;
