@@ -17,6 +17,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {QuestionnaireComponent} from './components/questionnaire/questionnaire.component';
 import { DisplayQuestionComponent } from './components/display-question/display-question.component';
 import { AddQuestionComponent } from './components/add-question/add-question.component';
+import { QuestionMultiComponent } from './question-multi/question-multi.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AddQuestionComponent } from './components/add-question/add-question.com
     QuestionnaireComponent,
     DisplayQuestionComponent,
     AddQuestionComponent,
+    QuestionMultiComponent,
   ],
   imports: [
     BrowserModule,

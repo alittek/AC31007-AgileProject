@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MultiModalComponent } from './multi-modal.component';
+import { QuestionMultiComponent } from './question-multi.component';
 
-describe('MultiModalComponent', () => {
-  let component: MultiModalComponent;
-  let fixture: ComponentFixture<MultiModalComponent>;
+describe('QuestionMultiComponent', () => {
+  let component: QuestionMultiComponent;
+  let fixture: ComponentFixture<QuestionMultiComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MultiModalComponent ]
+      declarations: [ QuestionMultiComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MultiModalComponent);
+    fixture = TestBed.createComponent(QuestionMultiComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
