@@ -13,7 +13,7 @@ export class DisplayQuestionComponent implements OnInit {
     questionnaireID: 1,
     title: 'This is an example of a question title?',
     question: '',
-    type: 'sus',
+    type: 3,
     optional: false,
     description: 'Description of question if we are including this.',
     answer: ['answer1', 'answer2', 'answer3'],
