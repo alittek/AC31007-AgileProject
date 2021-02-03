@@ -1,12 +1,21 @@
-<!--Custom checkbox https://getbootstrap.com/docs/4.0/components/forms/ -->
-<!--Only show if not approved (test seeing this by putting true == true) -->
-<ng-template [ngIf]="!data.ethicallyApproved" [ngIfElse]="approved">
-  <form class="p-2 bg-white border">
-    <div class="custom-control pl-5 custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="customCheck1" (click)="updateApproval()">
-        <label class="custom-control-label pl-2" for="customCheck1">I have ethical approval.</label>
-    </div>
-  </form>
-</ng-template>
 <!--Ethically approved label instead of checkbox -->
+<ng-template [ngIf]="!data.ethicallyApproved" [ngIfElse]="approved"><small class="p-2 not-ethical">Not Ethically Approved</small></ng-template>
 <ng-template #approved><small class="p-2 ethical">Ethically Approved</small> </ng-template>
+
+<div class="row mt-3">
+  <div class="col-xl-3 pl-5 pt-2 mt-3">
+    <!--Custom checkbox https://getbootstrap.com/docs/4.0/components/forms/ -->
+    <input type="checkbox" class="custom-control-input pt-2" id="ethicallyApproved" [(ngModel)]="checkbox" name="ethicallyApproved">
+    <label class="custom-control-label pl-2" for="ethicallyApproved" id="approvalLabel">I have ethical approval.</label>
+  </div>
+  <div class="col-12 col-sm-10 col-xl-7 input-group mt-3" *ngIf="checkbox">
+    <div class="input-group-prepend d-inline-block">
+      <span class="input-group-text" id="basic-addon1">Approval code</span>
+    </div>
+    <input type="text" class="form-control" placeholder="Enter ethical approval code" aria-label="Code" aria-describedby="code" id="code" [(ngModel)]="data.ethicalApprovalCode" required>
+  </div>
+  <div class="col-2 mt-3">
+    <button type="button" class="btn btn-primary" (click)="updateApproval()" >Submit</button>
+  </div>
+</div>
+<p class="text-danger mt-1" *ngIf="errorText | async">{{errorText | async}}</p>

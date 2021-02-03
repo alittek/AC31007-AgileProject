@@ -27,4 +27,5 @@ public class Experiment {
     private String description;
     @Column(columnDefinition = "boolean default false")
     private boolean ethicallyApproved;
+    private String ethicalApprovalCode;
 }

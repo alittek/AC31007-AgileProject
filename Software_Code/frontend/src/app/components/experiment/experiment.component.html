@@ -1,21 +1,25 @@
-<div id="top-gray-box" class="text-center">
-  <h2>{{experiment.title}}</h2>
-</div>
-<div id="overlap-box" class="container border p-5">
-  <form class="pl-5 pr-5 pt-3">
-    <h3> Description</h3>
-    <p>{{ experiment.description }}</p>
-    <p class="text-muted">{{ experiment.type }}</p>
-    <br>
-    <h3>Researcher</h3>
-    <p>ID: {{experiment.researcherId}}</p>
-    <br>
-    <br>
-    <app-ethical-tickbox [data]="experiment"></app-ethical-tickbox>
-    <br>
-    <hr>
-    <h3>{{experiment.type}}s</h3>
-    <p> List of previous creations or links to results here.</p>
-    <button type="button" routerLink="/create-questionnaire" class="btn blue-button mt-5" [disabled]="!experiment.ethicallyApproved">Add {{experiment.type}}</button>
-  </form>
-</div>
+<ng-template [ngIf]="experiment">
+  <div id="top-gray-box" class="text-center">
+    <h2>{{experiment.title}}</h2>
+  </div>
+  <div id="overlap-box" class="container border p-5">
+    <form class="pl-5 pr-5 pt-3">
+      <h3> Description</h3>
+      <p>{{ experiment.description }}</p>
+      <p class="text-muted">{{ experiment.type }}</p>
+      <br>
+      <h3>Researcher</h3>
+      <p>ID: {{experiment.researcherId}}</p>
+      <br>
+      <br>
+      <app-ethical-tickbox [data]="experiment"></app-ethical-tickbox>
+      <br>
+      <hr>
+<!--      <h3>{{experiment.type}}s</h3>-->
+<!--      if finished questionnaire exists, then display the component but not add questionnaire button, if not - just button -->
+      <app-display-finished-questionnaire></app-display-finished-questionnaire>
+      <button type="button" routerLink="/create-questionnaire" class="btn blue-button mt-2"
+              [disabled]="!experiment.ethicallyApproved">Add {{experiment.type}}</button>
+    </form>
+  </div>
+</ng-template>
