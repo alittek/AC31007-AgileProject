@@ -4,15 +4,14 @@
     <small class="text-muted">{{question.description}} </small>
     <small class="text-muted">This question is <span *ngIf="question.optional; else mandatory">optional.</span> <ng-template #mandatory>mandatory.</ng-template></small>
     <!--Open question-->
-    <ng-template  [ngIf]="question.type == 'open'">
+    <ng-template  [ngIf]="question.type == 0">
       <div class="pt-2">
         <textarea class="form-control" rows="3" placeholder="Enter answer"></textarea>
       </div>
     </ng-template>
     <!--Radio question-->
-    <ng-template  [ngIf]="question.type == 'radio'">
+    <ng-template  [ngIf]="question.type == 2">
       <div *ngFor="let answer of question.answer;"class="form-check mt-2">
-        <!--Todo: loops for amount of answers-->
         <input class="form-check-input" type="radio" name="answer">
         <label class="form-check-label">
           {{answer}}
@@ -20,17 +19,28 @@
       </div>
     </ng-template>
     <!--Checkbox question-->
-    <ng-template  [ngIf]="question.type == 'checkbox'">
+    <ng-template  [ngIf]="question.type == 1">
       <div *ngFor="let answer of question.answer;"class="form-check mt-2">
-        <!--Todo: loops for amount of answers-->
         <input class="form-check-input" type="checkbox">
         <label class="form-check-label">
           {{answer}}
         </label>
       </div>
     </ng-template>
-    <!--Todo SUS question-->
-
+    <!--System Usability Scale question-->
+    <ng-template  [ngIf]="question.type == 3">
+<!--      <p class="mt-5 mx-5 text-center"> Questions statement:</p>-->
+      <div class="row justify-content-between m-5 text-muted">
+        <i class="mt-3">Strongly Disagree</i>
+        <div *ngFor="let scale of getScale()" class="mr-5">
+          <label>
+            <input type="radio" name="scale">
+            <span>{{scale}}</span>
+          </label>
+        </div>
+        <i class="mt-3">Strongly Agree</i>
+      </div>
+    </ng-template>
   </div>
 </form>
 <br>

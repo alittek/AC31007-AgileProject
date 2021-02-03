@@ -1,0 +1,25 @@
+/*Scale buttons help https://stackoverflow.com/questions/45259139/how-to-put-text-inside-radio-button*/
+
+label {
+  display: block;
+  position: relative;
+}
+
+label input {
+  display: none;
+}
+
+label span {
+  border: solid #ddd9d6;
+  width: 3.5em;
+  line-height: 3.5em;
+  height: 3.5em;
+  position: absolute;
+  text-align: center;
+  border-radius: 100%;
+}
+
+input:checked + span {
+  background: #c4ebd0;
+  border-color: #c4ebd0;
+}
