@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'experiments', component: ExperimentsListComponent},
   {path: '', component: LoginFormComponent},
   {path: 'create-questionnaire', component: CreateQuestionnaireComponent},
-  {path: 'questionnaire', component: QuestionnaireComponent},
+  {path: 'questionnaire/:id', component: QuestionnaireComponent},
 ];
 
 @NgModule({

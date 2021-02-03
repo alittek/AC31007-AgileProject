@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpService} from '../../services/http.service';
 import {QuestionnaireDetails} from '../../model/request/questionnaire-details';
-import {BehaviorSubject} from "rxjs";
+import {QuestionDetails} from '../../model/request/question-details';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-create-questionnaire',
@@ -15,12 +16,15 @@ export class CreateQuestionnaireComponent {
 
   constructor(private httpService: HttpService) {
       this.questionnaireData = new QuestionnaireDetails();
-      this.questionnaireData.userID = parseInt(localStorage.getItem('userId'), 10);
+      this.questionnaireData.id = 1; // for testing, need to store questionnaires in DB first
+      console.log(this.questionnaireData.id);
       this.isCreated = false;
       this.creationStatusText = new BehaviorSubject(null);
     }
 
-  createQuestionnaire(): void {
+    /*
+    createQuestionnaire(): void {
+    this.questionData.questionnaireID = this.questionnaireData.userID;
     this.httpService.createQuestionnaire(this.questionnaireData).subscribe(value => {
       this.isCreated = true;
       this.creationStatusText.next('Questionnaire created successfully');
@@ -34,5 +38,5 @@ export class CreateQuestionnaireComponent {
         this.creationStatusText.next('Unexpected error.');
       }
     });
-  }
+     */
 }
