@@ -1,3 +1,4 @@
 export class QuestionnaireDetails {
-  userID: number;
+  id: number;
+  title: string;
 }

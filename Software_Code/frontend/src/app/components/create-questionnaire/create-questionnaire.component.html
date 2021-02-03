@@ -7,7 +7,7 @@
     <div class="form-group row mt-5">
       <label class="col-md-2 col-form-label">Title: </label>
       <div class="col-md-10">
-        <input type="text" class="form-control" placeholder="Enter title" [(ngModel)]="questionData.title" name="title">
+        <input type="text" class="form-control" placeholder="Enter title" [(ngModel)]="questionnaireData.title" name="title">
       </div>
     </div>
     <div class="form-group row mt-5">
@@ -28,6 +28,8 @@
         <textarea class="form-control" rows="3" placeholder="Enter description"  name="description"></textarea>
       </div>
     </div>
-    <button type="button" class="btn blue-button mt-5"> Create Questionnaire </button>
+    <a *ngIf="questionnaireData" routerLink="/questionnaire/{{questionnaireData.id}}">
+      <button type="button" class="btn blue-button mt-5"> Create Questionnaire </button>
+    </a>
   </form>
 </div>

@@ -11,9 +11,12 @@ export class QuestionnaireComponent implements OnInit {
   questionnaireRouteId: number;
   questions: QuestionDetails[];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {
+    this.questions = new Array<QuestionDetails>();
+  }
 
   ngOnInit(): void {
+    this.getQuestionnaireRouteId();
   }
 
   getQuestionnaireRouteId(): void {

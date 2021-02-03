@@ -14,6 +14,7 @@ export class ExperimentComponent implements OnInit {
   experiment: ExperimentDetails;
 
   constructor(private route: ActivatedRoute, private httpService: HttpService) {
+    this.experiment = new ExperimentDetails();
   }
 
   ngOnInit(): void {
