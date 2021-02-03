@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {QuestionDetails} from '../../model/request/question-details';
 import {HttpService} from '../../services/http.service';
 
@@ -8,6 +8,8 @@ import {HttpService} from '../../services/http.service';
   styleUrls: ['./add-question.component.css']
 })
 export class AddQuestionComponent implements OnInit {
+  @Input()
+  questionnaireId: number;
   data: QuestionDetails;
 
   constructor(private httpService: HttpService) {
@@ -15,6 +17,7 @@ export class AddQuestionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.data.questionnaireId = this.questionnaireId;
   }
 
   createQuestion(): void {

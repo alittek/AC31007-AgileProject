@@ -10,7 +10,7 @@ import {HttpService} from "../../services/http.service";
 export class DisplayQuestionComponent implements OnInit {
   // placeholder data
   question: QuestionDetails = {
-    questionnaireID: 1,
+    questionnaireId: 1,
     title: 'This is an example of a question title?',
     question: '',
     type: 3,

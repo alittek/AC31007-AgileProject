@@ -3,17 +3,12 @@ package dundee.agile.agile.controllers;
 import dundee.agile.agile.exceptions.CreateExperimentFailedException;
 import dundee.agile.agile.exceptions.EthicalApprovalCodeException;
 import dundee.agile.agile.exceptions.LoginFailedException;
-import dundee.agile.agile.model.database.Experiment;
-import dundee.agile.agile.model.database.User;
-import dundee.agile.agile.model.database.UserExperiment;
-import dundee.agile.agile.model.database.UserIdDetails;
+import dundee.agile.agile.model.database.*;
 import dundee.agile.agile.model.enums.Privileges;
 import dundee.agile.agile.model.json.request.*;
 import dundee.agile.agile.model.json.response.ExperimentDetailsView;
 import dundee.agile.agile.model.json.response.UserView;
-import dundee.agile.agile.repositories.ExperimentsRepository;
-import dundee.agile.agile.repositories.UserExperimentRepository;
-import dundee.agile.agile.repositories.UsersRepository;
+import dundee.agile.agile.repositories.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +27,8 @@ public class MainController {
     private final UsersRepository usersRepository;
     private final ExperimentsRepository experimentsRepository;
     private final UserExperimentRepository userExperimentRepository;
+    private final QuestionnairesRepository questionnairesRepository;
+    private final QuestionsRepository questionsRepository;
 
     @PostMapping("/login")
     public UserView login(@RequestBody LoginUserRequest loginUserRequest) {
@@ -172,6 +169,18 @@ public class MainController {
 
     @PostMapping("/create-question")
     public Long createQuestion(@RequestBody CreateQuestionRequest createQuestionRequest) {
-        return 1L;
+        Optional<Questionnaire> questionnaireOptional = questionnairesRepository.findById(createQuestionRequest.getQuestionnaireId());
+        if (questionnaireOptional.isPresent()) {
+            Questionnaire questionnaire = questionnaireOptional.get();
+            Question question = new Question();
+            question.setQuestionnaire(questionnaire);
+            question.setTitle(createQuestionRequest.getTitle());
+            question.setDescription(createQuestionRequest.getDescription());
+            question.setRequired(createQuestionRequest.isRequired());
+            question.setType(createQuestionRequest.getType());
+            question = questionsRepository.save(question);
+            return question.getId();
+        }
+        return -1L;
     }
 }
