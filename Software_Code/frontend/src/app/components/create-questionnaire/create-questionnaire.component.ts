@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpService} from '../../services/http.service';
 import {QuestionnaireDetails} from '../../model/request/questionnaire-details';
-import {QuestionDetails} from '../../model/request/question-details';
 import {BehaviorSubject} from "rxjs";
 
 @Component({
@@ -11,7 +10,6 @@ import {BehaviorSubject} from "rxjs";
 })
 export class CreateQuestionnaireComponent {
   questionnaireData: QuestionnaireDetails;
-  questionData: QuestionDetails;
   isCreated: boolean;
   creationStatusText: BehaviorSubject<string>;
 
@@ -23,7 +21,6 @@ export class CreateQuestionnaireComponent {
     }
 
   createQuestionnaire(): void {
-    this.questionData.questionnaireID = this.questionnaireData.userID;
     this.httpService.createQuestionnaire(this.questionnaireData).subscribe(value => {
       this.isCreated = true;
       this.creationStatusText.next('Questionnaire created successfully');
