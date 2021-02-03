@@ -4,7 +4,7 @@ All information about your second sprint should be put into this folder. Additio
 
 ---
 
-## Day 1 [Monday, February 1] - Scrum Meeting summary
+## Day 2 [Tuesday, February 2] - Scrum Meeting summary
 The Scrum Master for this meeting was Emilija Budryte
 
 ### Members Present:

@@ -5,4 +5,5 @@ export class ExperimentDetails {
   title: string;
   description: string;
   ethicallyApproved: boolean;
+  ethicalApprovalCode: string;
 }
