@@ -4,15 +4,18 @@ All information about your second sprint should be put into this folder. Additio
 
 ---
 
-## Day 2 [Tuesday, February 2] - Scrum Meeting summary
+## Day 3 [Wednesday, February 3] - Scrum Meeting summary
 The Scrum Master for this meeting was Emilija Budryte
 
 ### Members Present:
-Rokas, Jokubas, Andres, Alina, Calum, Skye, Emilija
+Rokas, Andres, Alina, Calum, Skye, Emilija
 
-### Members Not Present:
+### Members Not Present: 
+Jokubas
+
 ### Apologies:
+Prior commitment
 
 ### Summary of Conversation:
-Database design was created yesterday and today it will be further developed. Also yesterday a frontend design for questionnaire was made, we agreed on the components that will be used for related pages and today we will continue working on display question/ pop ups/ add question/ questionnaire components. Another plan for today is to start adding methods to save data to the database and write other important backend functions. In addition, one of the team member will continue resolving the fix for ethical appoval.
+Frontend for 'add question' component is finished and today it will be integrated with backend methods to allow the creation of new questions. Also frontend for displaying open answer questions and multiple choice questions is done, today Skye will start working on displaying system usability scale questions. Ethical approval feature is now fixed, unit testing for it was sucessfully carried out yesterday. Frontend for 'create-questionnaire' component is done, today backend methods to receive and save general information will be written. Frontend for adding answer options will be further developed today and integrated with 'add question' component. Today we will focus more on testing the features that are finished. Team updated the sprint backlog and finalised Day 2. 
 ---
