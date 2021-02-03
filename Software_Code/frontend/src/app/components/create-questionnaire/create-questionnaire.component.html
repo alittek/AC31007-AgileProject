@@ -32,15 +32,16 @@
         <textarea class="form-control" rows="3" placeholder="Enter description" [(ngModel)]="questionnaireData.description" name="description"></textarea>
       </div>
     </div>
+
+    <!--  TODO: check if text fields all filled -->
     <!--
     <div class="row mt-5">
       <p [ngClass]="isCreated ? 'text-success':'text-danger'" *ngIf="creationStatusText | async">{{creationStatusText | async}}</p>
     </div>
-    <button type="button" class="btn blue-button mt-5" (click)="createQuestionnaire()"> Create Questionnaire </button>
     -->
 
     <a *ngIf="questionnaireData" routerLink="/questionnaire/{{questionnaireData.id}}">
-      <button type="button" class="btn blue-button mt-5"> Create Questionnaire </button>
+      <button type="button" class="btn blue-button mt-5" (click)="createQuestionnaire()"> Create Questionnaire </button>
     </a>
 
   </form>
