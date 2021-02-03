@@ -3,19 +3,20 @@
     <label class="col-md-2 col-form-label">Multiple Choice Question</label>
     <div class="col-md-10">
       <div class="form-group row">
-        <input type="text" class="form-control" placeholder="Option 1" [(ngModel)]="data.title" name="Option 1">
+        <input type="text" class="form-control" placeholder="Option 1" [(ngModel)]="data.answer" name="Option 1">
       </div>
       <div class="form-group row">
-        <input type="text" class="form-control" placeholder="Option 2" [(ngModel)]="data.title" name="Option 2">
+        <input type="text" class="form-control" placeholder="Option 2" [(ngModel)]="data.answer" name="Option 2">
       </div>
       <div class="form-group row">
-        <input type="text" class="form-control" placeholder="Option 3" [(ngModel)]="data.title" name="Option 3">
+        <input type="text" class="form-control" placeholder="Option 3" [(ngModel)]="data.answer" name="Option 3">
       </div>
       <div class="form-group row">
-        <input type="text" class="form-control" placeholder="Option 4" [(ngModel)]="data.title" name="Option 4">
+        <input type="text" class="form-control" placeholder="Option 4" [(ngModel)]="data.answer" name="Option 4">
       </div>
     </div>
     <div class="form-group row">
       <button class="btn blue-button mt-2" (click)="addOptions()">Finish</button>
+    </div>
   </div>
 </form>
