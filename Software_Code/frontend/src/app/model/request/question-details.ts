@@ -6,7 +6,7 @@ export class QuestionDetails {
   type: QuestionType;
   description: string;
   question: string; //question is title
-  optional: boolean;
+  required: boolean;
   answer: string[]; // should it be an array of answers?
   systemUsabilityScale: number;
 
