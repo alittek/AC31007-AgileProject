@@ -7,6 +7,7 @@ import {ExperimentComponent} from '../components/experiment/experiment.component
 import {CreateQuestionnaireComponent} from "../components/create-questionnaire/create-questionnaire.component";
 import {QuestionnaireComponent} from '../components/questionnaire/questionnaire.component';
 import {QuestionMultiComponent} from "../components/question-multi/question-multi.component";
+import {ViewQuestionnaireComponent} from '../components/view-questionnaire/view-questionnaire.component';
 
 const routes: Routes = [
   {path: 'experiments/:id', component: ExperimentComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: '', component: LoginFormComponent},
   {path: 'create-questionnaire', component: CreateQuestionnaireComponent},
   {path: 'questionnaire/:id', component: QuestionnaireComponent},
+  {path: 'view-questionnaire/:id', component: ViewQuestionnaireComponent},
   {path: 'test', component: QuestionMultiComponent}
 ];
 

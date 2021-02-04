@@ -20,6 +20,7 @@ import {AddQuestionComponent} from './components/add-question/add-question.compo
 import {DisplayFinishedQuestionnaireComponent} from './components/display-finished-questionnaire/display-finished-questionnaire.component';
 import {QuestionMultiComponent} from "./components/question-multi/question-multi.component";
 import {QuestionScaleComponent} from './components/question-scale/question-scale.component';
+import { ViewQuestionnaireComponent } from './components/view-questionnaire/view-questionnaire.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {QuestionScaleComponent} from './components/question-scale/question-scale
     DisplayFinishedQuestionnaireComponent,
     QuestionMultiComponent,
     QuestionScaleComponent,
+    ViewQuestionnaireComponent,
   ],
   imports: [
     BrowserModule,
