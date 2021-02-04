@@ -8,7 +8,7 @@ import {HttpService} from "../../services/http.service";
   styleUrls: ['./display-question.component.css']
 })
 export class DisplayQuestionComponent implements OnInit {
-  //placeholder data
+  // placeholder data
   question: QuestionDetails = {
     questionnaireID: 1,
     title: 'This is an example of a question title?',
@@ -16,7 +16,7 @@ export class DisplayQuestionComponent implements OnInit {
     type: 3,
     required: true,
     description: 'Description of question if we are including this.',
-    answer: ['answer1', 'answer2', 'answer3'],
+    answers: ['answer1', 'answer2', 'answer3'],
     systemUsabilityScale: 5
   };
 
