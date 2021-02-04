@@ -31,7 +31,6 @@ export class QuestionnaireComponent implements OnInit {
   getQuestionnaire(): void {
     this.httpService.getQuestionnaire(this.questionnaireRouteId).subscribe(value => {
       this.questionnaire = value;
-      console.log(value);
     });
   }
 }
