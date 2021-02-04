@@ -19,7 +19,7 @@ export class QuestionnaireComponent implements OnInit {
     type: 3,
     required: true,
     description: 'Description of question if we are including this.',
-    answer: ['answer1', 'answer2', 'answer3'],
+    answers: ['answer1', 'answer2', 'answer3'],
     systemUsabilityScale: 5
   };
   question2: QuestionDetails = {
@@ -29,7 +29,7 @@ export class QuestionnaireComponent implements OnInit {
     type: 2,
     required: true,
     description: 'Description of question if we are including this.',
-    answer: ['answer1', 'answer2', 'answer3'],
+    answers: ['answer1', 'answer2', 'answer3'],
     systemUsabilityScale: 5
   };
   question3: QuestionDetails = {
@@ -39,7 +39,7 @@ export class QuestionnaireComponent implements OnInit {
     type: 0,
     required: true,
     description: 'Description of question if we are including this.',
-    answer: ['answer1', 'answer2', 'answer3'],
+    answers: ['answer1', 'answer2', 'answer3'],
     systemUsabilityScale: 5
   };
   testQuestions: QuestionDetails[] = [this.question1, this.question2, this.question3];

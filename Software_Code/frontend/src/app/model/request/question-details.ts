@@ -7,6 +7,6 @@ export class QuestionDetails {
   description: string;
   question: string; //question is title
   required: boolean;
-  answer: string[]; // should it be an array of answers?
+  answers: string[]; // should it be an array of answers?
   systemUsabilityScale: number;
 }
