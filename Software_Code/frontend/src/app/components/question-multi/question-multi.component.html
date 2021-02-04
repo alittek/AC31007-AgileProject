@@ -5,19 +5,9 @@
       <div class="col-md-10 mt-3">
         <div class="form-group row">
           <!-- each option modifies answers in answers[] array -->
-          <input type="text" class="form-control" placeholder="Option 1" *ngFor="let answer of data.answers" name="Option 1">
-        </div>
-        <div class="form-group row">
-          <input type="text" class="form-control" placeholder="Option 2" *ngFor="let answer of data.answers" name="Option 2">
-        </div>
-        <div class="form-group row">
-          <input type="text" class="form-control" placeholder="Option 3" *ngFor="let answer of data.answers" name="Option 3">
-        </div>
-        <div class="form-group row">
-          <input type="text" class="form-control" placeholder="Option 4" *ngFor="let answer of data.answers" name="Option 4">
+          <input type="text" class="form-control" placeholder="New option" *ngFor="let answer of data.answers" name="Option">
         </div>
       </div>
-        <!-- set answers[] in the object that is passed in to this component -->
     </div>
   </form>
 <!-- </ng-template> -->
