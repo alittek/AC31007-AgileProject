@@ -17,7 +17,7 @@
     <div class="form-group row">
       <label class="col-md-2 col-form-label">Question Type: </label>
       <div class="col-md-10">
-        <select class="form-control" name="type" [(ngModel)]="data.type">
+        <select class="form-control" name="type" [(ngModel)]="data.type" (change)="changeType()">
           <option>Select type...</option>
           <option value="0">Open answer</option>
           <option value="2">Multiple choice (radio buttons)</option>
@@ -45,12 +45,12 @@
     <!-- if type = 2: radio -->
     <app-question-multi *ngIf="data.type == 1 || data.type == 2"></app-question-multi>
     <!-- if type = 3: system usability scale -->
-    <app-question-scale *ngIf="data.type == 3"></app-question-scale>
+    <app-question-scale *ngIf="data.type == 3" (chooseScaleEvent)="chooseScale($event)"></app-question-scale>
 <!--    insert required component for question options here-->
     <p [ngClass]="isCreated ? 'text-success':'text-danger'" *ngIf="creationStatusText | async">{{creationStatusText | async}}</p>
     <div class="row">
       <div class="col-md-3 mt-2">
-        <button [disabled]="data.required === undefined" class="btn blue-button mt-2" (click)="createQuestion()">Add question</button>
+        <button [disabled]="data.required === undefined || needScale" class="btn blue-button mt-2" (click)="createQuestion()">Add question</button>
       </div>
     </div>
   </form>
