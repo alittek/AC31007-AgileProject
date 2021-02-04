@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {HttpService} from '../../services/http.service';
 import {ExperimentDetails} from '../../model/request/experiment-details';
 import {BehaviorSubject} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-experiment-form',
@@ -13,7 +14,8 @@ export class CreateExperimentFormComponent {
   isCreated: boolean;
   creationStatusText: BehaviorSubject<string>;
 
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService,
+              private router: Router) {
     this.data = new ExperimentDetails();
     this.data.researcherId = parseInt(localStorage.getItem('userId'), 10);
     this.isCreated = false;
@@ -24,6 +26,7 @@ export class CreateExperimentFormComponent {
     this.httpService.createExperiment(this.data).subscribe(value => {
       this.isCreated = true;
       this.creationStatusText.next('Experiment created successfully');
+      this.router.navigateByUrl('/experiments/' + value);
     }, error => {
       this.isCreated = false;
       if (error.status === 0) {
