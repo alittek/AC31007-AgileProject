@@ -15,9 +15,11 @@ import {EthicalTickboxComponent} from './components/ethical-tickbox/ethical-tick
 import {CreateQuestionnaireComponent} from './components/create-questionnaire/create-questionnaire.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {QuestionnaireComponent} from './components/questionnaire/questionnaire.component';
-import { DisplayQuestionComponent } from './components/display-question/display-question.component';
-import { AddQuestionComponent } from './components/add-question/add-question.component';
-import { DisplayFinishedQuestionnaireComponent } from './components/display-finished-questionnaire/display-finished-questionnaire.component';
+import {DisplayQuestionComponent} from './components/display-question/display-question.component';
+import {AddQuestionComponent} from './components/add-question/add-question.component';
+import {DisplayFinishedQuestionnaireComponent} from './components/display-finished-questionnaire/display-finished-questionnaire.component';
+import {QuestionMultiComponent} from "./components/question-multi/question-multi.component";
+import {QuestionScaleComponent} from './components/question-scale/question-scale.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { DisplayFinishedQuestionnaireComponent } from './components/display-fini
     DisplayQuestionComponent,
     AddQuestionComponent,
     DisplayFinishedQuestionnaireComponent,
+    QuestionMultiComponent,
+    QuestionScaleComponent,
   ],
   imports: [
     BrowserModule,
