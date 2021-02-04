@@ -1,24 +1,21 @@
 <!-- <ng-template #scaleQuestion> -->
 <form>
-  <div class="form-group row">
-    <h5 class="m-0">Add a System Usability Scale Question</h5>
-    <div class="col-md-10">
-      <div class="btn-group" role="group" aria-label="numbers">
+  <div class="form-group mt-3">
+    <h5>Choose the scale</h5>
+    <div class="col-md-10 p-0">
+      <div class="btn-group mt-3" role="group" aria-label="numbers">
         <!-- Should display an array of buttons. clicking a button should change the number we're modifying -->
-        <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">3</button>
-        <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">4</button>
-        <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">5</button>
-        <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">6</button>
-        <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">7</button>
-        <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">8</button>
-        <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">9</button>
-        <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">10</button>
+        <button type="button" class="btn blue-button" [(ngModel)]="data.systemUsabilityScale">3</button>
+        <button type="button" class="btn blue-button" [(ngModel)]="data.systemUsabilityScale">4</button>
+        <button type="button" class="btn blue-button" [(ngModel)]="data.systemUsabilityScale">5</button>
+        <button type="button" class="btn blue-button" [(ngModel)]="data.systemUsabilityScale">6</button>
+        <button type="button" class="btn blue-button" [(ngModel)]="data.systemUsabilityScale">7</button>
+        <button type="button" class="btn blue-button" [(ngModel)]="data.systemUsabilityScale">8</button>
+        <button type="button" class="btn blue-button" [(ngModel)]="data.systemUsabilityScale">9</button>
+        <button type="button" class="btn blue-button" [(ngModel)]="data.systemUsabilityScale">10</button>
       </div>
     </div>
-    <div class="form-group row">
       <!-- set the currently selected number from the buttons as systemUsabilityScale from questionDetails component -->
-      <button class="btn blue-button mt-2" (click)="addScaleOptions()">Finish</button>
-    </div>
   </div>
 </form>
 <!-- </ng-template> -->

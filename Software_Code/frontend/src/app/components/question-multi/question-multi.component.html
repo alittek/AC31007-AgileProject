@@ -1,8 +1,8 @@
 <!-- <ng-template #multiQuestion> -->
   <form>
-    <div class="form-group row">
-      <h5 class="m-0">Add a Multiple Choice Question</h5>
-      <div class="col-md-10">
+    <div class="form-group mt-3">
+      <h5>Add answer options</h5>
+      <div class="col-md-10 mt-3">
         <div class="form-group row">
           <!-- each option modifies answers in answers[] array -->
           <input type="text" class="form-control" placeholder="Option 1" [(ngModel)]="data.answers[0]" name="Option 1">
@@ -17,10 +17,7 @@
           <input type="text" class="form-control" placeholder="Option 4" [(ngModel)]="data.answers[3]" name="Option 4">
         </div>
       </div>
-      <div class="form-group row">
         <!-- set answers[] in the object that is passed in to this component -->
-        <button class="btn blue-button mt-2" (click)="addMultiOptions()">Finish</button>
-      </div>
     </div>
   </form>
 <!-- </ng-template> -->
