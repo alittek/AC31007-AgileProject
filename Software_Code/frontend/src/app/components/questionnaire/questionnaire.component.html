@@ -15,8 +15,12 @@
   <br>
   <hr>
   <br>
-<!--  display question component will go here-->
-  <app-display-question></app-display-question>
+<!--  loop questions with index for Q number -->
+  <form>
+    <div *ngFor="let q of questions; index as i;">
+      <app-display-question [questionAndIndex]="[i,q]"></app-display-question>
+    </div>
+  </form>
 <!--  add new question component will go here-->
   <app-add-question [questionnaireId]="questionnaireRouteId"></app-add-question>
   <div class="d-flex justify-content-end">
