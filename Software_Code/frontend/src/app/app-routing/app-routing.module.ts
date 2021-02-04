@@ -6,6 +6,7 @@ import {CreateExperimentFormComponent} from "../components/create-experiment-for
 import {ExperimentComponent} from '../components/experiment/experiment.component';
 import {CreateQuestionnaireComponent} from "../components/create-questionnaire/create-questionnaire.component";
 import {QuestionnaireComponent} from '../components/questionnaire/questionnaire.component';
+import {QuestionMultiComponent} from "../components/question-multi/question-multi.component";
 
 const routes: Routes = [
   {path: 'experiments/:id', component: ExperimentComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: '', component: LoginFormComponent},
   {path: 'create-questionnaire', component: CreateQuestionnaireComponent},
   {path: 'questionnaire/:id', component: QuestionnaireComponent},
+  {path: 'test', component: QuestionMultiComponent}
 ];
 
 @NgModule({
