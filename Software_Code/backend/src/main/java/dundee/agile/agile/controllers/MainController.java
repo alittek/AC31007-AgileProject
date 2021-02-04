@@ -1,17 +1,16 @@
 package dundee.agile.agile.controllers;
 
 import dundee.agile.agile.exceptions.CreateExperimentFailedException;
+import dundee.agile.agile.exceptions.CreateQuestionnaireFailedException;
 import dundee.agile.agile.exceptions.EthicalApprovalCodeException;
 import dundee.agile.agile.exceptions.LoginFailedException;
-import dundee.agile.agile.model.database.Experiment;
-import dundee.agile.agile.model.database.User;
-import dundee.agile.agile.model.database.UserExperiment;
-import dundee.agile.agile.model.database.UserIdDetails;
+import dundee.agile.agile.model.database.*;
 import dundee.agile.agile.model.enums.Privileges;
 import dundee.agile.agile.model.json.request.*;
 import dundee.agile.agile.model.json.response.ExperimentDetailsView;
 import dundee.agile.agile.model.json.response.UserView;
 import dundee.agile.agile.repositories.ExperimentsRepository;
+import dundee.agile.agile.repositories.QuestionnairesRepository;
 import dundee.agile.agile.repositories.UserExperimentRepository;
 import dundee.agile.agile.repositories.UsersRepository;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +31,7 @@ public class MainController {
     private final UsersRepository usersRepository;
     private final ExperimentsRepository experimentsRepository;
     private final UserExperimentRepository userExperimentRepository;
+    private final QuestionnairesRepository questionnairesRepository;
 
     @PostMapping("/login")
     public UserView login(@RequestBody LoginUserRequest loginUserRequest) {
@@ -167,7 +167,23 @@ public class MainController {
 
     @PostMapping("/create-questionnaire")
     public Long createQuestions(@RequestBody CreateQuestionnaireRequest createQuestionnaireRequest) {
-        return -1L;
+        if (createQuestionnaireRequest == null || createQuestionnaireRequest.getExperimentId() == null) {
+            throw new CreateQuestionnaireFailedException();
+        }
+        Optional<Experiment> experimentOptional = experimentsRepository.findById(createQuestionnaireRequest.getExperimentId());
+        if (!experimentOptional.isPresent()) {
+            throw new CreateQuestionnaireFailedException();
+        }
+        Experiment experiment = experimentOptional.get();
+        Questionnaire questionnaire = Questionnaire.builder()
+                .experiment(experiment)
+                .contact(createQuestionnaireRequest.getContact())
+                .description(createQuestionnaireRequest.getDescription())
+                .title(createQuestionnaireRequest.getTitle())
+                .researcher(createQuestionnaireRequest.getResearcher())
+                .build();
+        questionnaire = questionnairesRepository.save(questionnaire);
+        return questionnaire.getId();
     }
 
     @PostMapping("/create-question")

@@ -5,6 +5,7 @@ import dundee.agile.agile.exceptions.EthicalApprovalCodeException;
 import dundee.agile.agile.model.database.Experiment;
 import dundee.agile.agile.model.json.request.EthicalApprovalRequest;
 import dundee.agile.agile.repositories.ExperimentsRepository;
+import dundee.agile.agile.repositories.QuestionnairesRepository;
 import dundee.agile.agile.repositories.UserExperimentRepository;
 import dundee.agile.agile.repositories.UsersRepository;
 import org.junit.jupiter.api.Assertions;
@@ -35,6 +36,8 @@ public class MainControllerTest {
     private ExperimentsRepository experimentsRepository;
     @Autowired
     private UserExperimentRepository userExperimentRepository;
+    @Autowired
+    private QuestionnairesRepository questionnairesRepository;
 
     private MainController mainController;
 
@@ -51,7 +54,7 @@ public class MainControllerTest {
                     return Optional.empty();
                 });
 
-        mainController = new MainController(usersRepository, experimentsRepository, userExperimentRepository);
+        mainController = new MainController(usersRepository, experimentsRepository, userExperimentRepository, questionnairesRepository);
     }
 
     @Test

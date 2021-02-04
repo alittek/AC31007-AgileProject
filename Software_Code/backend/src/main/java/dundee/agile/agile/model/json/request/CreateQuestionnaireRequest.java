@@ -6,7 +6,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreateQuestionnaireRequest {
-    private Long questionnaireID;
-    private String question;
-    private String answer;
+    private Long experimentId;
+    private String title;
+    private String researcher;
+    private String contact;
+    private String description;
 }
