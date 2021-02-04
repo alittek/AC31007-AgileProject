@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {HttpService} from '../../services/http.service';
 import { QuestionDetails} from "../../model/request/question-details";
-import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-question-multi',
@@ -11,11 +10,11 @@ import {BehaviorSubject} from 'rxjs';
 export class QuestionMultiComponent {
   data: QuestionDetails;
 
-  constructor() {
-    // pass data from backend in here?
+  constructor(private httpService: HttpService) {
+    this.data = new QuestionDetails();
   }
 
-  addOptions(){
+  addMultiOptions(){
     // set options to backend here?
   }
 

@@ -52,4 +52,6 @@ export class HttpService {
   updateEthicApproval(ethicalApproval: EthicalApproval): Observable<boolean> {
     return this.httpClient.post<boolean>(ApiConstants.APPROVE_ETHICALLY, ethicalApproval);
   }
+
+
 }
