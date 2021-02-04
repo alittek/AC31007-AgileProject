@@ -28,7 +28,6 @@ export class CreateQuestionnaireComponent {
   createQuestionnaire(): void {
     this.httpService.createQuestionnaire(this.questionnaireData).subscribe(value => {
       this.isCreated = true;
-      //this.creationStatusText.next('Questionnaire created successfully');
       this.router.navigateByUrl('/questionnaire/' + value);
     }, error => {
       this.isCreated = false;

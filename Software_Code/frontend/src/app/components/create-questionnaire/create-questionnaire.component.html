@@ -34,7 +34,7 @@
     </div>
     <!-- if text fields not all filled -->
     <div class="row mt-5">
-      <p [ngClass]="isCreated ? '':'text-danger'" *ngIf="creationStatusText | async">{{creationStatusText | async}}</p>
+      <p [class.text-danger]="!isCreated" *ngIf="creationStatusText | async">{{creationStatusText | async}}</p>
     </div>
     <button type="button" class="btn blue-button mt-5" (click)="createQuestionnaire()"> Create Questionnaire </button>
   </form>
