@@ -257,6 +257,7 @@ public class MainController {
                         .description(question.getDescription())
                         .type(question.getType().getNumericValue())
                         .required(question.isRequired())
+                        .systemUsabilityScale(question.getSystemUsabilityScale())
                         .build();
                 List<PossibleAnswer> possibleAnswerList = possibleAnswerRepository.findAllByQuestion(question);
                 List<String> answerList = new ArrayList<>();

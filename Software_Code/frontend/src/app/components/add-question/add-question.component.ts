@@ -35,7 +35,7 @@ export class AddQuestionComponent implements OnInit {
       this.isCreated = true;
       this.creationStatusText.next('Question created successfully');
       this.questionCreatedEvent.emit();
-      this.data = new QuestionDetails();
+      this.resetDetails();
     }, error => {
       this.isCreated = false;
       if (error.status === 0) {
@@ -61,5 +61,11 @@ export class AddQuestionComponent implements OnInit {
       this.data.systemUsabilityScale = null;
       this.needScale = false;
     }
+  }
+
+  resetDetails(): void {
+    this.data = new QuestionDetails();
+    this.needScale = false;
+    this.data.questionnaireId = this.questionnaireId;
   }
 }

@@ -13,5 +13,6 @@ public class QuestionView {
     private String description;
     private boolean required;
     private int type;
+    private int systemUsabilityScale;
     private String[] answers;
 }
