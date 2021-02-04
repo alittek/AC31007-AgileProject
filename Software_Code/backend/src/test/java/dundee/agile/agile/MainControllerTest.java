@@ -1,17 +1,17 @@
 package dundee.agile.agile;
 
 import dundee.agile.agile.controllers.MainController;
-import dundee.agile.agile.exceptions.CreateQuestionnaireFailedException;
 import dundee.agile.agile.exceptions.CreateQuestionFailedException;
+import dundee.agile.agile.exceptions.CreateQuestionnaireFailedException;
 import dundee.agile.agile.exceptions.EthicalApprovalCodeException;
 import dundee.agile.agile.model.database.Experiment;
+import dundee.agile.agile.model.database.Question;
 import dundee.agile.agile.model.database.Questionnaire;
+import dundee.agile.agile.model.enums.QuestionType;
+import dundee.agile.agile.model.json.request.CreateQuestionRequest;
 import dundee.agile.agile.model.json.request.CreateQuestionnaireRequest;
 import dundee.agile.agile.model.json.request.EthicalApprovalRequest;
-import dundee.agile.agile.repositories.ExperimentsRepository;
-import dundee.agile.agile.repositories.QuestionnairesRepository;
-import dundee.agile.agile.repositories.UserExperimentRepository;
-import dundee.agile.agile.repositories.UsersRepository;
+import dundee.agile.agile.repositories.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -44,8 +44,6 @@ public class MainControllerTest {
     @Mock
     private QuestionnairesRepository questionnairesRepository;
 
-    @Mock
-    private QuestionnairesRepository questionnairesRepository;
     @Mock
     private QuestionsRepository questionsRepository;
 
@@ -139,7 +137,7 @@ public class MainControllerTest {
                 .required(true)
                 .build();
 
-        Assertions.assertThrows(CreateQuestionFailedException.class ,() -> mainController.createQuestion(createQuestionRequest));
+        Assertions.assertThrows(CreateQuestionFailedException.class, () -> mainController.createQuestion(createQuestionRequest));
     }
 
     @Test
@@ -177,6 +175,7 @@ public class MainControllerTest {
 
         Assertions.assertThrows(CreateQuestionFailedException.class, () -> mainController.createQuestion(createQuestionRequest));
     }
+
     @Test
     @DisplayName("Successful questionnaire saving")
     public void testQuestionnaireSaving() {

@@ -1,10 +1,6 @@
 package dundee.agile.agile.controllers;
 
-import dundee.agile.agile.exceptions.CreateExperimentFailedException;
-import dundee.agile.agile.exceptions.CreateQuestionFailedException;
-import dundee.agile.agile.exceptions.CreateQuestionnaireFailedException;
-import dundee.agile.agile.exceptions.EthicalApprovalCodeException;
-import dundee.agile.agile.exceptions.LoginFailedException;
+import dundee.agile.agile.exceptions.*;
 import dundee.agile.agile.model.database.*;
 import dundee.agile.agile.model.enums.Privileges;
 import dundee.agile.agile.model.json.request.*;
@@ -125,8 +121,7 @@ public class MainController {
             User user = userOptional.get();
             if (user.getLevelOfPrivileges() == Privileges.LAB_MANAGER) {
                 experimentsList = experimentsRepository.findAll();
-            }
-            else {
+            } else {
                 List<UserExperiment> userExperimentList = userExperimentRepository.findAllByUser(user);
                 for (UserExperiment userExperiment : userExperimentList) {
                     experimentsList.add(userExperiment.getExperiment());

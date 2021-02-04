@@ -4,6 +4,7 @@ import dundee.agile.agile.model.enums.QuestionType;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
