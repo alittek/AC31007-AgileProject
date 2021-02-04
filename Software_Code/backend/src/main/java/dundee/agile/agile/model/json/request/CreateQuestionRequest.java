@@ -15,4 +15,5 @@ public class CreateQuestionRequest {
     private boolean required;
     private QuestionType type;
     private String[] answers;
+    private int systemUsabilityScale;
 }

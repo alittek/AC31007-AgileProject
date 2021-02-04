@@ -238,6 +238,7 @@ public class MainController {
             question.setDescription(createQuestionRequest.getDescription());
             question.setRequired(createQuestionRequest.isRequired());
             question.setType(createQuestionRequest.getType());
+            question.setSystemUsabilityScale(createQuestionRequest.getSystemUsabilityScale());
             question = questionsRepository.save(question);
             return question.getId();
         }

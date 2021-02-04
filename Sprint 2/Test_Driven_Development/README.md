@@ -5,3 +5,5 @@
 02/02/2021 - Testing started after development following test plans
 
 03/02/2021 - Added new tests, marked first tests as passed
+
+04/02/2021 - Continued testing and updated tests, next tests passed
