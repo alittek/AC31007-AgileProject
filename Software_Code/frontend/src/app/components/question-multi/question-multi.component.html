@@ -3,9 +3,9 @@
     <div class="form-group mt-3">
       <h5>Add answer options</h5>
       <div class="col-md-10 mt-3">
-        <div class="form-group row">
+        <div class="form-group row" *ngFor="let answer of data.answers;let index = index; trackBy:trackByIndex;">
           <!-- each option modifies answers in answers[] array -->
-          <input type="text" class="form-control" placeholder="New option" *ngFor="let answer of data.answers" name="Option">
+          <input type="text" class="form-control" placeholder="New option" [(ngModel)]="data.answers[index]" name="Option">
         </div>
       </div>
     </div>

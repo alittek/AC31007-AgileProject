@@ -18,4 +18,8 @@ export class QuestionMultiComponent {
   addMultiOptions(): void {
     // set answers[] in object here
   }
+
+  trackByIndex(index: number): number {
+    return index;
+  }
 }
