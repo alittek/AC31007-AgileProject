@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {LoginRequest} from '../model/request/login-request';
 import {ExperimentDetails} from '../model/request/experiment-details';
 import {QuestionnaireDetails} from '../model/request/questionnaire-details';
@@ -10,6 +10,7 @@ import {UserView} from '../model/response/user-view';
 import {ApiConstants} from '../utils/api-constants';
 import {GetExperimentRequest} from '../model/request/get-experiment-request';
 import {EthicalApproval} from '../model/request/ethical-approval';
+import {GetQuestionnaireRequest} from '../model/request/get-questionnaire-request';
 
 @Injectable({
   providedIn: 'root'
@@ -53,5 +54,9 @@ export class HttpService {
     return this.httpClient.post<boolean>(ApiConstants.APPROVE_ETHICALLY, ethicalApproval);
   }
 
-
+  getQuestionnaire(questionnaireId: number): Observable<QuestionnaireDetails> {
+    const questionnaireRequest = new GetQuestionnaireRequest();
+    questionnaireRequest.questionnaireId = questionnaireId;
+    return this.httpClient.post<QuestionnaireDetails>(ApiConstants.GET_QUESTIONNAIRE, questionnaireRequest);
+  }
 }

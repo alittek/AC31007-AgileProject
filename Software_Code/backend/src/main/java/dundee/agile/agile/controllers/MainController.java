@@ -5,13 +5,11 @@ import dundee.agile.agile.model.database.*;
 import dundee.agile.agile.model.enums.Privileges;
 import dundee.agile.agile.model.json.request.*;
 import dundee.agile.agile.model.json.response.ExperimentDetailsView;
+import dundee.agile.agile.model.json.response.QuestionnaireView;
 import dundee.agile.agile.model.json.response.UserView;
 import dundee.agile.agile.repositories.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -191,6 +189,24 @@ public class MainController {
                 .build();
         questionnaire = questionnairesRepository.save(questionnaire);
         return questionnaire.getId();
+    }
+
+    @PostMapping("/get-questionnaire")
+    public QuestionnaireView getQuestionnaire(@RequestBody GetQuestionnaireRequest getQuestionnaireRequest) {
+        if (getQuestionnaireRequest == null || getQuestionnaireRequest.getQuestionnaireId() == null) {
+            throw new GetQuestionnaireException();
+        }
+        Optional<Questionnaire> questionnaireOptional = questionnairesRepository.findById(getQuestionnaireRequest.getQuestionnaireId());
+        if (!questionnaireOptional.isPresent()) {
+            throw new GetQuestionnaireException();
+        }
+        Questionnaire questionnaire = questionnaireOptional.get();
+        return QuestionnaireView.builder()
+                .contact(questionnaire.getContact())
+                .researcher(questionnaire.getResearcher())
+                .description(questionnaire.getDescription())
+                .title(questionnaire.getTitle())
+                .build();
     }
 
     @PostMapping("/create-question")
