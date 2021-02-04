@@ -165,19 +165,15 @@ public class MainController {
             throw new CreateQuestionnaireFailedException();
         }
         if (createQuestionnaireRequest.getTitle() == null || createQuestionnaireRequest.getTitle().length() == 0) {
-            // TODO: title is required
             throw new CreateQuestionnaireFailedException();
         }
         if (createQuestionnaireRequest.getResearcher() == null || createQuestionnaireRequest.getResearcher().length() == 0) {
-            // TODO: researcher is required
             throw new CreateQuestionnaireFailedException();
         }
         if (createQuestionnaireRequest.getContact() == null || createQuestionnaireRequest.getContact().length() == 0) {
-            // TODO: contact is required
             throw new CreateQuestionnaireFailedException();
         }
         if (createQuestionnaireRequest.getDescription() == null || createQuestionnaireRequest.getDescription().length() == 0) {
-            // TODO: description is required
             throw new CreateQuestionnaireFailedException();
         }
 
