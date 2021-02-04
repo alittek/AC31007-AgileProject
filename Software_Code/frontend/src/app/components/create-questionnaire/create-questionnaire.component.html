@@ -12,30 +12,30 @@
       </div>
     </div>
     <!--  enter researcher component -->
-    <div class="form-group row mt-5">
+    <div class="form-group row mt-2">
       <label class="col-md-2 col-form-label">Researchers: </label>
       <div class="col-md-10">
         <input type="text" class="form-control" placeholder="Enter names of researchers" [(ngModel)]="questionnaireData.researcher" name="researcher">
       </div>
     </div>
     <!--  enter contact info component -->
-    <div class="form-group row mt-5">
+    <div class="form-group row mt-2">
       <label class="col-md-2 col-form-label">E-mail: </label>
       <div class="col-md-10">
         <input type="text" class="form-control" placeholder="Enter contact for researchers" [(ngModel)]="questionnaireData.contact" name="contact">
       </div>
     </div>
     <!--  enter description component -->
-    <div class="form-group row mt-5">
+    <div class="form-group row mt-2">
       <label class="col-md-2 col-form-label">Description: </label>
       <div class="col-md-10">
         <textarea class="form-control" rows="3" placeholder="Enter description" [(ngModel)]="questionnaireData.description" name="description"></textarea>
       </div>
     </div>
     <!-- if text fields not all filled -->
-    <div class="row mt-5">
+    <div>
       <p [class.text-danger]="!isCreated" *ngIf="creationStatusText | async">{{creationStatusText | async}}</p>
     </div>
-    <button type="button" class="btn blue-button mt-5" (click)="createQuestionnaire()"> Create Questionnaire </button>
+    <button type="button" class="btn blue-button mt-2" (click)="createQuestionnaire()"> Create Questionnaire </button>
   </form>
 </div>
