@@ -1,15 +1,13 @@
 package dundee.agile.agile.model.database;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -26,5 +24,7 @@ public class Questionnaire {
     private Set<Question> questions;
 
     private String title;
+    private String researcher;
+    private String contact;
     private String description;
 }
