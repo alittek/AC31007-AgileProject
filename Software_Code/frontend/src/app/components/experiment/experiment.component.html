@@ -15,8 +15,8 @@
       <hr>
       <!--      <h3>{{experiment.type}}s</h3>-->
       <!--      if finished questionnaire exists, then display the component but not add questionnaire button, if not - just button -->
-      <app-display-finished-questionnaire></app-display-finished-questionnaire>
-      <button type="button" routerLink="/create-questionnaire" [queryParams]="{experimentId: experiment.id}" class="btn blue-button mt-2"
+      <app-display-finished-questionnaire *ngIf="experiment.questionnaireId != undefined" [questionnaireId]="experiment.questionnaireId"></app-display-finished-questionnaire>
+      <button *ngIf="experiment.questionnaireId == undefined" type="button" routerLink="/create-questionnaire" [queryParams]="{experimentId: experiment.id}" class="btn blue-button mt-2"
               [disabled]="!experiment.ethicallyApproved">Add {{experiment.type}}</button>
     </form>
   </div>

@@ -14,6 +14,7 @@ public class ExperimentDetailsView {
     private String description;
     private boolean ethicallyApproved;
     private String ethicalApprovalCode;
+    private Long questionnaireId;
 
     public void setDetails(Experiment experiment) {
         this.setId(experiment.getId());
@@ -22,5 +23,8 @@ public class ExperimentDetailsView {
         this.setDescription(experiment.getDescription());
         this.setEthicallyApproved(experiment.isEthicallyApproved());
         this.setEthicalApprovalCode(experiment.getEthicalApprovalCode());
+        if (experiment.getQuestionnaire() != null) {
+            this.setQuestionnaireId(experiment.getQuestionnaire().getId());
+        }
     }
 }

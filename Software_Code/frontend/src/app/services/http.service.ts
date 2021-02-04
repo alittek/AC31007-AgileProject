@@ -11,6 +11,7 @@ import {ApiConstants} from '../utils/api-constants';
 import {GetExperimentRequest} from '../model/request/get-experiment-request';
 import {EthicalApproval} from '../model/request/ethical-approval';
 import {GetQuestionnaireRequest} from '../model/request/get-questionnaire-request';
+import {ExperimentDetailsView} from '../model/response/experiment-details-view';
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +33,8 @@ export class HttpService {
     return this.httpClient.post<string>(ApiConstants.CREATE_EXPERIMENT, experimentDetails);
   }
 
-  getExperiment(getExperimentRequest: GetExperimentRequest): Observable<ExperimentDetails> {
-    return this.httpClient.post<ExperimentDetails>(ApiConstants.GET_EXPERIMENT, getExperimentRequest);
+  getExperiment(getExperimentRequest: GetExperimentRequest): Observable<ExperimentDetailsView> {
+    return this.httpClient.post<ExperimentDetailsView>(ApiConstants.GET_EXPERIMENT, getExperimentRequest);
   }
 
   getAllExperiments(): Observable<ExperimentDetails[]> {
