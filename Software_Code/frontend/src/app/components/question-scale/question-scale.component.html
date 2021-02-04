@@ -4,6 +4,7 @@
     <h5 class="m-0">Add a System Usability Scale Question</h5>
     <div class="col-md-10">
       <div class="btn-group" role="group" aria-label="numbers">
+        <!-- Should display an array of buttons. clicking a button should change the number we're modifying -->
         <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">3</button>
         <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">4</button>
         <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">5</button>
@@ -15,6 +16,7 @@
       </div>
     </div>
     <div class="form-group row">
+      <!-- set the currently selected number from the buttons as systemUsabilityScale from questionDetails component -->
       <button class="btn blue-button mt-2" (click)="addScaleOptions()">Finish</button>
     </div>
   </div>

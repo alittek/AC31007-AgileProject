@@ -11,11 +11,11 @@ export class QuestionScaleComponent {
   data: QuestionDetails;
 
   constructor() {
-    // pass data from backend in here?
+    // not sure if this constructor is needed as we're passing in QuestionDetails object
   }
 
   addScaleOptions(): void {
-    // set options to backend here?
+    // set systemUsabilityScale in object here
   }
 
 }
