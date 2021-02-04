@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {QuestionnaireDetails} from '../../model/request/questionnaire-details';
 import {ActivatedRoute} from '@angular/router';
 import {HttpService} from '../../services/http.service';
@@ -10,6 +10,7 @@ import {HttpService} from '../../services/http.service';
 })
 export class DisplayFinishedQuestionnaireComponent implements OnInit {
   questionnaire: QuestionnaireDetails;
+  @Input() questionnaireId: number;
 
   constructor(private httpService: HttpService) {
   }
@@ -19,7 +20,7 @@ export class DisplayFinishedQuestionnaireComponent implements OnInit {
   }
 
   getQuestionnaire(): void {
-    this.httpService.getQuestionnaire(7).subscribe(value => {
+    this.httpService.getQuestionnaire(this.questionnaireId).subscribe(value => {
       this.questionnaire = value;
       console.log(value);
     });

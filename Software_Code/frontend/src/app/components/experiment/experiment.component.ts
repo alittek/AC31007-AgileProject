@@ -3,6 +3,7 @@ import {ExperimentDetails} from '../../model/request/experiment-details';
 import {HttpService} from '../../services/http.service';
 import {ActivatedRoute} from '@angular/router';
 import {GetExperimentRequest} from '../../model/request/get-experiment-request';
+import {ExperimentDetailsView} from '../../model/response/experiment-details-view';
 
 @Component({
   selector: 'app-experiment',
@@ -11,10 +12,10 @@ import {GetExperimentRequest} from '../../model/request/get-experiment-request';
 })
 export class ExperimentComponent implements OnInit {
   experimentRouteId: number;
-  experiment: ExperimentDetails;
+  experiment: ExperimentDetailsView;
 
   constructor(private route: ActivatedRoute, private httpService: HttpService) {
-    this.experiment = new ExperimentDetails();
+    this.experiment = new ExperimentDetailsView();
   }
 
   ngOnInit(): void {
