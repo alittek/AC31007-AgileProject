@@ -11,4 +11,5 @@ export class ApiConstants {
   public static CREATE_QUESTION = ApiConstants.BASE_URL + '/create-question';
   public static APPROVE_ETHICALLY = ApiConstants.BASE_URL + '/approve-ethically';
   public static GET_QUESTIONNAIRE = ApiConstants.BASE_URL + '/get-questionnaire';
+  public static GET_QUESTIONS = ApiConstants.BASE_URL + '/get-questions';
 }

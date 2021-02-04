@@ -5,12 +5,17 @@ import dundee.agile.agile.model.database.*;
 import dundee.agile.agile.model.enums.Privileges;
 import dundee.agile.agile.model.json.request.*;
 import dundee.agile.agile.model.json.response.ExperimentDetailsView;
+import dundee.agile.agile.model.json.response.QuestionView;
 import dundee.agile.agile.model.json.response.QuestionnaireView;
 import dundee.agile.agile.model.json.response.UserView;
 import dundee.agile.agile.repositories.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +30,7 @@ public class MainController {
     private final UserExperimentRepository userExperimentRepository;
     private final QuestionnairesRepository questionnairesRepository;
     private final QuestionsRepository questionsRepository;
+    private final PossibleAnswerRepository possibleAnswerRepository;
 
     @PostMapping("/login")
     public UserView login(@RequestBody LoginUserRequest loginUserRequest) {
@@ -236,5 +242,31 @@ public class MainController {
             return question.getId();
         }
         throw new CreateQuestionFailedException();
+    }
+
+    @PostMapping("/get-questions")
+    public List<QuestionView> getQuestions(@RequestBody GetQuestionnaireRequest getQuestionnaireRequest) {
+        Optional<Questionnaire> questionnaireOptional = questionnairesRepository.findById(getQuestionnaireRequest.getQuestionnaireId());
+        if (questionnaireOptional.isPresent()) {
+            List<QuestionView> questionViewList = new ArrayList<>();
+            List<Question> questionList = questionsRepository.findAllByQuestionnaire(questionnaireOptional.get());
+            for (Question question : questionList) {
+                QuestionView questionView = QuestionView.builder()
+                        .title(question.getTitle())
+                        .description(question.getDescription())
+                        .type(question.getType().getNumericValue())
+                        .required(question.isRequired())
+                        .build();
+                List<PossibleAnswer> possibleAnswerList = possibleAnswerRepository.findAllByQuestion(question);
+                List<String> answerList = new ArrayList<>();
+                for (PossibleAnswer possibleAnswer : possibleAnswerList) {
+                    answerList.add(possibleAnswer.getAnswer());
+                }
+                questionView.setAnswers(answerList.toArray(new String[0]));
+                questionViewList.add(questionView);
+            }
+            return questionViewList;
+        }
+        return null;
     }
 }
