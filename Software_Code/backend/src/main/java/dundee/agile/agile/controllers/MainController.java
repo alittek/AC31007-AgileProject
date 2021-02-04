@@ -1,18 +1,12 @@
 package dundee.agile.agile.controllers;
 
-import dundee.agile.agile.exceptions.CreateExperimentFailedException;
-import dundee.agile.agile.exceptions.CreateQuestionnaireFailedException;
-import dundee.agile.agile.exceptions.EthicalApprovalCodeException;
-import dundee.agile.agile.exceptions.LoginFailedException;
+import dundee.agile.agile.exceptions.*;
 import dundee.agile.agile.model.database.*;
 import dundee.agile.agile.model.enums.Privileges;
 import dundee.agile.agile.model.json.request.*;
 import dundee.agile.agile.model.json.response.ExperimentDetailsView;
 import dundee.agile.agile.model.json.response.UserView;
-import dundee.agile.agile.repositories.ExperimentsRepository;
-import dundee.agile.agile.repositories.QuestionnairesRepository;
-import dundee.agile.agile.repositories.UserExperimentRepository;
-import dundee.agile.agile.repositories.UsersRepository;
+import dundee.agile.agile.repositories.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +26,7 @@ public class MainController {
     private final ExperimentsRepository experimentsRepository;
     private final UserExperimentRepository userExperimentRepository;
     private final QuestionnairesRepository questionnairesRepository;
+    private final QuestionsRepository questionsRepository;
 
     @PostMapping("/login")
     public UserView login(@RequestBody LoginUserRequest loginUserRequest) {
@@ -98,7 +93,7 @@ public class MainController {
             userExperimentRepository.save(userExperiment);
             return experiment.getId();
         }
-        return -1L;
+        throw new CreateExperimentFailedException();
     }
 
     @PostMapping("/get-experiment")
@@ -126,8 +121,7 @@ public class MainController {
             User user = userOptional.get();
             if (user.getLevelOfPrivileges() == Privileges.LAB_MANAGER) {
                 experimentsList = experimentsRepository.findAll();
-            }
-            else {
+            } else {
                 List<UserExperiment> userExperimentList = userExperimentRepository.findAllByUser(user);
                 for (UserExperiment userExperiment : userExperimentList) {
                     experimentsList.add(userExperiment.getExperiment());
@@ -188,6 +182,30 @@ public class MainController {
 
     @PostMapping("/create-question")
     public Long createQuestion(@RequestBody CreateQuestionRequest createQuestionRequest) {
-        return 1L;
+        if (createQuestionRequest == null) {
+            throw new CreateQuestionFailedException();
+        }
+        if (createQuestionRequest.getQuestionnaireId() == null) {
+            throw new CreateQuestionFailedException();
+        }
+        if (createQuestionRequest.getTitle() == null || createQuestionRequest.getTitle().length() == 0) {
+            throw new CreateQuestionFailedException();
+        }
+        if (createQuestionRequest.getType() == null) {
+            throw new CreateQuestionFailedException();
+        }
+        Optional<Questionnaire> questionnaireOptional = questionnairesRepository.findById(createQuestionRequest.getQuestionnaireId());
+        if (questionnaireOptional.isPresent()) {
+            Questionnaire questionnaire = questionnaireOptional.get();
+            Question question = new Question();
+            question.setQuestionnaire(questionnaire);
+            question.setTitle(createQuestionRequest.getTitle());
+            question.setDescription(createQuestionRequest.getDescription());
+            question.setRequired(createQuestionRequest.isRequired());
+            question.setType(createQuestionRequest.getType());
+            question = questionsRepository.save(question);
+            return question.getId();
+        }
+        throw new CreateQuestionFailedException();
     }
 }

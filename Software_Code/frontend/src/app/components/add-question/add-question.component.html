@@ -49,6 +49,7 @@
     <!-- if type = 3: system usability scale -->
     <app-question-scale></app-question-scale>
 <!--    insert required component for question options here-->
+    <p [ngClass]="isCreated ? 'text-success':'text-danger'" *ngIf="creationStatusText | async">{{creationStatusText | async}}</p>
     <div class="row">
       <div class="col-md-3 mt-2">
         <button [disabled]="data.required === undefined" class="btn blue-button mt-2" (click)="createQuestion()">Add question</button>
