@@ -24,5 +24,7 @@ public class Questionnaire {
     private Set<Question> questions;
 
     private String title;
+    private String researcher;
+    private String contact;
     private String description;
 }

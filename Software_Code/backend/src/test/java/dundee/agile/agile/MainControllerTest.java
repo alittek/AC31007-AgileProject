@@ -1,15 +1,17 @@
 package dundee.agile.agile;
 
 import dundee.agile.agile.controllers.MainController;
+import dundee.agile.agile.exceptions.CreateQuestionnaireFailedException;
 import dundee.agile.agile.exceptions.CreateQuestionFailedException;
 import dundee.agile.agile.exceptions.EthicalApprovalCodeException;
 import dundee.agile.agile.model.database.Experiment;
-import dundee.agile.agile.model.database.Question;
 import dundee.agile.agile.model.database.Questionnaire;
-import dundee.agile.agile.model.enums.QuestionType;
-import dundee.agile.agile.model.json.request.CreateQuestionRequest;
+import dundee.agile.agile.model.json.request.CreateQuestionnaireRequest;
 import dundee.agile.agile.model.json.request.EthicalApprovalRequest;
-import dundee.agile.agile.repositories.*;
+import dundee.agile.agile.repositories.ExperimentsRepository;
+import dundee.agile.agile.repositories.QuestionnairesRepository;
+import dundee.agile.agile.repositories.UserExperimentRepository;
+import dundee.agile.agile.repositories.UsersRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -39,6 +41,8 @@ public class MainControllerTest {
     private ExperimentsRepository experimentsRepository;
     @Autowired
     private UserExperimentRepository userExperimentRepository;
+    @Mock
+    private QuestionnairesRepository questionnairesRepository;
 
     @Mock
     private QuestionnairesRepository questionnairesRepository;
@@ -59,6 +63,7 @@ public class MainControllerTest {
                     }
                     return Optional.empty();
                 });
+        Mockito.when(questionnairesRepository.save(any())).thenReturn(Questionnaire.builder().id(1L).build());
 
         Mockito.when(questionnairesRepository.findById(anyLong())).thenAnswer(
                 invocation -> {
@@ -172,4 +177,23 @@ public class MainControllerTest {
 
         Assertions.assertThrows(CreateQuestionFailedException.class, () -> mainController.createQuestion(createQuestionRequest));
     }
+    @Test
+    @DisplayName("Successful questionnaire saving")
+    public void testQuestionnaireSaving() {
+        CreateQuestionnaireRequest createQuestionnaireRequest = CreateQuestionnaireRequest.builder()
+                .experimentId(1L)
+                .build();
+
+        Assertions.assertEquals(mainController.createQuestionnaire(createQuestionnaireRequest), 1L);
+    }
+
+    @Test
+    @DisplayName("Unsuccessful questionnaire saving")
+    public void testQuestionnaireSavingWithErrors() {
+        CreateQuestionnaireRequest createQuestionnaireRequest = CreateQuestionnaireRequest.builder()
+                .build();
+
+        Assertions.assertThrows(CreateQuestionnaireFailedException.class, () -> mainController.createQuestionnaire(createQuestionnaireRequest));
+    }
+
 }

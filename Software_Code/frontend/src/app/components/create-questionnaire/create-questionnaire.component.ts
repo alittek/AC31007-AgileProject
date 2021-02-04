@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {HttpService} from '../../services/http.service';
 import {QuestionnaireDetails} from '../../model/request/questionnaire-details';
-import {QuestionDetails} from '../../model/request/question-details';
 import {BehaviorSubject} from 'rxjs';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-questionnaire',
@@ -11,24 +11,25 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class CreateQuestionnaireComponent {
   questionnaireData: QuestionnaireDetails;
-  questionData: QuestionDetails;
   isCreated: boolean;
   creationStatusText: BehaviorSubject<string>;
 
-  constructor(private httpService: HttpService) {
-      this.questionnaireData = new QuestionnaireDetails();
-      this.questionnaireData.id = 1; // for testing, need to store questionnaires in DB first
-      console.log(this.questionnaireData.id);
-      this.isCreated = false;
-      this.creationStatusText = new BehaviorSubject(null);
-    }
+  constructor(private httpService: HttpService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
+    this.questionnaireData = new QuestionnaireDetails();
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.questionnaireData.experimentId = params.experimentId;
+    });
+    this.isCreated = false;
+    this.creationStatusText = new BehaviorSubject(null);
+  }
 
-    /*
-    createQuestionnaire(): void {
-    this.questionData.questionnaireID = this.questionnaireData.userID;
+  createQuestionnaire(): void {
     this.httpService.createQuestionnaire(this.questionnaireData).subscribe(value => {
       this.isCreated = true;
       this.creationStatusText.next('Questionnaire created successfully');
+      this.router.navigateByUrl('/questionnaire/' + value);
     }, error => {
       this.isCreated = false;
       if (error.status === 0) {
@@ -39,5 +40,5 @@ export class CreateQuestionnaireComponent {
         this.creationStatusText.next('Unexpected error.');
       }
     });
-     */
+  }
 }

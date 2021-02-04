@@ -3,33 +3,44 @@
 </div>
 <div id="overlap-box" class="container border p-5">
   <form class="pl-5 pr-5 pt-3">
-      <small class="form-text text-muted"> This information will be displayed at the start of the questionnaire. </small>
+    <small class="form-text text-muted"> This information will be displayed at the start of the questionnaire. </small>
+    <!--  enter title component -->
     <div class="form-group row mt-5">
       <label class="col-md-2 col-form-label">Title: </label>
       <div class="col-md-10">
         <input type="text" class="form-control" placeholder="Enter title" [(ngModel)]="questionnaireData.title" name="title">
       </div>
     </div>
+    <!--  enter researcher component -->
     <div class="form-group row mt-5">
       <label class="col-md-2 col-form-label">Researchers: </label>
       <div class="col-md-10">
-        <input type="text" class="form-control" placeholder="Enter names of researchers"  name="researcher">
+        <input type="text" class="form-control" placeholder="Enter names of researchers" [(ngModel)]="questionnaireData.researcher" name="researcher">
       </div>
     </div>
+    <!--  enter contact info component -->
     <div class="form-group row mt-5">
       <label class="col-md-2 col-form-label">E-mail: </label>
       <div class="col-md-10">
-        <input type="text" class="form-control" placeholder="Enter contact for researchers"  name="contact">
+        <input type="text" class="form-control" placeholder="Enter contact for researchers" [(ngModel)]="questionnaireData.contact" name="contact">
       </div>
     </div>
+    <!--  enter description component -->
     <div class="form-group row mt-5">
       <label class="col-md-2 col-form-label">Description: </label>
       <div class="col-md-10">
-        <textarea class="form-control" rows="3" placeholder="Enter description"  name="description"></textarea>
+        <textarea class="form-control" rows="3" placeholder="Enter description" [(ngModel)]="questionnaireData.description" name="description"></textarea>
       </div>
     </div>
-    <a *ngIf="questionnaireData" routerLink="/questionnaire/{{questionnaireData.id}}">
-      <button type="button" class="btn blue-button mt-5"> Create Questionnaire </button>
-    </a>
+
+    <!--  TODO: check if text fields all filled -->
+    <!--
+    <div class="row mt-5">
+      <p [ngClass]="isCreated ? 'text-success':'text-danger'" *ngIf="creationStatusText | async">{{creationStatusText | async}}</p>
+    </div>
+    -->
+
+    <button type="button" class="btn blue-button mt-5" (click)="createQuestionnaire()"> Create Questionnaire </button>
+
   </form>
 </div>

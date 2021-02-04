@@ -2,6 +2,7 @@ package dundee.agile.agile.controllers;
 
 import dundee.agile.agile.exceptions.CreateExperimentFailedException;
 import dundee.agile.agile.exceptions.CreateQuestionFailedException;
+import dundee.agile.agile.exceptions.CreateQuestionnaireFailedException;
 import dundee.agile.agile.exceptions.EthicalApprovalCodeException;
 import dundee.agile.agile.exceptions.LoginFailedException;
 import dundee.agile.agile.model.database.*;
@@ -164,8 +165,24 @@ public class MainController {
     }
 
     @PostMapping("/create-questionnaire")
-    public Long createQuestions(@RequestBody CreateQuestionnaireRequest createQuestionnaireRequest) {
-        return -1L;
+    public Long createQuestionnaire(@RequestBody CreateQuestionnaireRequest createQuestionnaireRequest) {
+        if (createQuestionnaireRequest == null || createQuestionnaireRequest.getExperimentId() == null) {
+            throw new CreateQuestionnaireFailedException();
+        }
+        Optional<Experiment> experimentOptional = experimentsRepository.findById(createQuestionnaireRequest.getExperimentId());
+        if (!experimentOptional.isPresent()) {
+            throw new CreateQuestionnaireFailedException();
+        }
+        Experiment experiment = experimentOptional.get();
+        Questionnaire questionnaire = Questionnaire.builder()
+                .experiment(experiment)
+                .contact(createQuestionnaireRequest.getContact())
+                .description(createQuestionnaireRequest.getDescription())
+                .title(createQuestionnaireRequest.getTitle())
+                .researcher(createQuestionnaireRequest.getResearcher())
+                .build();
+        questionnaire = questionnairesRepository.save(questionnaire);
+        return questionnaire.getId();
     }
 
     @PostMapping("/create-question")
