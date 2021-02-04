@@ -5,8 +5,8 @@ export class QuestionDetails {
   title: string;
   type: QuestionType;
   description: string;
-  question: string; //question is title
+  question: string;
   required: boolean;
-  answers: string[]; // should it be an array of answers?
+  answers: string[] = ['', ''];
   systemUsabilityScale: number;
 }

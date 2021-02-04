@@ -22,7 +22,6 @@ export class DisplayFinishedQuestionnaireComponent implements OnInit {
   getQuestionnaire(): void {
     this.httpService.getQuestionnaire(this.questionnaireId).subscribe(value => {
       this.questionnaire = value;
-      console.log(value);
     });
   }
 
