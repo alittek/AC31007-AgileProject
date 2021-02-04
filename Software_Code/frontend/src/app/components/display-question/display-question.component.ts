@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {QuestionDetails} from "../../model/request/question-details";
 import {HttpService} from "../../services/http.service";
 
@@ -8,17 +8,9 @@ import {HttpService} from "../../services/http.service";
   styleUrls: ['./display-question.component.css']
 })
 export class DisplayQuestionComponent implements OnInit {
-  // placeholder data
-  question: QuestionDetails = {
-    questionnaireID: 1,
-    title: 'This is an example of a question title?',
-    question: '',
-    type: 3,
-    required: true,
-    description: 'Description of question if we are including this.',
-    answers: ['answer1', 'answer2', 'answer3'],
-    systemUsabilityScale: 5
-  };
+  @Input()
+  question: QuestionDetails;
+
 
   constructor() {}
 
