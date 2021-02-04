@@ -5,24 +5,24 @@
     <div class="form-group row">
       <label class="col-md-2 col-form-label">Question: </label>
       <div class="col-md-10">
-        <textarea class="form-control" rows="3" placeholder="Enter question" name="title"></textarea>
+        <textarea class="form-control" rows="3" placeholder="Enter question" name="title" [(ngModel)]="data.title"></textarea>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-md-2 col-form-label">Description: </label>
       <div class="col-md-10">
-          <textarea class="form-control" rows="3" placeholder="Enter description" name="description"></textarea>
+          <textarea class="form-control" rows="3" placeholder="Enter description" name="description" [(ngModel)]="data.description"></textarea>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-md-2 col-form-label">Question Type: </label>
       <div class="col-md-10">
-        <select class="form-control" name="type">
+        <select class="form-control" name="type" [(ngModel)]="data.type">
           <option>Select type...</option>
-          <option>Open answer</option>
-          <option>Multiple choice (radio buttons)</option>
-          <option>Multiple choice (checkboxes)</option>
-          <option>System Usability Scale</option>
+          <option value="0">Open answer</option>
+          <option value="2">Multiple choice (radio buttons)</option>
+          <option value="1">Multiple choice (checkboxes)</option>
+          <option value="3">System Usability Scale</option>
         </select>
       </div>
     </div>
@@ -31,20 +31,24 @@
         <legend class="col-form-label col-md-2">Answer required:</legend>
         <div class="col-md-10">
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="true" [(ngModel)]="data.required">
             <label class="form-check-label" for="gridRadios1">Yes</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="false" [(ngModel)]="data.required">
             <label class="form-check-label" for="gridRadios2">No</label>
           </div>
         </div>
       </div>
     </fieldset>
+    <!-- if type = 0: open question -->
+    <!-- if type = 1: checkbox -->
+    <!-- if type = 2: radio -->
+    <!-- if type = 3: system usability scale -->
 <!--    insert required component for question options here-->
     <div class="row">
       <div class="col-md-3 mt-2">
-        <button class="btn blue-button mt-2">Add question</button>
+        <button [disabled]="data.required === undefined" class="btn blue-button mt-2" (click)="createQuestion()">Add question</button>
       </div>
     </div>
   </form>

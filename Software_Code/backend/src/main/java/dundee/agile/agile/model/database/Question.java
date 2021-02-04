@@ -23,6 +23,9 @@ public class Question {
     @JoinColumn(name = "questionnaire_id")
     private Questionnaire questionnaire;
 
+    @OneToMany(mappedBy = "question")
+    private Set<PossibleAnswer> possibleAnswers;
+
     private String title;
     private String description;
     @Column(columnDefinition = "boolean default false")
