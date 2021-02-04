@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import {Component} from '@angular/core';
 import {HttpService} from '../../services/http.service';
-import { QuestionDetails} from "../../model/request/question-details";
+import {QuestionDetails} from "../../model/request/question-details";
 
 @Component({
   selector: 'app-question-multi',
@@ -14,8 +14,6 @@ export class QuestionMultiComponent {
     this.data = new QuestionDetails();
   }
 
-  addMultiOptions(){
-    // set options to backend here?
+  addMultiOptions(): void {
   }
-
 }
