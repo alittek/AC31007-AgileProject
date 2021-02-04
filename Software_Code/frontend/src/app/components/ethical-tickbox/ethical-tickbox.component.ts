@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {ExperimentDetails} from '../../model/request/experiment-details';
 import {HttpService} from '../../services/http.service';
 import {EthicalApproval} from '../../model/request/ethical-approval';
@@ -9,7 +9,7 @@ import {BehaviorSubject} from 'rxjs';
   templateUrl: './ethical-tickbox.component.html',
   styleUrls: ['./ethical-tickbox.component.css']
 })
-export class EthicalTickboxComponent implements OnInit {
+export class EthicalTickboxComponent implements OnInit, OnChanges {
 
   @Input()
   data: ExperimentDetails;
@@ -21,6 +21,10 @@ export class EthicalTickboxComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.checkbox = this.data.ethicallyApproved;
+  }
+
+  ngOnChanges(): void {
     this.checkbox = this.data.ethicallyApproved;
   }
 
