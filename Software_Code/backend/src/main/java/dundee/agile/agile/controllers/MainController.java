@@ -166,7 +166,7 @@ public class MainController {
     }
 
     @PostMapping("/create-questionnaire")
-    public Long createQuestions(@RequestBody CreateQuestionnaireRequest createQuestionnaireRequest) {
+    public Long createQuestionnaire(@RequestBody CreateQuestionnaireRequest createQuestionnaireRequest) {
         if (createQuestionnaireRequest == null || createQuestionnaireRequest.getExperimentId() == null) {
             throw new CreateQuestionnaireFailedException();
         }
