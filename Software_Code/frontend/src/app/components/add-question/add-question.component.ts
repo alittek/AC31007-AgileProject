@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {QuestionDetails} from '../../model/request/question-details';
 import {HttpService} from '../../services/http.service';
 import {BehaviorSubject} from 'rxjs';
+import {QuestionType} from '../../model/enums/question-type.enum';
 
 @Component({
   selector: 'app-add-question',
@@ -13,11 +14,13 @@ export class AddQuestionComponent implements OnInit {
   questionnaireId: number;
   data: QuestionDetails;
   isCreated: boolean;
+  needScale: boolean;
   creationStatusText: BehaviorSubject<string>;
 
   constructor(private httpService: HttpService) {
     this.data = new QuestionDetails();
     this.isCreated = false;
+    this.needScale = false;
     this.creationStatusText = new BehaviorSubject(null);
   }
 
@@ -39,5 +42,20 @@ export class AddQuestionComponent implements OnInit {
         this.creationStatusText.next('Unexpected error.');
       }
     });
+  }
+
+  chooseScale(value: number): void {
+    this.data.systemUsabilityScale = value;
+    this.needScale = false;
+  }
+
+  changeType(): void {
+    if (this.data.type == QuestionType.SYSTEM_USABILITY_SCALE) {
+      this.needScale = true;
+    }
+    else {
+      this.data.systemUsabilityScale = null;
+      this.needScale = false;
+    }
   }
 }
