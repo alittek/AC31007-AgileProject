@@ -1,20 +1,22 @@
+<!-- <ng-template #scaleQuestion> -->
 <form>
   <div class="form-group row">
-    <label class="col-md-2 col-form-label">System Usability Scale Question</label>
+    <h5 class="m-0">Add a System Usability Scale Question</h5>
     <div class="col-md-10">
       <div class="btn-group" role="group" aria-label="numbers">
-        <button type="button" class="btn btn-secondary" [(ngModel)]="data.answer">3</button>
-        <button type="button" class="btn btn-secondary" [(ngModel)]="data.answer">4</button>
-        <button type="button" class="btn btn-secondary" [(ngModel)]="data.answer">5</button>
-        <button type="button" class="btn btn-secondary" [(ngModel)]="data.answer">6</button>
-        <button type="button" class="btn btn-secondary" [(ngModel)]="data.answer">7</button>
-        <button type="button" class="btn btn-secondary" [(ngModel)]="data.answer">8</button>
-        <button type="button" class="btn btn-secondary" [(ngModel)]="data.answer">9</button>
-        <button type="button" class="btn btn-secondary" [(ngModel)]="data.answer">10</button>
+        <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">3</button>
+        <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">4</button>
+        <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">5</button>
+        <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">6</button>
+        <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">7</button>
+        <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">8</button>
+        <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">9</button>
+        <button type="button" class="btn btn-secondary" [(ngModel)]="data.systemUsabilityScale">10</button>
       </div>
     </div>
     <div class="form-group row">
-      <button class="btn blue-button mt-2" (click)="addOptions()">Finish</button>
+      <button class="btn blue-button mt-2" (click)="addScaleOptions()">Finish</button>
     </div>
   </div>
 </form>
+<!-- </ng-template> -->

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {HttpService} from '../../services/http.service';
 import {QuestionDetails} from "../../model/request/question-details";
 
 @Component({
   selector: 'app-question-scale',
   templateUrl: './question-scale.component.html',
-  styleUrls: ['./question-scale.component.css']
+  styleUrls: ['./question-scale.component.css'],
 })
 export class QuestionScaleComponent {
   data: QuestionDetails;
@@ -13,7 +14,7 @@ export class QuestionScaleComponent {
     // pass data from backend in here?
   }
 
-  addOptions(){
+  addScaleOptions(): void {
     // set options to backend here?
   }
 
