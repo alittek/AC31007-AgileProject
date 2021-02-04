@@ -1,5 +1,5 @@
 <div class="form-group">
-  <h5 class="m-0">{{question.title}}</h5>
+  <h5 class="m-0">{{questionNum+1}}. {{question.title}}</h5>
   <small class="text-muted">{{question.description}} </small>
   <small class="text-muted">This question is <span *ngIf="question.required; else optional">mandatory.</span> <ng-template #optional>optional.</ng-template></small>
   <!--Open question-->
@@ -41,4 +41,5 @@
     </div>
   </ng-template>
 </div>
+<br>
 <br>

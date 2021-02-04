@@ -18,8 +18,8 @@
   <br>
 <!--  display question component will go here-->
   <form>
-    <div *ngFor="let q of testQuestions">
-      <app-display-question [question]="q"></app-display-question>
+    <div *ngFor="let q of testQuestions; index as i;">
+      <app-display-question [questionAndIndex]="[i,q]"></app-display-question>
     </div>
   </form>
 <!--  add new question component will go here-->

@@ -9,12 +9,18 @@ import {HttpService} from "../../services/http.service";
 })
 export class DisplayQuestionComponent implements OnInit {
   @Input()
+  questionAndIndex: any[];
   question: QuestionDetails;
+  questionNum: number;
 
 
-  constructor() {}
+  constructor() {
+
+  }
 
   ngOnInit(): void {
+    this.questionNum = this.questionAndIndex[0];
+    this.question = this.questionAndIndex[1];
   }
 
   //returning array of [0..] for making the scale front-end
@@ -25,6 +31,7 @@ export class DisplayQuestionComponent implements OnInit {
     }
     return scale;
   }
+
 
 
 }
