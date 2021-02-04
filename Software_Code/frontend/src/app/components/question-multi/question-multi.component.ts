@@ -10,10 +10,12 @@ import {QuestionDetails} from "../../model/request/question-details";
 export class QuestionMultiComponent {
   data: QuestionDetails;
 
+  // not sure if this constructor is needed as we're passing in QuestionDetails object
   constructor(private httpService: HttpService) {
     this.data = new QuestionDetails();
   }
 
   addMultiOptions(): void {
+    // set answers[] in object here
   }
 }
