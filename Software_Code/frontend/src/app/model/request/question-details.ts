@@ -1,7 +1,7 @@
 import {QuestionType} from '../enums/question-type.enum';
 
 export class QuestionDetails {
-  questionnaireID: number;
+  questionnaireId: number;
   title: string;
   type: QuestionType;
   description: string;

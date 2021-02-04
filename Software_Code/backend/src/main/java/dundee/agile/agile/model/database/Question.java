@@ -1,16 +1,14 @@
 package dundee.agile.agile.model.database;
 
 import dundee.agile.agile.model.enums.QuestionType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import java.util.Set;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
