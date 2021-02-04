@@ -181,12 +181,12 @@ public class MainController {
         return questionnaire.getId();
     }
 
-    @GetMapping("/get-questionnaire")
-    public QuestionnaireView getQuestionnaire(@RequestParam Long questionnaireId) {
-        if (questionnaireId == null) {
+    @PostMapping("/get-questionnaire")
+    public QuestionnaireView getQuestionnaire(@RequestBody GetQuestionnaireRequest getQuestionnaireRequest) {
+        if (getQuestionnaireRequest == null || getQuestionnaireRequest.getQuestionnaireId() == null) {
             throw new GetQuestionnaireException();
         }
-        Optional<Questionnaire> questionnaireOptional = questionnairesRepository.findById(questionnaireId);
+        Optional<Questionnaire> questionnaireOptional = questionnairesRepository.findById(getQuestionnaireRequest.getQuestionnaireId());
         if (!questionnaireOptional.isPresent()) {
             throw new GetQuestionnaireException();
         }
