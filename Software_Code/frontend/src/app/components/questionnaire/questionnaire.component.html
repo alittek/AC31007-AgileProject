@@ -16,9 +16,9 @@
   <br>
   <hr>
   <br>
-<!--  display question component will go here-->
+<!--  loop questions with index for Q number -->
   <form>
-    <div *ngFor="let q of testQuestions; index as i;">
+    <div *ngFor="let q of questions; index as i;">
       <app-display-question [questionAndIndex]="[i,q]"></app-display-question>
     </div>
   </form>
