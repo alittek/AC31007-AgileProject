@@ -1,3 +1,7 @@
 export class QuestionnaireDetails {
-  userID: number;
+  id: number;
+  title: string;
+  researcher: string;
+  contact: string;
+  description: string;
 }
