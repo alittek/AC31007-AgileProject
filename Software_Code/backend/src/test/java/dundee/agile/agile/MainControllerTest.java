@@ -1,8 +1,13 @@
 package dundee.agile.agile;
 
 import dundee.agile.agile.controllers.MainController;
+import dundee.agile.agile.exceptions.CreateQuestionFailedException;
 import dundee.agile.agile.exceptions.EthicalApprovalCodeException;
 import dundee.agile.agile.model.database.Experiment;
+import dundee.agile.agile.model.database.Question;
+import dundee.agile.agile.model.database.Questionnaire;
+import dundee.agile.agile.model.enums.QuestionType;
+import dundee.agile.agile.model.json.request.CreateQuestionRequest;
 import dundee.agile.agile.model.json.request.EthicalApprovalRequest;
 import dundee.agile.agile.repositories.*;
 import org.junit.jupiter.api.Assertions;
@@ -20,6 +25,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 
 @SpringBootTest
@@ -34,9 +40,9 @@ public class MainControllerTest {
     @Autowired
     private UserExperimentRepository userExperimentRepository;
 
-    @Autowired
+    @Mock
     private QuestionnairesRepository questionnairesRepository;
-    @Autowired
+    @Mock
     private QuestionsRepository questionsRepository;
 
     private MainController mainController;
@@ -53,6 +59,19 @@ public class MainControllerTest {
                     }
                     return Optional.empty();
                 });
+
+        Mockito.when(questionnairesRepository.findById(anyLong())).thenAnswer(
+                invocation -> {
+                    Object argument = invocation.getArgument(0);
+                    if (argument.equals(1L)) {
+                        return Optional.of(Questionnaire.builder()
+                                .id(1L)
+                                .build());
+                    }
+                    return Optional.empty();
+                });
+
+        Mockito.when(questionsRepository.save(any())).thenReturn(Question.builder().id(1L).build());
 
         mainController = new MainController(usersRepository, experimentsRepository, userExperimentRepository, questionnairesRepository, questionsRepository);
     }
@@ -92,4 +111,65 @@ public class MainControllerTest {
         Assertions.assertThrows(EthicalApprovalCodeException.class, () -> mainController.approveEthically(ethicalApprovalRequest));
     }
 
+    @Test
+    @DisplayName("Create new question with all required fields")
+    public void testCreateQuestionCorrectDetails() {
+        CreateQuestionRequest createQuestionRequest = CreateQuestionRequest.builder()
+                .questionnaireId(1L)
+                .title("Title")
+                .type(QuestionType.OPEN)
+                .required(true)
+                .build();
+
+        Assertions.assertEquals(1L, mainController.createQuestion(createQuestionRequest));
+    }
+
+    @Test
+    @DisplayName("Create new question with fake questionnaireId")
+    public void testCreateQuestionWithFakeQuestionnaireId() {
+        CreateQuestionRequest createQuestionRequest = CreateQuestionRequest.builder()
+                .questionnaireId(2L)
+                .title("Title")
+                .type(QuestionType.OPEN)
+                .required(true)
+                .build();
+
+        Assertions.assertThrows(CreateQuestionFailedException.class ,() -> mainController.createQuestion(createQuestionRequest));
+    }
+
+    @Test
+    @DisplayName("Create new question with missing questionnaireId")
+    public void testCreateQuestionWithMissingQuestionnaireId() {
+        CreateQuestionRequest createQuestionRequest = CreateQuestionRequest.builder()
+                .title("Title")
+                .type(QuestionType.OPEN)
+                .required(true)
+                .build();
+
+        Assertions.assertThrows(CreateQuestionFailedException.class, () -> mainController.createQuestion(createQuestionRequest));
+    }
+
+    @Test
+    @DisplayName("Create new question with missing title")
+    public void testCreateQuestionWithMissingTitle() {
+        CreateQuestionRequest createQuestionRequest = CreateQuestionRequest.builder()
+                .questionnaireId(1L)
+                .type(QuestionType.OPEN)
+                .required(true)
+                .build();
+
+        Assertions.assertThrows(CreateQuestionFailedException.class, () -> mainController.createQuestion(createQuestionRequest));
+    }
+
+    @Test
+    @DisplayName("Create new question with missing type")
+    public void testCreateQuestionWithMissingType() {
+        CreateQuestionRequest createQuestionRequest = CreateQuestionRequest.builder()
+                .questionnaireId(1L)
+                .title("Title")
+                .required(true)
+                .build();
+
+        Assertions.assertThrows(CreateQuestionFailedException.class, () -> mainController.createQuestion(createQuestionRequest));
+    }
 }
