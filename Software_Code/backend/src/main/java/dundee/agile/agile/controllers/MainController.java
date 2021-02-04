@@ -1,23 +1,18 @@
 package dundee.agile.agile.controllers;
 
-import dundee.agile.agile.exceptions.CreateExperimentFailedException;
-import dundee.agile.agile.exceptions.CreateQuestionnaireFailedException;
-import dundee.agile.agile.exceptions.EthicalApprovalCodeException;
-import dundee.agile.agile.exceptions.LoginFailedException;
+import dundee.agile.agile.exceptions.*;
 import dundee.agile.agile.model.database.*;
 import dundee.agile.agile.model.enums.Privileges;
 import dundee.agile.agile.model.json.request.*;
 import dundee.agile.agile.model.json.response.ExperimentDetailsView;
+import dundee.agile.agile.model.json.response.QuestionnaireView;
 import dundee.agile.agile.model.json.response.UserView;
 import dundee.agile.agile.repositories.ExperimentsRepository;
 import dundee.agile.agile.repositories.QuestionnairesRepository;
 import dundee.agile.agile.repositories.UserExperimentRepository;
 import dundee.agile.agile.repositories.UsersRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -184,6 +179,24 @@ public class MainController {
                 .build();
         questionnaire = questionnairesRepository.save(questionnaire);
         return questionnaire.getId();
+    }
+
+    @GetMapping("/get-questionnaire")
+    public QuestionnaireView getQuestionnaire(@RequestParam Long questionnaireId) {
+        if (questionnaireId == null) {
+            throw new GetQuestionnaireException();
+        }
+        Optional<Questionnaire> questionnaireOptional = questionnairesRepository.findById(questionnaireId);
+        if (!questionnaireOptional.isPresent()) {
+            throw new GetQuestionnaireException();
+        }
+        Questionnaire questionnaire = questionnaireOptional.get();
+        return QuestionnaireView.builder()
+                .contact(questionnaire.getContact())
+                .researcher(questionnaire.getResearcher())
+                .description(questionnaire.getDescription())
+                .title(questionnaire.getTitle())
+                .build();
     }
 
     @PostMapping("/create-question")
