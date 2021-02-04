@@ -15,7 +15,6 @@ const routes: Routes = [
   {path: '', component: LoginFormComponent},
   {path: 'create-questionnaire', component: CreateQuestionnaireComponent},
   {path: 'questionnaire/:id', component: QuestionnaireComponent},
-  {path: 'test', component: QuestionMultiComponent}
 ];
 
 @NgModule({
