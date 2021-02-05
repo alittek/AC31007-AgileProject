@@ -12,4 +12,5 @@ public class QuestionnaireView {
     private String researcher;
     private String contact;
     private String description;
+    private Long experimentId;
 }

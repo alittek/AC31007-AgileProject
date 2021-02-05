@@ -1,4 +1,4 @@
-package dundee.agile.agile.model.json.request;
+package dundee.agile.agile.model.json.response;
 
 import dundee.agile.agile.model.enums.QuestionType;
 import lombok.Builder;
@@ -8,12 +8,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class CreateQuestionRequest {
-    private Long questionnaireId;
+public class QuestionView {
     private String title;
     private String description;
     private boolean required;
-    private QuestionType type;
-    private String[] answers;
+    private int type;
     private int systemUsabilityScale;
+    private String[] answers;
 }

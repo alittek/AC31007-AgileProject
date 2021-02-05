@@ -5,15 +5,18 @@ import dundee.agile.agile.model.database.*;
 import dundee.agile.agile.model.enums.Privileges;
 import dundee.agile.agile.model.json.request.*;
 import dundee.agile.agile.model.json.response.ExperimentDetailsView;
+import dundee.agile.agile.model.json.response.QuestionView;
 import dundee.agile.agile.model.json.response.QuestionnaireView;
 import dundee.agile.agile.model.json.response.UserView;
 import dundee.agile.agile.repositories.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -25,6 +28,7 @@ public class MainController {
     private final UserExperimentRepository userExperimentRepository;
     private final QuestionnairesRepository questionnairesRepository;
     private final QuestionsRepository questionsRepository;
+    private final PossibleAnswerRepository possibleAnswerRepository;
 
     @PostMapping("/login")
     public UserView login(@RequestBody LoginUserRequest loginUserRequest) {
@@ -56,23 +60,18 @@ public class MainController {
     @PostMapping("/create-experiment")
     public Long createExperiment(@RequestBody CreateExperimentRequest createExperimentRequest) {
         if (createExperimentRequest == null) {
-            // TODO: bad request
             throw new CreateExperimentFailedException();
         }
         if (createExperimentRequest.getTitle() == null || createExperimentRequest.getTitle().length() == 0) {
-            // TODO: title is required
             throw new CreateExperimentFailedException();
         }
         if (createExperimentRequest.getDescription() == null || createExperimentRequest.getDescription().length() == 0) {
-            // TODO: description is required
             throw new CreateExperimentFailedException();
         }
         if (createExperimentRequest.getResearcherId() == null) {
-            // TODO: researcher id is required
             throw new CreateExperimentFailedException();
         }
         if (createExperimentRequest.getType() == null || createExperimentRequest.getType().length() == 0) {
-            // TODO: type is required
             throw new CreateExperimentFailedException();
         }
         Optional<User> researcher = usersRepository.findById(createExperimentRequest.getResearcherId());
@@ -201,12 +200,16 @@ public class MainController {
             throw new GetQuestionnaireException();
         }
         Questionnaire questionnaire = questionnaireOptional.get();
-        return QuestionnaireView.builder()
+        QuestionnaireView questionnaireView = QuestionnaireView.builder()
                 .contact(questionnaire.getContact())
                 .researcher(questionnaire.getResearcher())
                 .description(questionnaire.getDescription())
                 .title(questionnaire.getTitle())
                 .build();
+        if (questionnaire.getExperiment() != null && questionnaire.getExperiment().getId() != null) {
+            questionnaireView.setExperimentId(questionnaire.getExperiment().getId());
+        }
+        return questionnaireView;
     }
 
     @PostMapping("/create-question")
@@ -232,9 +235,48 @@ public class MainController {
             question.setDescription(createQuestionRequest.getDescription());
             question.setRequired(createQuestionRequest.isRequired());
             question.setType(createQuestionRequest.getType());
+            question.setSystemUsabilityScale(createQuestionRequest.getSystemUsabilityScale());
+
             question = questionsRepository.save(question);
+            if (createQuestionRequest.getAnswers() != null && createQuestionRequest.getAnswers().length > 0) {
+                Question finalQuestion = question;
+                Set<PossibleAnswer> possibleAnswers = Arrays.stream(createQuestionRequest.getAnswers())
+                        .map(answer -> PossibleAnswer.builder()
+                                .Answer(answer)
+                                .question(finalQuestion)
+                                .build())
+                        .collect(Collectors.toSet());
+                possibleAnswerRepository.saveAll(possibleAnswers);
+            }
             return question.getId();
         }
         throw new CreateQuestionFailedException();
+    }
+
+    @PostMapping("/get-questions")
+    public List<QuestionView> getQuestions(@RequestBody GetQuestionnaireRequest getQuestionnaireRequest) {
+        Optional<Questionnaire> questionnaireOptional = questionnairesRepository.findById(getQuestionnaireRequest.getQuestionnaireId());
+        if (questionnaireOptional.isPresent()) {
+            List<QuestionView> questionViewList = new ArrayList<>();
+            List<Question> questionList = questionsRepository.findAllByQuestionnaire(questionnaireOptional.get());
+            for (Question question : questionList) {
+                QuestionView questionView = QuestionView.builder()
+                        .title(question.getTitle())
+                        .description(question.getDescription())
+                        .type(question.getType().getNumericValue())
+                        .required(question.isRequired())
+                        .systemUsabilityScale(question.getSystemUsabilityScale())
+                        .build();
+                List<PossibleAnswer> possibleAnswerList = possibleAnswerRepository.findAllByQuestion(question);
+                List<String> answerList = new ArrayList<>();
+                for (PossibleAnswer possibleAnswer : possibleAnswerList) {
+                    answerList.add(possibleAnswer.getAnswer());
+                }
+                questionView.setAnswers(answerList.toArray(new String[0]));
+                questionViewList.add(questionView);
+            }
+            return questionViewList;
+        }
+        return null;
     }
 }

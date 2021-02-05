@@ -1,0 +1,22 @@
+<div id="top-gray-box" class="text-center">
+  <h2>{{questionnaire.title}}</h2>
+</div>
+<div id="overlap-box" class="container border p-5">
+  <h4> Description</h4>
+  <p>{{questionnaire.description}}</p>
+  <br>
+  <h5>Researcher</h5>
+  <p>{{questionnaire.researcher}}</p>
+  <h5>Email</h5>
+  <p>{{questionnaire.contact}}</p>
+  <hr>
+  <br>
+  <!--  loop questions with index for Q number -->
+  <div *ngFor="let q of questions; index as i;">
+    <app-display-question [question]="q" [questionNum]="i"></app-display-question>
+  </div>
+  <div class="d-flex justify-content-end">
+    <button type="button" class="btn blue-button mr-2">Create link</button>
+    <button routerLink="/experiments/{{questionnaire.experimentId}}" type="button" class="btn blue-button">Back to experiment</button>
+  </div>
+</div>

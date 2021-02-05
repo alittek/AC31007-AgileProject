@@ -1,7 +1,7 @@
 <h3>{{questionnaire.title}}</h3>
 <p>Researcher: {{questionnaire.researcher}}</p>
 <div class="d-flex justify-content-start mt-2">
-  <button type="button" class="btn blue-button">View</button>
-  <button type="button" class="btn blue-button">Create link</button>
+  <button routerLink="/view-questionnaire/{{questionnaireId}}" type="button" class="btn blue-button">Review</button>
+  <button routerLink="/questionnaire/{{questionnaireId}}" type="button" class="btn blue-button">Edit</button>
   <button type="button" class="btn btn-danger">Delete</button>
 </div>

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {QuestionnaireDetails} from '../../model/request/questionnaire-details';
-import {ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
 import {HttpService} from '../../services/http.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class DisplayFinishedQuestionnaireComponent implements OnInit {
   questionnaire: QuestionnaireDetails;
   @Input() questionnaireId: number;
 
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService, private router: Router) {
   }
 
   ngOnInit(): void {

@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {QuestionDetails} from '../../model/request/question-details';
+import {QuestionnaireDetails} from '../../model/request/questionnaire-details';
 import {ActivatedRoute} from '@angular/router';
 import {HttpService} from '../../services/http.service';
-import {QuestionnaireDetails} from '../../model/request/questionnaire-details';
 
 @Component({
-  selector: 'app-questionnaire',
-  templateUrl: './questionnaire.component.html',
-  styleUrls: ['./questionnaire.component.css']
+  selector: 'app-view-questionnaire',
+  templateUrl: './view-questionnaire.component.html',
+  styleUrls: ['./view-questionnaire.component.css']
 })
-export class QuestionnaireComponent implements OnInit {
+export class ViewQuestionnaireComponent implements OnInit {
   questionnaireRouteId: number;
   questions: QuestionDetails[];
   questionnaire: QuestionnaireDetails;
@@ -39,9 +39,5 @@ export class QuestionnaireComponent implements OnInit {
     this.httpService.getQuestions(this.questionnaireRouteId).subscribe(value => {
       this.questions = value;
     });
-  }
-
-  updateQuestions(): void {
-    this.getQuestions();
   }
 }

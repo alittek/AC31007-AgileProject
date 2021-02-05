@@ -3,8 +3,8 @@
     <h5>Add answer options</h5>
     <div class="col-md-10 mt-3">
       <div class="form-group row">
-        <input *ngFor="let answer of data.answers; let i = index" type="text" class="form-control mb-2"
-               [placeholder]="'Option ' + (i+1)" [(ngModel)]="data.answers[i]" [name]="'Option ' + (i+1)">
+        <input *ngFor="let answer of data.answers; let i = index; trackBy: identity" type="text" class="form-control mb-2"
+               [placeholder]="'Option ' + (i+1)" [(ngModel)]="data.answers[i]" [name]="'Option ' + (i+1)" (ngModelChange)="chooseOptions()">
         <button class="btn blue-button mt-2" (click)="data.answers.push('')">+</button>
         <button class="btn blue-button mt-2 ml-2" (click)="data.answers.pop()" [disabled]="data.answers.length < 3">–
         </button>
