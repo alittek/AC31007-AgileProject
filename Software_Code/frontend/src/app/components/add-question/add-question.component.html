@@ -43,7 +43,7 @@
     </fieldset>
     <!-- if type = 1: checkbox -->
     <!-- if type = 2: radio -->
-    <app-question-multi *ngIf="data.type == 1 || data.type == 2"></app-question-multi>
+    <app-question-multi *ngIf="data.type == 1 || data.type == 2" (chooseOptionsEvent)="chooseOptions($event)"></app-question-multi>
     <!-- if type = 3: system usability scale -->
     <app-question-scale *ngIf="data.type == 3" (chooseScaleEvent)="chooseScale($event)"></app-question-scale>
 <!--    insert required component for question options here-->
