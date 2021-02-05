@@ -23,6 +23,7 @@ export class AddQuestionComponent implements OnInit {
     this.data = new QuestionDetails();
     this.isCreated = false;
     this.needScale = false;
+    this.data.type = -1;
     this.creationStatusText = new BehaviorSubject(null);
   }
 
@@ -33,7 +34,6 @@ export class AddQuestionComponent implements OnInit {
   createQuestion(): void {
     this.httpService.createQuestion(this.data).subscribe(value => {
       this.isCreated = true;
-      this.creationStatusText.next('Question created successfully');
       this.questionCreatedEvent.emit();
       this.resetDetails();
     }, error => {
@@ -72,5 +72,6 @@ export class AddQuestionComponent implements OnInit {
     this.data = new QuestionDetails();
     this.needScale = false;
     this.data.questionnaireId = this.questionnaireId;
+    this.data.type = -1;
   }
 }

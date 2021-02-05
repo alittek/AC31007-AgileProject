@@ -18,7 +18,7 @@
       <label class="col-md-2 col-form-label">Question Type: </label>
       <div class="col-md-10">
         <select class="form-control" name="type" [(ngModel)]="data.type" (change)="changeType()">
-          <option>Select type...</option>
+          <option value="-1">Select type...</option>
           <option value="0">Open answer</option>
           <option value="2">Multiple choice (radio buttons)</option>
           <option value="1">Multiple choice (checkboxes)</option>
@@ -50,7 +50,7 @@
     <p [ngClass]="isCreated ? 'text-success':'text-danger'" *ngIf="creationStatusText | async">{{creationStatusText | async}}</p>
     <div class="row">
       <div class="col-md-3 mt-2">
-        <button [disabled]="data.required === undefined || needScale" class="btn blue-button mt-2" (click)="createQuestion()">Add question</button>
+        <button [disabled]="data.required === undefined || data.type == -1 || needScale" class="btn blue-button mt-2" (click)="createQuestion()">Add question</button>
       </div>
     </div>
   </form>
