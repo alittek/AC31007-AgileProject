@@ -60,4 +60,10 @@ export class HttpService {
     questionnaireRequest.questionnaireId = questionnaireId;
     return this.httpClient.post<QuestionnaireDetails>(ApiConstants.GET_QUESTIONNAIRE, questionnaireRequest);
   }
+
+  getQuestions(questionnaireId: number): Observable<QuestionDetails[]> {
+    const questionnaireRequest = new GetQuestionnaireRequest();
+    questionnaireRequest.questionnaireId = questionnaireId;
+    return this.httpClient.post<QuestionDetails[]>(ApiConstants.GET_QUESTIONS, questionnaireRequest);
+  }
 }

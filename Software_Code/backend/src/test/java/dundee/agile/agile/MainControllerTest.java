@@ -46,6 +46,7 @@ public class MainControllerTest {
 
     @Mock
     private QuestionsRepository questionsRepository;
+    @Autowired PossibleAnswerRepository possibleAnswerRepository;
 
     private MainController mainController;
 
@@ -76,7 +77,7 @@ public class MainControllerTest {
 
         Mockito.when(questionsRepository.save(any())).thenReturn(Question.builder().id(1L).build());
 
-        mainController = new MainController(usersRepository, experimentsRepository, userExperimentRepository, questionnairesRepository, questionsRepository);
+        mainController = new MainController(usersRepository, experimentsRepository, userExperimentRepository, questionnairesRepository, questionsRepository, possibleAnswerRepository);
     }
 
     @Test

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, EventEmitter, Output} from '@angular/core';
 import {QuestionDetails} from '../../model/request/question-details';
 import {HttpService} from '../../services/http.service';
 import {BehaviorSubject} from 'rxjs';
@@ -16,6 +16,8 @@ export class AddQuestionComponent implements OnInit {
   isCreated: boolean;
   needScale: boolean;
   creationStatusText: BehaviorSubject<string>;
+  @Output()
+  questionCreatedEvent = new EventEmitter();
 
   constructor(private httpService: HttpService) {
     this.data = new QuestionDetails();
@@ -32,6 +34,8 @@ export class AddQuestionComponent implements OnInit {
     this.httpService.createQuestion(this.data).subscribe(value => {
       this.isCreated = true;
       this.creationStatusText.next('Question created successfully');
+      this.questionCreatedEvent.emit();
+      this.resetDetails();
     }, error => {
       this.isCreated = false;
       if (error.status === 0) {
@@ -57,5 +61,11 @@ export class AddQuestionComponent implements OnInit {
       this.data.systemUsabilityScale = null;
       this.needScale = false;
     }
+  }
+
+  resetDetails(): void {
+    this.data = new QuestionDetails();
+    this.needScale = false;
+    this.data.questionnaireId = this.questionnaireId;
   }
 }

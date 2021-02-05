@@ -22,6 +22,7 @@ export class QuestionnaireComponent implements OnInit {
   ngOnInit(): void {
     this.getQuestionnaireRouteId();
     this.getQuestionnaire();
+    this.getQuestions();
   }
 
   getQuestionnaireRouteId(): void {
@@ -32,5 +33,15 @@ export class QuestionnaireComponent implements OnInit {
     this.httpService.getQuestionnaire(this.questionnaireRouteId).subscribe(value => {
       this.questionnaire = value;
     });
+  }
+
+  getQuestions(): void {
+    this.httpService.getQuestions(this.questionnaireRouteId).subscribe(value => {
+      this.questions = value;
+    });
+  }
+
+  updateQuestions(): void {
+    this.getQuestions();
   }
 }
