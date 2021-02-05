@@ -200,12 +200,16 @@ public class MainController {
             throw new GetQuestionnaireException();
         }
         Questionnaire questionnaire = questionnaireOptional.get();
-        return QuestionnaireView.builder()
+        QuestionnaireView questionnaireView = QuestionnaireView.builder()
                 .contact(questionnaire.getContact())
                 .researcher(questionnaire.getResearcher())
                 .description(questionnaire.getDescription())
                 .title(questionnaire.getTitle())
                 .build();
+        if (questionnaire.getExperiment() != null && questionnaire.getExperiment().getId() != null) {
+            questionnaireView.setExperimentId(questionnaire.getExperiment().getId());
+        }
+        return questionnaireView;
     }
 
     @PostMapping("/create-question")

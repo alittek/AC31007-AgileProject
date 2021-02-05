@@ -15,4 +15,8 @@
   <div *ngFor="let q of questions; index as i;">
     <app-display-question [question]="q" [questionNum]="i"></app-display-question>
   </div>
+  <div class="d-flex justify-content-end">
+    <button type="button" class="btn blue-button mr-2">Create link</button>
+    <button routerLink="/experiments/{{questionnaire.experimentId}}" type="button" class="btn blue-button">Back to experiment</button>
+  </div>
 </div>
