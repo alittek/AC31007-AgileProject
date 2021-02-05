@@ -7,3 +7,5 @@
 03/02/2021 - Added new tests, marked first tests as passed
 
 04/02/2021 - Continued testing and updated tests, next tests passed
+
+05/02/2021 - Passing all tests, finished sprint 2
