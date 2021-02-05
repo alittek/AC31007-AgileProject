@@ -53,6 +53,11 @@ export class AddQuestionComponent implements OnInit {
     this.needScale = false;
   }
 
+  chooseOptions(value: string[]): void {
+    this.data.answers = value;
+    this.needScale = false;
+  }
+
   changeType(): void {
     if (this.data.type == QuestionType.SYSTEM_USABILITY_SCALE) {
       this.needScale = true;

@@ -15,10 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -62,23 +60,18 @@ public class MainController {
     @PostMapping("/create-experiment")
     public Long createExperiment(@RequestBody CreateExperimentRequest createExperimentRequest) {
         if (createExperimentRequest == null) {
-            // TODO: bad request
             throw new CreateExperimentFailedException();
         }
         if (createExperimentRequest.getTitle() == null || createExperimentRequest.getTitle().length() == 0) {
-            // TODO: title is required
             throw new CreateExperimentFailedException();
         }
         if (createExperimentRequest.getDescription() == null || createExperimentRequest.getDescription().length() == 0) {
-            // TODO: description is required
             throw new CreateExperimentFailedException();
         }
         if (createExperimentRequest.getResearcherId() == null) {
-            // TODO: researcher id is required
             throw new CreateExperimentFailedException();
         }
         if (createExperimentRequest.getType() == null || createExperimentRequest.getType().length() == 0) {
-            // TODO: type is required
             throw new CreateExperimentFailedException();
         }
         Optional<User> researcher = usersRepository.findById(createExperimentRequest.getResearcherId());
@@ -243,7 +236,18 @@ public class MainController {
             question.setRequired(createQuestionRequest.isRequired());
             question.setType(createQuestionRequest.getType());
             question.setSystemUsabilityScale(createQuestionRequest.getSystemUsabilityScale());
+
             question = questionsRepository.save(question);
+            if (createQuestionRequest.getAnswers() != null && createQuestionRequest.getAnswers().length > 0) {
+                Question finalQuestion = question;
+                Set<PossibleAnswer> possibleAnswers = Arrays.stream(createQuestionRequest.getAnswers())
+                        .map(answer -> PossibleAnswer.builder()
+                                .Answer(answer)
+                                .question(finalQuestion)
+                                .build())
+                        .collect(Collectors.toSet());
+                possibleAnswerRepository.saveAll(possibleAnswers);
+            }
             return question.getId();
         }
         throw new CreateQuestionFailedException();
