@@ -17,3 +17,8 @@
 03/02/2021 - Added new user stories, updated stories after changes to sprint 2
 
 04/02/2021 - Minor fix to wording of stories for clarity, first story of sprint 2 done
+
+05/02/2021 - Updated at end of sprint two with regards to sprint review and stakeholder wishes
+
+View editing history for sprint 2:
+https://docs.google.com/spreadsheets/d/17JJCctyvYdl1ksYTS5Q5A49MVh9yQQShbkkJ-Nagc-c/edit?usp=sharing 
