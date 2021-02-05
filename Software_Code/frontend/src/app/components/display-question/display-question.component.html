@@ -1,7 +1,7 @@
 <div class="form-group">
   <h5 class="m-0">{{questionNum+1}}. {{question.title}}</h5>
-  <small class="text-muted">{{question.description}} </small>
-  <small class="text-muted">This question is <span *ngIf="question.required; else optional">mandatory.</span> <ng-template #optional>optional.</ng-template></small>
+  <small class="text-muted">{{question.description}} </small> <br>
+  <small class="text-muted"><span *ngIf="question.required; else optional" class="text-danger">This answer is mandatory.</span> <ng-template #optional><span class="">This answer is optional.</span></ng-template></small>
   <!--Open question-->
   <ng-template  [ngIf]="question.type == 0">
     <div class="pt-2">
