@@ -243,8 +243,6 @@ public class MainController {
                                 .build())
                         .collect(Collectors.toSet());
                 possibleAnswerRepository.saveAll(possibleAnswers);
-//                possibleAnswers = new HashSet<>(possibleAnswerRepository.saveAll(possibleAnswers));
-//                question.setPossibleAnswers(possibleAnswers);
             }
             return question.getId();
         }
