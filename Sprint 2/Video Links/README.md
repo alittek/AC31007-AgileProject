@@ -1,3 +1,3 @@
 # Video Links
 
-You should update this README.md file to contain links to your groups video files that have been created for this Sprint.
+Link to the video demonstrating pair programming: https://web.microsoftstream.com/video/977bffff-7510-4466-914e-6a42f6d5eef8
